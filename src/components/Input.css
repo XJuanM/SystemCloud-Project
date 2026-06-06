@@ -1,0 +1,28 @@
+.inputLogin {
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 450px;
+  font-size: 18px;
+  font-weight: bold;
+}
+section {
+  flex-direction: column;
+  gap: 0px;
+  padding: 0px;
+  width: 460px;
+}
+h3 {
+  width: 460px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  align-self: flex-start;
+}
+div {
+  width: 460px;
+  flex-direction: column;
+  gap: 20px;
+}
