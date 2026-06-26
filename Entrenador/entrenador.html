@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Entrenador</title>
+
+    <link rel="stylesheet" href="../CSS/entrenador.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-systemcloud">
+    <div class="container">
+
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="../IMG/LogoProyectoSinFondo.png" class="logo">
+            <span class="marca ms-2">SYSTEM CLOUD</span>
+        </a>
+
+        <div class="ms-auto d-flex align-items-center gap-3">
+
+            <a class="nav-link opcion-menu" href="../HTML/index.html">Inicio</a>
+            <a class="nav-link opcion-menu" href="#">Clientes</a>
+            <a class="nav-link opcion-menu" href="#">Rutinas</a>
+            <a class="nav-link opcion-menu" href="#">Calendario</a>
+
+            <button class="btn-login-nav">
+                Salir
+            </button>
+
+        </div>
+
+    </div>
+</nav>
+
+
+<section class="dashboard container">
+
+    <div class="welcome">
+
+        <div>
+            <h1>Bienvenido Entrenador</h1>
+            <p>Gestiona tus alumnos, rutinas y sesiones desde un solo lugar.</p>
+        </div>
+
+    </div>
+
+
+    <div class="row mt-5 g-4">
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+                <h2>28</h2>
+                <p>Alumnos Activos</p>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+                <h2>15</h2>
+                <p>Rutinas</p>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+                <h2>6</h2>
+                <p>Sesiones Hoy</p>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+                <h2>95%</h2>
+                <p>Asistencia</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="row mt-5">
+
+        <div class="col-lg-8">
+
+            <div class="panel">
+
+                <h3>Clientes</h3>
+
+                <table class="table table-dark table-hover">
+
+                    <thead>
+
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Objetivo</th>
+                            <th>Estado</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Carlos Gómez</td>
+                            <td>Hipertrofia</td>
+                            <td><span class="estado activo">Activo</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>María López</td>
+                            <td>Bajar Peso</td>
+                            <td><span class="estado activo">Activo</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>Juan Pérez</td>
+                            <td>Fuerza</td>
+                            <td><span class="estado pendiente">Pendiente</span></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="panel">
+
+                <h3>Rutina del Día</h3>
+
+                <ul>
+
+                    <li>Pecho</li>
+                    <li>Espalda</li>
+                    <li>Bíceps</li>
+                    <li>Cardio 20 min</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
