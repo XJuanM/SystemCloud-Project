@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Cloud</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-systemcloud">
+            <div class="container">
+                
+                <a href="#" class="navbar-brand d-flex align-items-center gap-2">
+                    <img src="../IMG/logoSinFondo2.png" alt="Logo System Cloud" class="logo">
+                    <span class="marca">System Cloud</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-5">
+                        <li class="nav-item"> <a class="nav-link opcion-menu" href="#">Servicios</a></li>
+                        <li class="nav-item"> <a class="nav-link opcion-menu" href="#">Contáctenos</a></li>
+                        <li class="nav-item">
+                            <button class="btn btn-login-nav" data-bs-toggle="modal" data-bs-target="#loginModal">Ingresar</button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-login">
+                <div class="modal-header border-0">
+                    <h2 class="modal-title w-100 text-center">Iniciar Sesión</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo"
+                                required>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label  for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                            </div>
+                        <button type="submit" class="btn btn-login btn-ingresar w-100">Ingresar</button>
+                        
+
+                        <div class="d-flex justify-content-between mt-3">
+                            <a href="#" class="link-login">¿Olvidaste tu contraseña?</a>
+                            <a href="registro.html" class="link-login">Registrate</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="hero-content">
+        <h1>System Cloud</h1>
+        <p>Transformando la gestión fitness en una experiencia inteligente</p>
+        <p>Alcanza tus objetivos con una combinación de entrenamiento inteligente, una nutrición equilibrada y un seguimiento continuo de tu progreso. Cada paso cuenta para construir una versión más fuerte y saludable de ti.</p>
+        </div>
+    </section>
+    
+    <section class="container">
+        Alcanza tus objetivos con una combinación de entrenamiento inteligente, una nutrición equilibrada y un seguimiento continuo de tu progreso. Cada paso cuenta para construir una versión más fuerte y saludable de ti.
+    </section>
+
+    <section class="container py-5" id="servicios">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card tarjeta h-20 text-center">
+                        <div class="card-body">
+                            <h2>Consultas</h2>
+                            <p>Cuidamos la salud de tu mascota! Agenda hoy su consulta médica de rutina o chequeo general. Recibe atención profesional y con el cariño que tu mejor amigo merece. </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 ">
+                    <div class="card-image">
+                        <img src="../IMG/Men image 1.png" alt="">
+                    </div>
+                </div>
+            </div>
+    </section>
+            <div class="col-md-4 ">
+                    <div class="card tarjeta h-100 text-center">
+                        <img src="img/cama.png" class="card-img-top img-tarjeta" alt="Mascotas">
+                        <div class="card-body">
+                            <h2>Accesorios</h2>
+                            <p>¡Consiente a tu mejor amigo! Dale estilo y diversión con nuestra variedad de accesorios: collares, juguetes, camas y más. Encuentra calidad y comodidad para su día a día aquí.  </p>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-4">
+                    <div class="card tarjeta h-100 text-center">
+                        <img src="img/comida.png" class="card-img-top img-tarjeta" alt="Mascotas">
+                        <div class="card-body">
+                            <h2>Alimento </h2>
+                            <p>Nutrición y energía para tu mascota! Te ofrecemos el mejor alimento para mantener a tu compañero fuerte, sano y feliz. Contamos con marcas de calidad adaptadas a su edad y tamaño. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
