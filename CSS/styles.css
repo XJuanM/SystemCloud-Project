@@ -4,13 +4,11 @@
     box-sizing: border-box;
 }
 
-
 :root{
     --blanco: #fffceb;
     --azulito: #0a9696;
     --negro :#000000;
 }
-
 
 body{
     background-color: var(--negro);
@@ -46,6 +44,12 @@ body{
 
 .opcion-menu:hover{
     color: var(--blanco);
+}
+
+.opcion-menu:focus,
+.opcion-menu:active{
+    color: var(--azulito);
+    outline: none;
 }
 
 .logo{
@@ -133,8 +137,8 @@ body{
 
 .hero-content p:last-child{
     text-align: center;
-    max-width: 800px;
-    height: 40px;
+    max-width: 900px;
+    height: 100px;
     font-size: 25px;
     color: var(--blanco);
 }
@@ -143,6 +147,41 @@ body{
 .container div{
     align-items: center;
     justify-content: center;
+}
+
+#servicios .row{
+    transform: translateY(-80px);
+}
+
+.tarjeta{
+    background-color: var(--negro);
+    border: none;
+    transition: transform .3s ease-in;
+}
+
+.tarjeta:hover{
+    background-color: var(--azulito);
+    transform: scale(1.04);
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: solid 2px var(--azulito);
+    border-radius: 8px;
+    color: var(--azulito);
+    transition: .5s;
+}
+
+.card-body h2{
+    margin-top: 10px;
+}
+
+.card-body:hover{
+    border: solid 2px var(--blanco);
+    color: var(--blanco);
+    transform: scale(1.01);
 }
 
 .card:first-child{
@@ -158,12 +197,241 @@ body{
 }
 
 .card-image img{
-    width: 450px;    
-    height: auto;    
+    width:100%;
+    max-width:450px;
+    height:auto;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 25px var(--azulito));
+    transition: transform .3s ease-in;
+}
+
+.card-image img:hover{
+    transform: scale(1.03)
+}
+
+#servicios2 .card:first-child{
+    margin-right: 110px;
+    width: auto;
+}
+
+#servicios2 .card-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 0 25px var(--azulito));
+    margin-right: 110px;
+}
+
+#servicios2 .row{
+    transform: translateY(-20px);
+}
+
+#servicios3 .row{
+    transform: translateY(-10px);
 }
 
 
+.footer-system{
+    background-image: url("../IMG/footer.png");
+    transform: translateY(-60px);
+    background-position: right center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 90px 0 30px;
+    position: relative;
+}
 
+.footer-system::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0,0,0,.55);
+}
+
+.footer-system .container{
+    position: relative;
+    display: flex;
+    min-height: 700px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.footer-system{
+    color: white;
+    background-position: right;
+}
+
+.footer-system p{
+    color: #b8b8b8;
+}
+
+.footer-system a{
+    color: white;
+    text-decoration: none;
+}
+
+.footer-brand img{
+    width: 120px;
+}
+
+.modal-header{
+    border: none;
+    background-color: var(--negro);
+}
+
+.modal-header h2{
+    color: var(--azulito);
+}
+.modal-body{
+    background-color: var(--negro);
+}
+
+.modal-content{
+    border: solid 2px var(--azulito);
+    border-radius: 6px;
+}
+
+.modal-body label{
+    color: var(--azulito);
+}
+
+.modal-body input{
+    background-color: var(--azulito);
+    border: solid 2px var(--blanco);
+}
+
+.modal-body ::placeholder{
+    color: var(--blanco);
+}
+
+.link-login{
+    color: var(--azulito);
+    text-decoration: none;
+}
+
+.btn-ingresar{
+    background-color: var(--azulito);
+    color: var(--blanco);
+    border: solid 1px var(--blanco);
+    transition: .3s;
+}
+
+.btn-ingresar:hover{
+    background-color: var(--negro);
+    color: var(--azulito);
+    border: solid 1px var(--azulito);
+    transition: .3s;
+}
+
+.btn-close{
+    background-color: #0bffff;
+    transition: .3s;
+}
+
+.navbar-toggler{
+    background-color: var(--azulito);
+}
+
+
+@media (max-width:991px){
+
+    .hero{
+        height:auto;
+        padding:160px 0 80px;
+    }
+
+    .hero-content{
+        padding:0 20px;
+        text-align:center;
+    }
+
+    .card:first-child,
+    #servicios2 .card:first-child{
+        margin:0;
+    }
+
+    .card-image,
+    #servicios2 .card-image{
+        margin:0;
+    }
+
+    #servicios .row,
+    #servicios2 .row,
+    #servicios3 .row{
+        transform:none;
+    }
+
+    .footer-system{
+        transform:none;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .navbar-brand .marca{
+        font-size:22px;
+    }
+
+    .logo{
+        width:45px;
+    }
+
+    .btn-login-nav{
+        width:100%;
+    }
+
+    .card-body{
+        padding:25px;
+    }
+
+    .card-image{
+        margin-top:25px;
+    }
+
+    .footer-system .container{
+        min-height:auto;
+        padding:70px 20px;
+        text-align:center;
+    }
+
+}
+
+@media(max-width:768px){
+
+.footer-system{
+
+    background-position:80% center;
+
+}
+
+}
+
+@media(max-width:991px){
+
+.navbar-collapse{
+
+    background:#090909;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    margin-top:15px;
+
+}
+
+.navbar-nav{
+
+    text-align:center;
+
+}
+
+}
 
 
 
