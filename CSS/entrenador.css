@@ -2,6 +2,7 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 :root{
@@ -11,31 +12,16 @@
 }
 
 body{
+    
     background-color: var(--negro);
     min-height: 100vh;
     color: var(--negro);
     font-family: 'Pliant';
 }
-
-.navbar-systemcloud{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-
-    background: transparent;
-    box-shadow: none;
-
-    z-index: 1000;
-    background: linear-gradient(
-        to bottom,
-        rgba(17,17,17,0.90) 0%,
-        rgba(17,17,17,0.80) 50%,
-        rgba(17,17,17,0.40) 75%,
-        rgba(17,17,17,0.1) 100%
-    );
-    padding: 20px 0;
+.container a{
+    color: #fffceb;
 }
+
 
 .opcion-menu{
     color: var(--blanco);
@@ -173,3 +159,25 @@ body{
     display: flex;
     flex-direction: column;
 }
+.dashboard-card{
+    background-color: #000000;
+    color: var(--azulito);
+}
+.panel{
+    background-color: #0a9696;
+    color: var(--azulito);
+}
+.panel tr{
+    background: #fffceb;
+    color: #0a9696;
+}
+.welcome::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at center,
+            transparent 45%,
+            rgba(0,0,0,.65) 100%);
+}
+
