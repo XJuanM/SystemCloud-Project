@@ -11,7 +11,7 @@
 }
 
 body{
-    background-color: var(--negro);
+    background-color: var(--negro) !important;
     min-height: 100vh;
     color: var(--negro);
     font-family: 'Pliant';
@@ -73,7 +73,7 @@ body{
 }
 
 .btn-login-nav{
-    background-color: var(--azulito);
+    background-color: var(--azulito) !important;
     color: var(--blanco);
     border: solid 1px var(--blanco);
     border-radius: 20px;
