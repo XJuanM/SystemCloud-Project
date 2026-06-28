@@ -38,7 +38,7 @@ body{
 }
 
 .opcion-menu{
-    color: var(--azulito);
+    color: var(--blanco);
     transition: 0.3s;
 }
 
@@ -89,7 +89,8 @@ body{
     color: var(--azulito);
 }
 
-.hero{
+
+.welcome{
     position: relative;
     height: 80vh;
     background-image:
@@ -106,8 +107,12 @@ body{
     align-items: center;
     justify-content: center;
 }
+.welcome h1{
+    color: var(--blanco);
+}
 
-.hero::before{
+
+.welcome::before{
     content: ""; 
     position: absolute; 
     inset: 0; 
@@ -119,23 +124,23 @@ body{
     pointer-events: none; 
 }
 
-.hero-content{
+.welcome-content{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
 }
-.hero-content p{
+.welcome-content p{
     font-size: 32px;
     color: var(--blanco);
 }
 
-.hero-content h1{
+.welcome-content h1{
     font-size: 45px;
     color: var(--blanco);
 }
 
-.hero-content p:last-child{
+.welcome p:last-child{
     text-align: center;
     max-width: 900px;
     height: 100px;
