@@ -23,7 +23,7 @@ if (email === 'admin@system.com' && password == '12345') {
         text: 'Bienvenido Administrador',
         confirmButtonColor: '#800e13'
     }).then(() =>{
-        window.location.href='Administrador/administrador.html';
+        window.location.href='../Administrador/administrador.html';
 
     })}
     else if(email === 'entrenador@system.com' && password == '123456'){
