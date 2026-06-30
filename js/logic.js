@@ -35,7 +35,18 @@ if (email === 'admin@system.com' && password == '12345') {
     }).then(() =>{
         window.location.href='../Entrenador/entrenador.html';
 
-    })}else{
+    })}
+    else if(email === 'cliente@system.com' && password == '1234567'){
+        Swal.fire({
+        icon: 'success',
+        title: 'Inicio Exitoso',
+        text: 'Bienvenido entrenador',
+        confirmButtonColor: '#800e13'
+    }).then(() =>{
+        window.location.href='../Cliente/cliente.html';
+    
+    })}
+    else{
     Swal.fire({
         icon:"error",
         title: "Credenciales Incorrectas",

@@ -8,15 +8,20 @@
     --blanco: #fffceb;
     --azulito: #0a9696;
     --negro :#000000;
+    --fondo: #0B1117;
 }
 
 body{
-    background-color: var(--negro) !important;
+    background-color: var(--fondo) !important;
+    height: 100%;
     min-height: 100vh;
     color: var(--negro);
     font-family: 'Pliant';
 }
 
+.text-center{
+    color: var(--azulito);
+}
 .navbar-systemcloud{
     position: fixed;
     top: 0;
@@ -36,7 +41,13 @@ body{
     );
     padding: 20px 0;
 }
-
+.card-admin{
+    background-color: var(--fondo);
+        width: auto;
+    gap:20px;
+    justify-content:center;
+    align-items:center;
+}
 .opcion-menu{
     color: var(--azulito);
     transition: 0.3s;
@@ -83,10 +94,10 @@ body{
 }
 
 .btn-login-nav:hover{
-    background-color: var(--negro) !important;
-    border: solid 1px var(--azulito) !important;
+    background-color: var(--negro);
+    border: solid 1px var(--azulito);
     border-radius: 22px;
-    color: var(--azulito) !important;
+    color: var(--azulito);
 }
 
 .hero{
@@ -145,71 +156,20 @@ body{
 
 
 .container div{
+    padding: 20px;
     align-items: center;
     justify-content: center;
 }
 
-
-#servicios{
-    position: relative;
-    overflow: hidden;
-    border-radius: 25px;
-    padding: 40px;
-}
-
-#servicios::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: linear-gradient(
-        to right,
-        rgba(11,255,255,.25) 0%,
-        rgba(10,150,150,.18) 12%,
-        rgba(10,150,150,.10) 22%,
-        transparent 35%
-    );
-
-    pointer-events: none;
-    z-index: 0;
-}
-
-#servicios > *{
-    position: relative;
-    z-index: 1;
-}
-
 #servicios .row{
-    transform: translateY(0px);
+    transform: translateY(-80px);
 }
-
 
 .tarjeta{
     background-color: var(--negro);
     border: none;
     transition: transform .3s ease-in;
-    position: relative;
-    overflow: hidden;
 }
-
-.tarjeta::before{
-    content: "";
-    position: absolute;
-    width: 220px;
-    height: 220px;
-
-    background: radial-gradient(
-        circle,
-        rgba(10,150,150,.25) 0%,
-        transparent 70%
-    );
-
-    top: -100px;
-    right: -80px;
-
-    filter: blur(35px);
-}
-
 
 .tarjeta:hover{
     background-color: var(--azulito);
@@ -220,12 +180,12 @@ body{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    height: 100%;
+
     border: solid 2px var(--azulito);
     border-radius: 8px;
     color: var(--azulito);
     transition: .5s;
-    position: relative;
-    z-index: 1;
 }
 
 .card-body h2{
@@ -252,7 +212,7 @@ body{
 
 .card-image img{
     width:100%;
-    max-width:400px;
+    max-width:450px;
     height:auto;
     border-radius: 10px;
     filter: drop-shadow(0 0 25px var(--azulito));
@@ -261,35 +221,6 @@ body{
 
 .card-image img:hover{
     transform: scale(1.03)
-}
-
-#servicios2{
-    position: relative;
-    overflow: hidden;
-    border-radius: 25px;
-    padding: 40px;
-}
-
-#servicios2::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: linear-gradient(
-        to left,
-        rgba(11, 255, 255, 0.315) 0%,
-        rgba(10, 150, 150, 0.308) 12%,
-        rgba(10, 150, 150, 0.288) 22%,
-        transparent 35%
-    );
-
-    pointer-events: none;
-    z-index: 0;
-}
-
-#servicios2 > *{
-    position: relative;
-    z-index: 1;
 }
 
 #servicios2 .card:first-child{
@@ -301,56 +232,22 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: drop-shadow(0 2 10px var(--azulito));
+    filter: drop-shadow(0 0 25px var(--azulito));
     margin-right: 110px;
 }
 
 #servicios2 .row{
-    transform: translateY(10px);
-}
-
-
-#servicios3{
-    position: relative;
-    overflow: hidden;
-    border-radius: 25px;
-    padding: 40px;
-}
-
-#servicios3::before{
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: linear-gradient(
-        to right,
-        rgba(11, 255, 255, 0.315) 0%,
-        rgba(10, 150, 150, 0.308) 12%,
-        rgba(10, 150, 150, 0.288) 22%,
-        transparent 35%
-    );
-
-    pointer-events: none;
-    z-index: 0;
-}
-
-#servicios3 > *{
-    position: relative;
-    z-index: 1;
+    transform: translateY(-20px);
 }
 
 #servicios3 .row{
-    transform: translateY(60px);
-}
-
-#servicios3 img{
-    height: 550px;
+    transform: translateY(-10px);
 }
 
 
 .footer-system{
     background-image: url("../IMG/footer.png");
-    transform: translateY(0px);
+    transform: translateY(-60px);
     background-position: right center;
     background-size: cover;
     background-position: center;
@@ -453,6 +350,14 @@ body{
     background-color: var(--azulito);
 }
 
+main{
+    padding: 20px 0;
+}
+
+.row{
+    align-items: lef;
+}
+
 
 @media (max-width:991px){
 
@@ -549,6 +454,3 @@ body{
 }
 
 }
-
-
-
