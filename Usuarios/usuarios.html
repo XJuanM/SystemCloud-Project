@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="../CSS/entrenador.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="../IMG/logoSinFondo2.png" alt="Logo">
+            <h2>System Cloud</h2>
+            <p>Panel entrenador</p>
+        </div>
+
+        <nav class="sidebar-menu">
+
+             <a href="../Entrenador/entrenador.html">
+                 <i class="fa-solid fa-chart-line"></i>
+                 Entrenador
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-dumbbell"></i>
+                Rutinas
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-jar-wheat"></i>
+                Planes Alimenticios
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-people-group"></i>
+                Clases
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-box"></i>
+                Inventario
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-bug"></i>
+                Reportes
+            </a>
+
+            <a href="entrenador.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Salir
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <main class="dashboard-main">
+
+        <section class="dashboard-header">
+
+            <div class="header-text">
+
+                <div class="text">
+                    <h2 class="titulo">
+                        Gestión de Usuarios
+                        <i class="fa-solid fa-users"></i>
+                    </h2>
+
+                    <p>
+                        Administra todos los usuarios registrados en el gimnasio.
+                        Desde aquí podrás agregar, editar, eliminar y buscar usuarios.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="container-fluid mt-4">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+
+                    <h4 class="mb-0">
+                        Lista de Usuarios
+                    </h4>
+
+                    <button class="btn btn-success"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalUsuario">
+
+                        <i class="fa-solid fa-user-plus"></i>
+                        Nuevo Usuario
+
+                    </button>
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-6">
+
+                            <input id="buscarUsuario"
+                                type="text"
+                                class="form-control"
+                                placeholder="Buscar usuario...">
+
+                        </div>
+
+                    </div>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-hover table-bordered align-middle text-center">
+
+                            <thead class="table-dark">
+
+                                <tr>
+
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Teléfono</th>
+                                    <th>Rol</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tablaUsuarios">
+
+                                <tr>
+
+                                    <td>1</td>
+                                    <td>Julian Pinto</td>
+                                    <td>julian@gmail.com</td>
+                                    <td>3001234567</td>
+                                    <td>Cliente</td>
+
+                                    <td>
+
+                                        <span class="badge bg-success">
+                                            Activo
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <button class="btn btn-warning btn-sm">
+
+                                            <i class="fa-solid fa-pen"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger btn-sm">
+
+                                            <i class="fa-solid fa-trash"></i>
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>2</td>
+                                    <td>Dilan Bohorquez</td>
+                                    <td>dilan@gmail.com</td>
+                                    <td>3115558899</td>
+                                    <td>Entrenador</td>
+
+                                    <td>
+
+                                        <span class="badge bg-success">
+                                            Activo
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <button class="btn btn-warning btn-sm">
+
+                                            <i class="fa-solid fa-pen"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger btn-sm">
+
+                                            <i class="fa-solid fa-trash"></i>
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td>3</td>
+                                    <td>Juan Martínez</td>
+                                    <td>juan@gmail.com</td>
+                                    <td>3207774455</td>
+                                    <td>Administrador</td>
+
+                                    <td>
+
+                                        <span class="badge bg-danger">
+                                            Inactivo
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        <button class="btn btn-warning btn-sm">
+
+                                            <i class="fa-solid fa-pen"></i>
+
+                                        </button>
+
+                                        <button class="btn btn-danger btn-sm">
+
+                                            <i class="fa-solid fa-trash"></i>
+
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+                                                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- Modal Registrar Usuario -->
+
+<div class="modal fade" id="modalUsuario" tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header bg-dark text-white">
+
+                <h5 class="modal-title">
+                    Registrar Usuario
+                </h5>
+
+                <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal">
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <form id="formUsuario">
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Nombre
+                            </label>
+
+                            <input id="nombre"
+                                type="text"
+                                class="form-control"
+                                placeholder="Ingrese el nombre">
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Apellido
+                            </label>
+
+                            <input id="apellido"
+                                type="text"
+                                class="form-control"
+                                placeholder="Ingrese el apellido">
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Correo
+                            </label>
+
+                            <input id="correo"
+                                type="email"
+                                class="form-control"
+                                placeholder="correo@ejemplo.com">
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Teléfono
+                            </label>
+
+                            <input id="telefono"
+                                type="text"
+                                class="form-control"
+                                placeholder="3001234567">
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Rol
+                            </label>
+
+                            <select id="rol" class="form-select"> 
+
+                                <option>Cliente</option>
+                                <option>Entrenador</option>
+                                <option>Administrador</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Estado
+                            </label>
+
+                            <select id="estado" class="form-select">
+
+                                <option>Activo</option>
+                                <option>Inactivo</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Contraseña
+                        </label>
+
+                        <input id="password"
+                            type="password"
+                            class="form-control"
+                            placeholder="Ingrese una contraseña">
+
+                    </div>
+
+                    
+                </div>
+                
+                <div class="modal-footer">
+                    
+                    <button
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    
+                    Cancelar
+                    
+                </button>
+                
+                <button type="submit" class="btn btn-success" id="btnGuardar">
+                    Guardar Usuario
+                    
+                </button>
+                
+            </form>
+            
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="../js/usuarios.js"></script>
+
+</body>
+</html>
