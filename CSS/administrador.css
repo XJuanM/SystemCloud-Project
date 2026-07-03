@@ -5,10 +5,16 @@
 }
 
 :root{
-    --blanco: #fffceb;
-    --azulito: #0a9696;
-    --negro :#000000;
-    --fondo: #0B1117;
+ --negro: #000000;
+  --blanco: #fffceb;
+  --azulito: #0a9696;
+  --azul: #1d4dff;
+  --fondo: #1c1f24;
+  --card: #25282d;
+  --borde: #4b4f55;
+  --texto: #ffffff;
+  --texto2: #a3a8af;
+  --rojo: #ff3b3b;
 }
 
 body{
@@ -17,6 +23,13 @@ body{
     min-height: 100vh;
     color: var(--negro);
     font-family: 'Pliant';
+}
+
+.container-cards{
+    height: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:center
 }
 
 .text-center{
@@ -43,7 +56,7 @@ body{
 }
 .card-admin{
     background-color: var(--fondo);
-        width: auto;
+    width: auto;
     gap:20px;
     justify-content:center;
     align-items:center;
@@ -88,16 +101,22 @@ body{
     color: var(--blanco);
     border: solid 1px var(--blanco);
     border-radius: 20px;
+
     width: 110px;
     height: 50px;
-    transition: 0.3s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.35s;
 }
 
 .btn-login-nav:hover{
     background-color: var(--negro);
-    border: solid 1px var(--azulito);
+    border: solid 1px var(--blanco);
     border-radius: 22px;
-    color: var(--azulito);
+    color: var(--blanco);
 }
 
 .hero{
@@ -355,7 +374,7 @@ main{
 }
 
 .row{
-    align-items: lef;
+    align-items: left;
 }
 
 
@@ -453,11 +472,4 @@ main{
 
 }
 
-<<<<<<< HEAD
 }
-=======
-}
-
-
-
->>>>>>> b903a99a918dbfafa9c8543533f8da0a9a69bd4d
