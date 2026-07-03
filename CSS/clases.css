@@ -1,0 +1,768 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --blanco: #fffceb;
+    --azulito: #0a9696;
+    --negro :#000000;
+    --gris : rgb(41, 39, 39);
+    --negro :#000000
+}
+
+
+body{
+    background-color: var(--negro);
+    min-height: 100vh;
+    color: var(--negro);
+    font-family: 'Pliant';
+}
+
+
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.rutinas-main{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:var(--gris);
+
+    padding: 30px;
+}
+
+.sidebar {
+    width: 400px;
+    background-color: var(--negro);
+    border-right: 3px solid var(--azulito);
+    padding: 30px 20px;
+}
+
+
+.sidebar-logo {
+    text-align: center;
+    margin-bottom: 38px;
+}
+
+
+.sidebar-logo img {
+    width: 85px;
+}
+
+
+.sidebar-logo h2 {
+    color: var(--azulito);
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+
+.sidebar-logo p {
+    color: var(--azulito);
+    font-size: 16px;
+}
+
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: var(--azulito);
+    padding: 14px 18px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+
+.sidebar-menu a:hover {
+    background-color: var(--azulito);
+    color: var(--blanco);
+}
+
+.header-text{
+
+    background: linear-gradient(
+    to bottom,
+    rgba(10,150,150,.28) 0%,
+    rgba(6,70,70,.18) 12%,
+    rgba(3,30,30,.08) 22%,
+    transparent 40%
+);
+
+    text-shadow:
+    0 0 20px rgba(10,150,150,.4),
+    0 0 20px rgba(10,150,150,.2);
+
+    width: 1500px;
+    height: 220px;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 13px;
+
+    color: var(--blanco);
+    flex-shrink: 0;
+
+    transition: .3s;
+}
+
+.header-text:hover{
+    transform: translateY(-4px);
+
+    border-color: rgba(10,150,150,.5);
+
+    box-shadow: 0 0 18px rgba(10,150,150,.2);
+}
+
+.text p{
+    width: 800px;
+}
+
+.header-text h2{
+    margin-top: 20px;
+}
+
+.header-text .fa-solid {
+    padding-left: 20px;
+}
+
+.header-text p{
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.routine-manager{
+    margin-top: 20px;
+    width: 1500px;
+    border: solid 2px var(--negro);
+    border-radius: 15px;
+}
+
+.routine-manager .card{
+    
+    background: linear-gradient(
+    to top,
+    rgba(10,150,150,.28) 0%,
+    rgba(6,70,70,.18) 12%,
+    rgba(3,30,30,.08) 22%,
+    transparent 40%
+);
+    border: solid 2px var(--negro);
+    border-radius: 15px;
+}
+
+.routine-manager .card-header{
+    background-color: var(--negro);
+    color: var(--blanco);
+    border: solid 2px var(--negro);
+}
+
+.routine-manager input{
+    background-color: var(--negro);
+    border: solid 1px var(--blanco);
+    border-radius: 10px;
+    transition: .2s;
+}
+
+.routine-manager input::placeholder{
+    color: var(--blanco);
+}
+
+.routine-manager input:focus{
+    background-color: var(--azulito);
+    color: var(--blanco);
+    border: solid 1px var(--blanco);
+}
+
+.table th,
+.table td{
+    border: solid 1px transparent;
+    background-color: transparent;
+    color: var(--blanco);
+    transition: .3s;
+}
+
+
+.table-hover tbody tr:hover td{
+    background-color: #104949;
+    color: var(--blanco);
+}
+
+.btn{
+    margin: 4px;
+}
+
+.btn-info{
+    background-color: var(--azulito);
+    border: solid 1px transparent;
+}
+
+#modalVerClase .modal-dialog{
+    max-width: 700px;
+}
+
+.modal-dialog{
+
+    max-width: 700px;
+
+}
+
+.modal-content{
+
+    background: var(--gris);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 15px;
+
+    color: var(--blanco);
+
+}
+
+.modal-header{
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+    padding: 20px 25px;
+
+}
+
+.modal-title{
+
+    font-weight: 700;
+
+    color: var(--blanco);
+
+}
+
+#modalVerClase .modal-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body{
+    text-align: center;
+    padding: 25px;
+}
+
+.modal-footer{
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
+}
+
+.modal-footer .btn-success{
+    background-color: var(--azulito);
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.modal-footer .btn-success:hover{
+    background-color: var(--negro);
+    border: solid 1px var(--azulito);
+    color: var(--azulito);
+    border-radius: 10px;
+}
+
+.btn-close{
+
+    filter: invert(1);
+
+}
+.cliente-info{
+
+    background: rgba(255,255,255,.03);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 12px;
+
+    padding: 18px 22px;
+
+    margin-bottom: 25px;
+
+}
+
+.cliente-info h4{
+
+    margin-bottom: 6px;
+
+    color: var(--blanco);
+
+}
+
+.cliente-info span{
+
+    color: rgb(200,200,200);
+
+}
+
+.modal-content .form-control,
+.modal-content .form-select,
+.modal-content textarea{
+
+    background-color: var(--negro);
+
+    color: var(--blanco);
+
+    border: 1px solid rgba(255,255,255,.15);
+
+}
+
+.modal-content .form-control:focus,
+.modal-content .form-select:focus,
+.modal-content textarea:focus{
+
+    background-color: var(--negro);
+
+    color: var(--blanco);
+
+    border-color: var(--azulito);
+
+    box-shadow: 0 0 10px rgba(10,150,150,.35);
+
+}
+
+.modal-content input::placeholder,
+.modal-content textarea::placeholder{
+
+    color: rgba(255,255,255,.55);
+
+}
+
+.modal-body h4{
+
+    color: var(--blanco);
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+
+}
+
+.modal-body h5{
+
+    color: var(--azulito);
+
+    margin-top: 20px;
+
+    margin-bottom: 10px;
+
+}
+
+.modal-body p{
+
+    color: var(--blanco);
+
+    font-size: 1rem;
+
+    margin: 0;
+
+}
+
+.sin-ejercicios{
+
+    color: rgba(255,255,255,.5) !important;
+
+    font-style: italic;
+
+}
+
+.accordion{
+
+    --bs-accordion-bg: transparent;
+
+    --bs-accordion-border-color: rgba(255,255,255,.08);
+
+    --bs-accordion-border-radius: 12px;
+
+}
+
+.accordion-item{
+
+    background: rgba(255,255,255,.03);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 12px !important;
+
+    overflow: hidden;
+
+    margin-bottom: 12px;
+
+}
+
+.accordion-button{
+
+    background: rgba(255,255,255,.04);
+
+    color: var(--blanco);
+
+    font-weight: 600;
+
+    box-shadow: none;
+
+    transition: .3s;
+
+}
+
+.accordion-button:hover{
+
+    background: rgba(10,150,150,.18);
+
+}
+
+.accordion-button:not(.collapsed){
+
+    background: rgba(10,150,150,.22);
+
+    color: var(--blanco);
+
+    box-shadow: none;
+
+}
+
+.accordion-button:focus{
+
+    box-shadow: none;
+
+    border: none;
+
+}
+
+.accordion-button::after{
+
+    filter: brightness(0) invert(1);
+
+}
+
+.accordion-body{
+
+    background: rgba(0,0,0,.18);
+
+    color: var(--blanco);
+
+}
+
+.accordion-body .table{
+
+    margin-bottom: 0;
+
+    color: var(--blanco);
+
+}
+
+.accordion-body .table th{
+
+    background: transparent;
+
+    color: rgb(70,220,220);
+
+    border-color: rgba(255,255,255,.08);
+
+}
+
+.accordion-body .table td{
+
+    background: transparent;
+
+    border-color: rgba(255,255,255,.08);
+
+    color: var(--blanco);
+
+}
+
+.accordion-body .table-hover tbody tr:hover td{
+
+    background: rgba(10,150,150,.15);
+
+}
+
+.accordion-body .btn-success{
+
+    background: var(--azulito);
+
+    border: none;
+
+    transition: .3s;
+
+}
+
+.accordion-body .btn-success:hover{
+
+    background: #12bcbc;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 0 10px rgba(10,150,150,.35);
+
+}
+
+.form-agregar-ejercicio{
+
+    display:none;
+
+    margin-bottom:20px;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.dashboard-info{
+
+    display:flex;
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+
+.recent-activity,
+.attention-card{
+
+    flex:1;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    background:linear-gradient(
+        to top,
+        rgba(10,150,150,.28) 0%,
+        rgba(6,70,70,.18) 12%,
+        rgba(3,30,30,.08) 22%,
+        transparent 40%
+    );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+
+}
+
+.recent-activity:hover,
+.attention-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(10,150,150,.5);
+
+    box-shadow:0 0 18px rgba(10,150,150,.2);
+
+}
+
+.recent-activity h3,
+.attention-card h3{
+
+    color:var(--blanco);
+
+    margin-bottom:20px;
+
+    font-weight:700;
+
+}
+
+.recent-activity h3 i,
+.attention-card h3 i{
+
+    color:var(--azulito);
+
+    margin-right:10px;
+
+}
+
+.activity-item,
+.attention-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.activity-item:last-child,
+.attention-item:last-child{
+
+    border:none;
+
+}
+
+.activity-item i{
+
+    color:#1db954;
+
+    font-size:20px;
+
+    margin-top:4px;
+
+}
+
+.attention-item i{
+
+    color:#ffc107;
+
+    font-size:20px;
+
+    margin-top:4px;
+
+}
+
+.activity-item strong,
+.attention-item strong{
+
+    color:var(--blanco);
+
+    display:block;
+
+}
+
+.activity-item p,
+.attention-item p{
+
+    color:rgba(255,255,255,.65);
+
+    margin:4px 0 0;
+
+    font-size:.9rem;
+
+}
+
+/* ==========================================
+   ESTILOS PROPIOS DE CLASES
+   (independientes de rutinas.css y planes.css,
+   se pueden modificar aquí sin afectar los
+   demás módulos)
+   ========================================== */
+
+#verClaseInfo{
+
+    color: var(--azulito);
+
+    margin-top: 4px;
+
+}
+
+.accordion-body em{
+
+    color: rgba(255,255,255,.6);
+
+    font-size: .9rem;
+
+}
+
+/* Badge de categoría de la clase dentro de la tabla principal */
+#tablaClases .badge{
+
+    font-weight: 600;
+
+    letter-spacing: .2px;
+
+}
+
+/* Ícono temático de clases grupales en el sidebar / cards */
+.recent-activity .fa-people-group,
+.attention-card .fa-people-group{
+
+    color: var(--azulito);
+
+}
+
+/* Barra de cupo: muestra visualmente cuánto se ha llenado una clase */
+.cupo-bar{
+
+    width: 100%;
+
+    height: 8px;
+
+    border-radius: 6px;
+
+    background: rgba(255,255,255,.1);
+
+    overflow: hidden;
+
+    margin-top: 6px;
+
+}
+
+.cupo-bar-fill{
+
+    height: 100%;
+
+    border-radius: 6px;
+
+    background: var(--azulito);
+
+    transition: width .3s;
+
+}
+
+.cupo-bar-fill.lleno{
+
+    background: #dc3545;
+
+}
+
+.cupo-bar-fill.medio{
+
+    background: #ffc107;
+
+}
+
+/* Contador de cupo dentro del modal de edición */
+#contadorCupo{
+
+    font-size: .8rem;
+
+    vertical-align: middle;
+
+    margin-left: 8px;
+
+}
+
+/* Resaltar la fila de la sesión que se está mostrando dentro del acordeón */
+.accordion-body .table td:first-child{
+
+    font-weight: 600;
+
+    color: rgb(70,220,220);
+
+}

@@ -1,0 +1,1396 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rutinas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../CSS/rutinas.css" />
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <img src="../IMG/logoSinFondo2.png" alt="Logo" />
+                <h2>System Cloud</h2>
+                <p>Panel entrenador</p>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="../Usuarios/usuarios.html">
+                    <i class="fa-solid fa-users"></i>
+                    Usuarios
+                </a>
+
+                <a href="../Rutinas/rutinas.html">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    Rutinas
+                </a>
+
+                <a href="../Planes Alimenticios/planes.html">
+                    <i class="fa-solid fa-jar-wheat"></i>
+                    Planes Alimenticios
+                </a>
+
+                <a href="../Clases/clases.html">
+                    <i class="fa-solid fa-people-group"></i>
+                    Clases
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-box"></i>
+                    Inventario
+                </a>
+
+                <a href="#">
+                    <i class="fa-solid fa-bug"></i>
+                    Reportes
+                </a>
+
+                <a href="../HTML/index.html">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Salir
+                </a>
+            </nav>
+        </aside>
+
+        <main class="rutinas-main">
+            <section class="users-rutinas">
+                <div class="header-text">
+                    <div class="text">
+                        <h2 class="titulo">Hola, Miguel<i class="fa-solid fa-user-tie"></i></h2>
+                        <p>
+                            Esta semana se registró un aumento en la asignación de rutinas personalizadas.
+                            Se recomienda revisar los clientes con planes pendientes y actualizar los programas
+                            de entrenamiento según el progreso alcanzado para mantener un seguimiento constante.
+                        </p>
+                    </div>
+                </div>
+                <section class="routine-manager">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h3 class="m-0">Gestión de Rutinas</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Buscar cliente..."
+                                        id="buscarRutina" />
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-hover align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Cliente</th>
+                                            <th>Objetivo</th>
+                                            <th>Rutina</th>
+                                            <th>Estado</th>
+                                            <th class="text-center">Acciones</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="tablaRutinas">
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <section class="dashboard-info">
+
+                    <div class="recent-activity">
+
+                        <h3>
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            Actividades recientes
+                        </h3>
+
+                        <div id="listaActividades"></div>
+
+                    </div>
+
+                    <div class="attention-card">
+
+                        <h3>
+
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+
+                            Clientes que requieren atención
+
+                        </h3>
+
+                        <div id="listaAtencion"></div>
+
+                    </div>
+
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal fade" id="modalVerRutina" tabindex="-1">
+
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Rutina del cliente
+                    </h5>
+
+                    <button class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+
+                    <h4 id="verCliente"></h4>
+
+                    <p id="verObjetivo" class="text-info fw-semibold"></p>
+
+                    <hr>
+
+                    <h5>Lunes</h5>
+
+                    <div id="verLunes">
+
+                    </div>
+
+                    <h5>Martes</h5>
+
+                    <div id="verMartes">
+
+                    </div>
+
+                    <h5>Miércoles</h5>
+
+                    <div id="verMiercoles">
+
+                    </div>
+
+                    <h5>Jueves</h5>
+
+                    <div id="verJueves">
+
+                    </div>
+
+                    <h5>Viernes</h5>
+
+                    <div id="verViernes">
+
+                    </div>
+
+                    <h5>Sábado</h5>
+
+                    <div id="verSabado">
+
+                    </div>
+
+                    <h5>Domingo</h5>
+
+                    <div id="verDomingo">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="modalEditarRutina" tabindex="-1">
+
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h5 class="modal-title">
+                        Editar rutina
+                    </h5>
+
+                    <button class="btn-close" data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="rutinaActual">
+
+                    <div class="cliente-info mb-4">
+
+                        <h4 id="editarCliente"></h4>
+
+                        <span id="editarObjetivo"> </span>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Nombre de la rutina
+                            </label>
+
+                            <input type="text" class="form-control" id="editarNombreRutina">
+
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label">
+                                Duración
+                            </label>
+
+                            <select class="form-select" id="editarDuracion">
+
+                                <option>4 semanas</option>
+                                <option selected>8 semanas</option>
+                                <option>12 semanas</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+
+                            <label class="form-label">
+                                Nivel
+                            </label>
+
+                            <select class="form-select" id="editarNivel">
+
+                                <option>Principiante</option>
+                                <option selected>Intermedio</option>
+                                <option>Avanzado</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="col-12 mb-4">
+
+                            <label class="form-label">
+                                Observaciones
+                            </label>
+
+                            <textarea rows="3" class="form-control" id="editarObservaciones"></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <hr>
+
+                    <h5 class="mb-3">
+                        Ejercicios por día
+                    </h5>
+
+                    <div class="accordion" id="rutinaAccordion">
+
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseLunes">
+
+                                    Lunes
+
+                                </button>
+
+                            </h2>
+
+                            <div id="collapseLunes" class="accordion-collapse collapse show"
+                                data-bs-parent="#rutinaAccordion">
+
+                                <div class="accordion-body">
+
+                                    <button class="btn btn-success btn-sm mb-3" onclick="mostrarFormulario(this)">
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                        Agregar ejercicio
+
+                                    </button>
+
+                                    <div class="form-agregar-ejercicio">
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+
+                                                <label class="form-label">
+                                                    Ejercicio
+                                                </label>
+
+                                                <select class="form-select nuevoEjercicio">
+
+                                                    <option selected disabled>
+                                                        Seleccione un ejercicio
+                                                    </option>
+
+                                                    <option value="press_banca">Press banca</option>
+                                                    <option value="press_inclinado">Press inclinado</option>
+                                                    <option value="aperturas">Aperturas con mancuernas</option>
+                                                    <option value="fondos">Fondos</option>
+                                                    <option value="flexiones">Flexiones</option>
+
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+                                                    Series
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasSeries" >
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+                                                    Reps
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasRepeticiones" >
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+                                                    Descanso
+                                                </label>
+
+                                                <input type="number" class="form-control nuevoDescanso">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+
+                                                Observaciones
+
+                                            </label>
+
+                                            <textarea class="form-control nuevaObservacion" rows="2"></textarea>
+
+                                        </div>
+
+                                        <div class="text-end">
+
+                                            <button class="btn btn-secondary" onclick="ocultarFormulario(this)">
+
+                                                Cancelar
+
+                                            </button>
+
+                                            <button class="btn btn-success" onclick="agregarEjercicio('lunes')">
+
+                                                Agregar
+
+                                            </button>
+
+                                        </div>
+
+                                        <hr>
+
+                                    </div>
+
+                                    <table class="table table-hover align-middle">
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>Ejercicio</th>
+                                                <th>Series</th>
+                                                <th>Repeticiones</th>
+                                                <th class="text-center">Acciones</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody id="tablaLunes">
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseMartes">
+
+                                    Martes
+
+                                </button>
+
+                            </h2>
+
+                            <div id="collapseMartes" class="accordion-collapse collapse"
+                                data-bs-parent="#rutinaAccordion">
+
+                                <div class="accordion-body">
+
+                                    <button class="btn btn-success btn-sm mb-3" onclick="mostrarFormulario(this)">
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                        Agregar ejercicio
+
+                                    </button>
+
+                                    <div class="form-agregar-ejercicio">
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Ejercicio
+
+                                                </label>
+
+                                                <select class="form-select nuevoEjercicio">
+
+                                                    <option selected disabled>
+                                                        Seleccione un ejercicio
+                                                    </option>
+
+                                                    <option value="press_banca">Press banca</option>
+                                                    <option value="press_inclinado">Press inclinado</option>
+                                                    <option value="aperturas">Aperturas con mancuernas</option>
+                                                    <option value="fondos">Fondos</option>
+                                                    <option value="flexiones">Flexiones</option>
+
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Series
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasSeries">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Reps
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasRepeticiones">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Descanso
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevoDescanso">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+
+                                                Observaciones
+
+                                            </label>
+
+                                            <textarea class="form-control nuevaObservacion" rows="2"></textarea>
+
+                                        </div>
+
+                                        <div class="text-end">
+
+                                            <button class="btn btn-secondary" onclick="ocultarFormulario(this)">
+
+                                                Cancelar
+
+                                            </button>
+
+                                            <button class="btn btn-success" onclick="agregarEjercicio('martes')">
+
+                                                Agregar
+
+                                            </button>
+
+                                        </div>
+
+                                        <hr>
+
+                                    </div>
+
+                                    <table class="table table-hover align-middle">
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>Ejercicio</th>
+                                                <th>Series</th>
+                                                <th>Repeticiones</th>
+                                                <th class="text-center">Acciones</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody id="tablaMartes">
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseMiercoles">
+
+                                    Miércoles
+
+                                </button>
+
+                            </h2>
+
+                            <div id="collapseMiercoles" class="accordion-collapse collapse"
+                                data-bs-parent="#rutinaAccordion">
+
+                                <div class="accordion-body">
+
+                                    <button class="btn btn-success btn-sm" onclick="mostrarFormulario(this)">
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                        Agregar ejercicio
+
+                                    </button>
+
+                                    <div class="form-agregar-ejercicio">
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Ejercicio
+
+                                                </label>
+
+                                                <select class="form-select nuevoEjercicio">
+
+                                                    <option selected disabled>
+                                                        Seleccione un ejercicio
+                                                    </option>
+
+                                                    <option value="press_banca">Press banca</option>
+                                                    <option value="press_inclinado">Press inclinado</option>
+                                                    <option value="aperturas">Aperturas con mancuernas</option>
+                                                    <option value="fondos">Fondos</option>
+                                                    <option value="flexiones">Flexiones</option>
+
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Series
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasSeries">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Reps
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasRepeticiones">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Descanso
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevoDescanso">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+
+                                                Observaciones
+
+                                            </label>
+
+                                            <textarea class="form-control nuevaObservacion" rows="2"></textarea>
+
+                                        </div>
+
+                                        <div class="text-end">
+
+                                            <button class="btn btn-secondary" onclick="ocultarFormulario(this)">
+
+                                                Cancelar
+
+                                            </button>
+
+                                            <button class="btn btn-success" onclick="agregarEjercicio('miercoles')">
+
+                                                Agregar
+
+                                            </button>
+
+                                        </div>
+
+                                        <hr>
+
+                                    </div>
+
+                                    <table class="table table-hover align-middle">
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>Ejercicio</th>
+                                                <th>Series</th>
+                                                <th>Repeticiones</th>
+                                                <th class="text-center">Acciones</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody id="tablaMiercoles">
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseJueves">
+
+                                    Jueves
+
+                                </button>
+
+                            </h2>
+
+                            <div id="collapseJueves" class="accordion-collapse collapse"
+                                data-bs-parent="#rutinaAccordion">
+
+                                <div class="accordion-body">
+
+                                    <button class="btn btn-success btn-sm" onclick="mostrarFormulario(this)">
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                        Agregar ejercicio
+
+                                    </button>
+
+                                    <div class="form-agregar-ejercicio">
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Ejercicio
+
+                                                </label>
+
+                                                <select class="form-select nuevoEjercicio">
+
+                                                    <option selected disabled>
+                                                        Seleccione un ejercicio
+                                                    </option>
+
+                                                    <option value="press_banca">Press banca</option>
+                                                    <option value="press_inclinado">Press inclinado</option>
+                                                    <option value="aperturas">Aperturas con mancuernas</option>
+                                                    <option value="fondos">Fondos</option>
+                                                    <option value="flexiones">Flexiones</option>
+
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Series
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasSeries">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Reps
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasRepeticiones">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Descanso
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevoDescanso">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+
+                                                Observaciones
+
+                                            </label>
+
+                                            <textarea class="form-control nuevaObservacion" rows="2"></textarea>
+
+                                        </div>
+
+                                        <div class="text-end">
+
+                                            <button class="btn btn-secondary" onclick="ocultarFormulario(this)">
+
+                                                Cancelar
+
+                                            </button>
+
+                                            <button class="btn btn-success" onclick="agregarEjercicio('jueves')">
+
+                                                Agregar
+
+                                            </button>
+
+                                        </div>
+
+                                        <hr>
+
+                                    </div>
+
+                                    <table class="table table-hover align-middle">
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>Ejercicio</th>
+                                                <th>Series</th>
+                                                <th>Repeticiones</th>
+                                                <th class="text-center">Acciones</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody id="tablaJueves">
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseViernes">
+
+                                    Viernes
+
+                                </button>
+
+                            </h2>
+
+                            <div id="collapseViernes" class="accordion-collapse collapse"
+                                data-bs-parent="#rutinaAccordion">
+
+                                <div class="accordion-body">
+
+                                    <button class="btn btn-success btn-sm" onclick="mostrarFormulario(this)">
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                        Agregar ejercicio
+
+                                    </button>
+
+                                    <div class="form-agregar-ejercicio">
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Ejercicio
+
+                                                </label>
+
+                                                <select class="form-select nuevoEjercicio">
+
+                                                    <option selected disabled>
+                                                        Seleccione un ejercicio
+                                                    </option>
+
+                                                    <option value="press_banca">Press banca</option>
+                                                    <option value="press_inclinado">Press inclinado</option>
+                                                    <option value="aperturas">Aperturas con mancuernas</option>
+                                                    <option value="fondos">Fondos</option>
+                                                    <option value="flexiones">Flexiones</option>
+
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Series
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasSeries">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Reps
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasRepeticiones">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Descanso
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevoDescanso">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+
+                                                Observaciones
+
+                                            </label>
+
+                                            <textarea class="form-control nuevaObservacion" rows="2"></textarea>
+
+                                        </div>
+
+                                        <div class="text-end">
+
+                                            <button class="btn btn-secondary" onclick="ocultarFormulario(this)">
+
+                                                Cancelar
+
+                                            </button>
+
+                                            <button class="btn btn-success" onclick="agregarEjercicio('viernes')">
+
+                                                Agregar
+
+                                            </button>
+
+                                        </div>
+
+                                        <hr>
+
+                                    </div>
+
+                                    <table class="table table-hover align-middle">
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>Ejercicio</th>
+                                                <th>Series</th>
+                                                <th>Repeticiones</th>
+                                                <th class="text-center">Acciones</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody id="tablaViernes">
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSabado">
+
+                                    Sabado
+
+                                </button>
+
+                            </h2>
+
+                            <div id="collapseSabado" class="accordion-collapse collapse"
+                                data-bs-parent="#rutinaAccordion">
+
+                                <div class="accordion-body">
+
+                                    <button class="btn btn-success btn-sm" onclick="mostrarFormulario(this)">
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                        Agregar ejercicio
+
+                                    </button>
+
+                                    <div class="form-agregar-ejercicio">
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Ejercicio
+
+                                                </label>
+
+                                                <select class="form-select nuevoEjercicio">
+
+                                                    <option selected disabled>
+                                                        Seleccione un ejercicio
+                                                    </option>
+
+                                                    <option value="press_banca">Press banca</option>
+                                                    <option value="press_inclinado">Press inclinado</option>
+                                                    <option value="aperturas">Aperturas con mancuernas</option>
+                                                    <option value="fondos">Fondos</option>
+                                                    <option value="flexiones">Flexiones</option>
+
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Series
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasSeries">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Reps
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasRepeticiones">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Descanso
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevoDescanso">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+
+                                                Observaciones
+
+                                            </label>
+
+                                            <textarea class="form-control nuevaObservacion" rows="2"></textarea>
+
+                                        </div>
+
+                                        <div class="text-end">
+
+                                            <button class="btn btn-secondary" onclick="ocultarFormulario(this)">
+
+                                                Cancelar
+
+                                            </button>
+
+                                            <button class="btn btn-success" onclick="agregarEjercicio('sabado')">
+
+                                                Agregar
+
+                                            </button>
+
+                                        </div>
+
+                                        <hr>
+
+                                    </div>
+
+                                    <table class="table table-hover align-middle">
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>Ejercicio</th>
+                                                <th>Series</th>
+                                                <th>Repeticiones</th>
+                                                <th class="text-center">Acciones</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody id="tablaSabado">
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseDomingo">
+
+                                    Domingo
+
+                                </button>
+
+                            </h2>
+
+                            <div id="collapseDomingo" class="accordion-collapse collapse"
+                                data-bs-parent="#rutinaAccordion">
+
+                                <div class="accordion-body">
+
+                                    <button class="btn btn-success btn-sm" onclick="mostrarFormulario(this)">
+
+                                        <i class="fa-solid fa-plus"></i>
+
+                                        Agregar ejercicio
+
+                                    </button>
+
+                                    <div class="form-agregar-ejercicio">
+
+                                        <div class="row">
+
+                                            <div class="col-md-6 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Ejercicio
+
+                                                </label>
+
+                                                <select class="form-select nuevoEjercicio">
+
+                                                    <option selected disabled>
+                                                        Seleccione un ejercicio
+                                                    </option>
+
+                                                    <option value="press_banca">Press banca</option>
+                                                    <option value="press_inclinado">Press inclinado</option>
+                                                    <option value="aperturas">Aperturas con mancuernas</option>
+                                                    <option value="fondos">Fondos</option>
+                                                    <option value="flexiones">Flexiones</option>
+
+                                                </select>
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Series
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasSeries">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Reps
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevasRepeticiones">
+
+                                            </div>
+
+                                            <div class="col-md-2 mb-3">
+
+                                                <label class="form-label">
+
+                                                    Descanso
+
+                                                </label>
+
+                                                <input type="number" class="form-control nuevoDescanso">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="mb-3">
+
+                                            <label class="form-label">
+
+                                                Observaciones
+
+                                            </label>
+
+                                            <textarea class="form-control nuevaObservacion" rows="2"></textarea>
+
+                                        </div>
+
+                                        <div class="text-end">
+
+                                            <button class="btn btn-secondary" onclick="ocultarFormulario(this)">
+
+                                                Cancelar
+
+                                            </button>
+
+                                            <button class="btn btn-success" onclick="agregarEjercicio('domingo')">
+
+                                                Agregar
+
+                                            </button>
+
+                                        </div>
+
+                                        <hr>
+
+                                    </div>
+
+                                    <table class="table table-hover align-middle">
+
+                                        <thead>
+
+                                            <tr>
+
+                                                <th>Ejercicio</th>
+                                                <th>Series</th>
+                                                <th>Repeticiones</th>
+                                                <th class="text-center">Acciones</th>
+
+                                            </tr>
+
+                                        </thead>
+
+                                        <tbody id="tablaDomingo">
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">
+
+                        Cancelar
+
+                    </button>
+
+                    <button class="btn btn-success" onclick="guardarCambios()">
+
+                        Guardar cambios
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/rutinas.js"></script>
+</body>
+
+</html>
