@@ -1,0 +1,40 @@
+/* Header */
+
+.full-width {
+  height: 120px;
+}
+
+/* Información Inventario */
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--azulito);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: var(--azulito);
+}
+
+.border-warning {
+  border-left: 4px solid #ffae00 !important;
+}
+.border-danger {
+  border-left: 4px solid #ff4d4d !important;
+}
+
+.separador {
+  width: 90%;
+  height: 1px;
+  background-color: rgba(10, 150, 150, 0.5);
+  box-shadow: 0 0 18px rgba(10, 150, 150, 0.2);
+  margin: 0 auto 20px auto;
+  border-radius: 2px;
+}

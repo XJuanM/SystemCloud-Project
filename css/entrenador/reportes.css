@@ -1,0 +1,155 @@
+/* Header */
+
+.full-width {
+  height: 120px;
+}
+
+.titulo-reportes {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.report-chart-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  height: 300px;
+}
+
+.report-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.report-row {
+  display: flex !important; /* Forzamos flexbox */
+  align-items: center; /* Centra verticalmente los elementos */
+  justify-content: space-between; /* Espacia todo uniformemente */
+  width: 100% !important; /* Obliga a ocupar todo el ancho */
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.student-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--azulito);
+}
+
+.report-row h5 {
+  color: white;
+  margin: 0;
+}
+
+.btn-outline-info {
+  color: var(--azulito);
+  border: 1px solid var(--azulito);
+}
+
+.btn-outline-info:hover {
+  background: var(--azulito);
+  color: white;
+}
+
+/* --- Estilos personalizados para DataTables --- */
+
+/* Fondo del buscador y paginación */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+  color: #ffffff !important;
+}
+
+/* Input de búsqueda */
+.dataTables_wrapper .dataTables_filter input {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+/* Colores de los botones de paginación */
+.page-item.active .page-link {
+  background-color: var(
+    --azulito
+  ) !important; /* Asegúrate de que --azulito esté definido en tu CSS */
+  border-color: var(--azulito) !important;
+  color: white !important;
+}
+
+.page-link {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.page-link:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Asegurar que la tabla sea oscura y tenga bordes sutiles */
+#tablaReportes {
+  background-color: transparent !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+#tablaReportes thead th {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+#tablaReportes tbody tr {
+  transition: 0.3s;
+}
+
+#tablaReportes tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.dataTables_length {
+  margin-bottom: 20px;
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+.dataTables_length select {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  padding: 5px 30px 5px 15px !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.dataTables_length select:hover,
+.dataTables_length select:focus {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(
+    --azulito,
+    #0a9696
+  ) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(10, 150, 150, 0.2);
+}
+
+.dataTables_length select option {
+  background-color: #212529;
+  color: white;
+}
