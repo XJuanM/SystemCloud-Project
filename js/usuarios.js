@@ -55,6 +55,8 @@ function cargarUsuarios() {
                 correo: "dilan@gmail.com",
                 telefono: "3115558899",
                 rol: "Cliente",
+
+                rol: "Entrenador",
                 estado: "Activo",
                 password: "123456"
             },
@@ -66,6 +68,7 @@ function cargarUsuarios() {
                 correo: "juan@gmail.com",
                 telefono: "3207774455",
                 rol: "Cliente",
+                rol: "Administrador",
                 estado: "Inactivo",
                 password: "123456"
             }
