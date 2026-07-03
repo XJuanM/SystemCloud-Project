@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Plan Alimenticio</title>
+
+    <link rel="stylesheet" href="../CSS/plan-alimenticio.css">
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="../IMG/logoSinFondo2.png" alt="Logo">
+            <h2>System Cloud</h2>
+            <p>Panel Cliente</p>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="../Cliente/cliente.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="../Perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Mi perfil
+            </a>
+
+            <a href="../Mi Membresia/membresia.html">
+                <i class="fa-solid fa-credit-card"></i>
+                Mi membresía
+            </a>
+
+            <a href="../RutinaCliente/rutina.html">
+                <i class="fa-solid fa-dumbbell"></i>
+                Mis rutinas
+            </a>
+
+            <a href="../PlanesAlimenticiosCliente/plan-alimenticio.html" class="active">
+                <i class="fa-solid fa-utensils"></i>
+                Mi plan alimenticio
+            </a>
+
+            <a href="../Mis-clases/mis-clases.html">
+                <i class="fa-solid fa-calendar-days"></i>
+                Mis clases
+            </a>
+
+            <a href="../Progreso/progreso.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Mi progreso
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-apple-whole"></i>
+                Catálogo
+            </a>
+
+            <a href="../InfornacionGym/informacion-gimnasio.html">
+                <i class="fa-solid fa-circle-info"></i>
+                Información del gimnasio
+            </a>
+
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Salir
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <section class="nutri-hero">
+
+            <div class="hero-ring-card">
+                <svg class="ring-svg" viewBox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="nutriRingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#43e6e6"/>
+                            <stop offset="100%" stop-color="#43e6e6"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="ring-track" cx="100" cy="100" r="86"></circle>
+                    <circle id="ringProgress" class="ring-progress" cx="100" cy="100" r="86"></circle>
+                </svg>
+
+                <div class="ring-center">
+                    <h2 id="ringKcal">0</h2>
+                    <span>kcal de <b id="ringKcalGoal">0</b></span>
+                </div>
+            </div>
+
+            <div class="hero-info">
+                <span class="nutri-badge" id="nutriBadge">PLAN ALIMENTICIO</span>
+                <h1 id="clienteNombre">Hola</h1>
+                <p>
+                    Objetivo: <strong id="objetivoText">-</strong> ·
+                    Meta calórica <strong id="metaText">-</strong> ·
+                    Comidas al día <strong id="comidasText">-</strong>
+                </p>
+
+                <div class="macro-bars">
+                    <div class="macro-bar" data-macro="protein">
+                        <div class="macro-bar-top">
+                            <span class="macro-label"><i class="fa-solid fa-drumstick-bite"></i> Proteína</span>
+                            <span class="macro-value"><span id="proteinVal">0</span>g / <span id="proteinGoal">0</span>g</span>
+                        </div>
+                        <div class="macro-track"><div class="macro-fill protein" id="proteinFill"></div></div>
+                    </div>
+                    <div class="macro-bar" data-macro="carbs">
+                        <div class="macro-bar-top">
+                            <span class="macro-label"><i class="fa-solid fa-wheat-awn"></i> Carbohidratos</span>
+                            <span class="macro-value"><span id="carbsVal">0</span>g / <span id="carbsGoal">0</span>g</span>
+                        </div>
+                        <div class="macro-track"><div class="macro-fill carbs" id="carbsFill"></div></div>
+                    </div>
+                    <div class="macro-bar" data-macro="fat">
+                        <div class="macro-bar-top">
+                            <span class="macro-label"><i class="fa-solid fa-droplet"></i> Grasas</span>
+                            <span class="macro-value"><span id="fatVal">0</span>g / <span id="fatGoal">0</span>g</span>
+                        </div>
+                        <div class="macro-track"><div class="macro-fill fat" id="fatFill"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="water-card">
+                <h4><i class="fa-solid fa-glass-water"></i> Hidratación</h4>
+                <div class="water-glasses" id="waterGlasses"></div>
+                <p><span id="waterCount">0</span> / <span id="waterGoal">8</span> vasos</p>
+            </div>
+
+        </section>
+
+
+        <section class="meal-selector" id="mealSelector"></section>
+
+        <section class="meal-panel">
+
+            <div class="meal-panel-header">
+                <h3 id="mealTitle">Desayuno</h3>
+                <span id="mealCount">0 alimentos · 0 kcal</span>
+            </div>
+
+            <div id="foodList" class="food-list"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Alimento registrado</span>
+</div>
+
+<script src="../js/plan-alimenticio.js"></script>
+
+</body>
+</html>

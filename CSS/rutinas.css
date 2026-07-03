@@ -112,7 +112,8 @@ body{
     0 0 20px rgba(10,150,150,.4),
     0 0 20px rgba(10,150,150,.2);
 
-    width: 1500px;
+    width: 100%;
+    max-width: 1500px;
     height: 220px;
 
     display: flex;
@@ -138,7 +139,8 @@ body{
 }
 
 .text p{
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
 }
 
 .header-text h2{
@@ -157,7 +159,8 @@ body{
 
 .routine-manager{
     margin-top: 20px;
-    width: 1500px;
+    width: 100%;
+    max-width: 1500px;
     border: solid 2px var(--negro);
     border-radius: 15px;
 }
@@ -679,5 +682,286 @@ body{
     margin:4px 0 0;
 
     font-size:.9rem;
+
+}
+
+@media (max-width:1400px){
+
+    .sidebar{
+        width:320px;
+    }
+
+    .header-text,
+    .routine-manager{
+        width:100%;
+    }
+
+    .text p{
+        width:100%;
+        max-width:700px;
+    }
+
+}
+
+
+@media (max-width:1200px){
+
+    .sidebar{
+        width:280px;
+        padding:25px 15px;
+    }
+
+    .sidebar-logo img{
+        width:70px;
+    }
+
+    .sidebar-logo h2{
+        font-size:30px;
+    }
+
+    .rutinas-main{
+        padding:25px;
+    }
+
+    .header-text{
+        height:auto;
+        padding:30px;
+    }
+
+    .dashboard-info{
+        flex-direction:column;
+    }
+
+}
+
+@media (max-width:992px){
+
+    .dashboard-layout{
+        flex-direction:column;
+    }
+
+    .sidebar{
+
+        width:100%;
+        border-right:none;
+        border-bottom:3px solid var(--azulito);
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+
+    }
+
+    .sidebar-logo{
+        margin-bottom:20px;
+    }
+
+    .sidebar-menu{
+
+        width:100%;
+
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+
+    }
+
+    .sidebar-menu a{
+
+        width:220px;
+        justify-content:center;
+
+    }
+
+    .rutinas-main{
+
+        width:100%;
+        padding:20px;
+
+    }
+
+    .header-text{
+
+        width:100%;
+        height:auto;
+        padding:25px;
+
+    }
+
+    .text{
+
+        width:100%;
+
+    }
+
+    .text p{
+
+        width:100%;
+
+    }
+
+    .routine-manager{
+
+        width:100%;
+
+    }
+
+    .table-responsive{
+
+        overflow-x:auto;
+
+    }
+
+    .dashboard-info{
+
+        flex-direction:column;
+
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    .sidebar{
+
+        padding:20px 10px;
+
+    }
+
+    .sidebar-menu{
+
+        flex-direction:column;
+
+    }
+
+    .sidebar-menu a{
+
+        width:100%;
+
+    }
+
+    .rutinas-main{
+
+        padding:15px;
+
+    }
+
+    .header-text{
+
+        padding:20px 15px;
+
+    }
+
+    .header-text h2{
+
+        font-size:1.5rem;
+
+    }
+
+    .header-text p{
+
+        font-size:.9rem;
+
+    }
+
+    .routine-manager .card-header{
+
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+
+    }
+
+    .routine-manager .row{
+
+        flex-direction:column;
+
+    }
+
+    .table{
+
+        font-size:.82rem;
+
+    }
+
+    .btn{
+
+        width:100%;
+        margin:3px 0;
+
+    }
+
+    .modal-dialog{
+
+        margin:10px;
+
+    }
+
+    .cliente-info{
+
+        padding:15px;
+
+    }
+
+    .accordion-button{
+
+        font-size:.95rem;
+
+    }
+
+    .form-agregar-ejercicio,
+    .form-editar-ejercicio{
+
+        padding:15px;
+
+    }
+
+}
+
+
+@media (max-width:480px){
+
+    .sidebar-logo h2{
+
+        font-size:24px;
+
+    }
+
+    .sidebar-logo p{
+
+        font-size:14px;
+
+    }
+
+    .header-text h2{
+
+        font-size:1.25rem;
+
+    }
+
+    .header-text p{
+
+        font-size:.85rem;
+
+    }
+
+    .table{
+
+        font-size:.75rem;
+
+    }
+
+    .modal-body{
+
+        padding:15px;
+
+    }
+
+    .cliente-info{
+
+        text-align:center;
+
+    }
 
 }

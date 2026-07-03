@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi progreso</title>
+
+    <link rel="stylesheet" href="../CSS/progreso.css">
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="../IMG/logoSinFondo2.png" alt="Logo">
+            <h2>System Cloud</h2>
+            <p>Panel Cliente</p>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="../Cliente/cliente.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="../Perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Mi perfil
+            </a>
+
+            <a href="../Mi Membresia/membresia.html">
+                <i class="fa-solid fa-credit-card"></i>
+                Mi membresía
+            </a>
+
+            <a href="../RutinaCliente/rutina.html">
+                <i class="fa-solid fa-dumbbell"></i>
+                Mis rutinas
+            </a>
+
+            <a href="../PlanAlimenticio/plan-alimenticio.html">
+                <i class="fa-solid fa-utensils"></i>
+                Mi plan alimenticio
+            </a>
+
+            <a href="../Mis-Clases/mis-clases.html">
+                <i class="fa-solid fa-calendar-days"></i>
+                Mis clases
+            </a>
+
+            <a href="../Progreso/progreso.html" class="active">
+                <i class="fa-solid fa-chart-line"></i>
+                Mi progreso
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-apple-whole"></i>
+                Catálogo
+            </a>
+
+            <a href="../InfornacionGym/informacion-gimnasio.html">
+                <i class="fa-solid fa-circle-info"></i>
+                Información del gimnasio
+            </a>
+
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Salir
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <section class="progreso-header">
+
+            <div class="progreso-header-text">
+                <div class="text">
+                    <h2>
+                        Mi progreso
+                        <i class="fa-solid fa-chart-line"></i>
+                    </h2>
+                    <p>
+                        Aquí queda el registro de cada sesión, cada kilo y cada marca
+                        personal. Revisa tu evolución, mantén viva la racha y celebra
+                        los récords que vas rompiendo semana a semana.
+                    </p>
+                </div>
+            </div>
+
+            <div class="progreso-stats">
+
+                <div class="stat-card">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    <div>
+                        <h3 id="statEntrenamientos">0</h3>
+                        <span>Entrenamientos este mes</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fa-solid fa-fire"></i>
+                    <div>
+                        <h3 id="statRacha">0</h3>
+                        <span>Días seguidos activo</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fa-solid fa-weight-scale"></i>
+                    <div>
+                        <h3 id="statPeso">0 kg</h3>
+                        <span>Peso actual</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fa-solid fa-trophy"></i>
+                    <div>
+                        <h3 id="statRecords">0</h3>
+                        <span>Récords personales</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="progreso-hero">
+
+            <div class="hero-ring-card">
+                <svg class="ring-svg" viewBox="0 0 190 190">
+                    <defs>
+                        <linearGradient id="progresoRingGradient" ...>
+                            <stop offset="0%" stop-color="#0a9696"/>
+                            <stop offset="100%" stop-color="#43e6e6"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="ring-track" cx="95" cy="95" r="80"></circle>
+                    <circle class="ring-progress" id="ringProgress" cx="95" cy="95" r="80"></circle>
+                </svg>
+                <div class="ring-center">
+                    <h2 id="ringPercent">0%</h2>
+                    <span>Meta del mes <b id="ringLabel">0/0</b></span>
+                </div>
+            </div>
+
+            <div class="hero-info">
+                <span class="progreso-badge">OBJETIVO ACTIVO</span>
+                <h1 id="metaTitulo">Bajar al peso objetivo</h1>
+                <p>
+                    Llevas <strong id="resumenPerdido">0 kg</strong> de progreso desde que
+                    empezaste a registrar tus datos. A este ritmo, tu entrenador estima
+                    que alcanzarás la meta en <strong id="resumenTiempo">-- semanas</strong>.
+                </p>
+
+                <div class="progress-bars">
+
+                    <div class="progress-bar-block">
+                        <div class="progress-bar-top">
+                            <span class="progress-label"><i class="fa-solid fa-weight-scale"></i> Peso</span>
+                            <span class="progress-value" id="barPesoValor">--</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill peso" id="barPeso"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar-block">
+                        <div class="progress-bar-top">
+                            <span class="progress-label"><i class="fa-solid fa-percent"></i> Grasa corporal</span>
+                            <span class="progress-value" id="barGrasaValor">--</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill grasa" id="barGrasa"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar-block">
+                        <div class="progress-bar-top">
+                            <span class="progress-label"><i class="fa-solid fa-shirt"></i> Cintura</span>
+                            <span class="progress-value" id="barCinturaValor">--</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill cintura" id="barCintura"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="streak-card">
+                <h4><i class="fa-solid fa-fire"></i> Constancia · últimas 12 semanas</h4>
+                <div class="heatmap" id="heatmap"></div>
+                <p>Racha más larga: <span id="rachaMax">0 días</span></p>
+            </div>
+
+        </section>
+
+        <section class="progreso-controls">
+            <h3>Evolución de peso</h3>
+            <div class="range-selector" id="rangeSelector">
+                <button data-range="30" class="range-btn active">1M</button>
+                <button data-range="90" class="range-btn">3M</button>
+                <button data-range="180" class="range-btn">6M</button>
+                <button data-range="365" class="range-btn">1A</button>
+            </div>
+        </section>
+
+        <section class="progreso-chart-wrap">
+            <svg id="pesoChart" class="peso-chart" viewBox="0 0 800 260" preserveAspectRatio="none"></svg>
+            <div class="chart-tooltip" id="chartTooltip"></div>
+        </section>
+
+        <section class="progreso-log">
+
+            <div class="log-form-card">
+                <h3>Registrar hoy</h3>
+                <form id="logForm">
+                    <label>
+                        Peso (kg)
+                        <input type="number" step="0.1" id="inputPeso" placeholder="Ej. 78.4" required>
+                    </label>
+                    <label>
+                        Grasa corporal (%)
+                        <input type="number" step="0.1" id="inputGrasa" placeholder="Ej. 21.5">
+                    </label>
+                    <label>
+                        <input type="checkbox" id="inputEntreno" checked>
+                        Hoy entrené
+                    </label>
+                    <button type="submit"><i class="fa-solid fa-circle-plus"></i> Guardar registro</button>
+                </form>
+            </div>
+
+            <div class="records-card">
+                <div class="records-header">
+                    <h3>Récords personales</h3>
+                    <div class="records-filter" id="recordsFilter">
+                        <button data-cat="todos" class="filter-btn active">Todos</button>
+                        <button data-cat="fuerza" class="filter-btn">Fuerza</button>
+                        <button data-cat="cardio" class="filter-btn">Cardio</button>
+                    </div>
+                </div>
+                <div class="records-list" id="recordsList"></div>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../JS/progreso.js"></script>
+
+</body>
+</html>

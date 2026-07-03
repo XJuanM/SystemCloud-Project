@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis clases</title>
+
+    <link rel="stylesheet" href="../CSS/mis-clases.css">
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="../IMG/logoSinFondo2.png" alt="Logo">
+            <h2>System Cloud</h2>
+            <p>Panel Cliente</p>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="../Cliente/cliente.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="../Perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Mi perfil
+            </a>
+
+            <a href="../Mi Membresia/membresia.html">
+                <i class="fa-solid fa-credit-card"></i>
+                Mi membresía
+            </a>
+
+            <a href="../RutinaCliente/rutina.html">
+                <i class="fa-solid fa-dumbbell"></i>
+                Mis rutinas
+            </a>
+
+            <a href="../PlanesAlimenticiosCliente/plan-alimenticio.html">
+                <i class="fa-solid fa-utensils"></i>
+                Mi plan alimenticio
+            </a>
+
+            <a href="../Mis-clases/mis-clases.html" class="active">
+                <i class="fa-solid fa-calendar-days"></i>
+                Mis clases
+            </a>
+
+            <a href="../Progreso/progreso.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Mi progreso
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-apple-whole"></i>
+                Catálogo
+            </a>
+
+            <a href="../InfornacionGym/informacion-gimnasio.html">
+                <i class="fa-solid fa-circle-info"></i>
+                Información del gimnasio
+            </a>
+
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Salir
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <section class="clases-header">
+
+            <div class="clases-header-text">
+                <div class="text">
+                    <h2>
+                        Mis clases
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </h2>
+                    <p>
+                        Explora el horario semanal, filtra por día o categoría y reserva
+                        tu cupo en segundos. Tus próximas clases quedan guardadas para
+                        que no se te olvide ninguna.
+                    </p>
+                </div>
+            </div>
+
+            <div class="clases-stats">
+
+                <div class="stat-card">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <div>
+                        <h3 id="statReservadas">0</h3>
+                        <span>Clases reservadas</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fa-solid fa-door-open"></i>
+                    <div>
+                        <h3 id="statDisponibles">0</h3>
+                        <span>Cupos libres esta semana</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fa-solid fa-fire"></i>
+                    <div>
+                        <h3 id="statDias">0</h3>
+                        <span>Días con actividad</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="clases-controls">
+
+            <div class="day-selector" id="daySelector"></div>
+
+            <div class="controls-row">
+                <div class="category-filter" id="categoryFilter"></div>
+
+                <div class="clases-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="buscarClase" placeholder="Buscar clase o instructor...">
+                </div>
+            </div>
+
+        </section>
+
+        <section class="clases-content">
+
+            <div class="classes-grid-wrap">
+                <h3>Clases del día <span id="classesCount">(0)</span></h3>
+                <div class="classes-grid" id="classesGrid"></div>
+            </div>
+
+            <aside class="my-classes-panel">
+                <h3>Mis próximas clases</h3>
+                <div class="my-classes-list" id="myClassesList"></div>
+            </aside>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../JS/mis-clases.js"></script>
+
+</body>
+</html>

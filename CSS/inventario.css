@@ -1,15 +1,4 @@
-/* ============================================================
-   inventario.css
-   Hoja de estilos AUTÓNOMA del panel de Inventario.
-   Incluye: reset, variables, layout base (sidebar, header,
-   mini-cards, goals) + los componentes propios de Inventario
-   (tabla, badges, alertas de stock, modal, toast).
-   No depende de entrenador.css.
-   ============================================================ */
 
-/* ============================================
-   1. RESET Y VARIABLES GLOBALES
-   ============================================ */
 
 *{
     margin:0;
@@ -666,12 +655,6 @@ body{
 }
 
 
-/* ============================================================
-   2. COMPONENTES PROPIOS DE INVENTARIO
-   ============================================================ */
-
-/* -------- Tabla de inventario -------- */
-
 .inventory-table-wrap{
     background:rgba(255,255,255,.03);
     border:1px solid rgba(255,255,255,.08);
@@ -888,7 +871,7 @@ body{
     border-color:var(--azulito);
 }
 
-/* -------- Panel lateral: alertas de stock -------- */
+
 
 .stock-alerts{
     width:400px;
@@ -940,7 +923,6 @@ body{
     color:rgb(170,170,170);
 }
 
-/* -------- Distribución por categoría -------- */
 
 .category-list{
     display:flex;
@@ -959,7 +941,6 @@ body{
     background:linear-gradient(90deg, rgb(0,190,170), rgb(0,255,220));
 }
 
-/* -------- Estado vacío en tabla -------- */
 
 .empty-state{
     text-align:center;
@@ -968,7 +949,6 @@ body{
     font-size:.9rem;
 }
 
-/* -------- Modal: nuevo / editar producto -------- */
 
 .modal-overlay{
     display:none;
@@ -1120,8 +1100,6 @@ body{
     box-shadow:0 0 14px rgba(10,150,150,.4);
 }
 
-/* -------- Toast -------- */
-
 .toast{
     position:fixed;
     bottom:30px;
@@ -1153,7 +1131,6 @@ body{
     color:rgb(66, 224, 224);
 }
 
-/* -------- Responsive -------- */
 
 @media (max-width:1200px){
 
