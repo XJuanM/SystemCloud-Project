@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Cliente</title>
+
+    <link rel="stylesheet" href="../CSS/cliente.css">
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../CSS/cliente.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="../IMG/logoSinFondo2.png" alt="Logo">
+            <h2>System Cloud</h2>
+            <p>Panel Cliente</p>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="../Cliente/cliente.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="../Perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Mi perfil
+            </a>
+
+            <a href="../Mi Membresia/membresia.html">
+                <i class="fa-solid fa-credit-card"></i>
+                Mi membresía
+            </a>
+
+            <a href="../RutinaCliente/rutina.html">
+                <i class="fa-solid fa-dumbbell"></i>
+                Mis rutinas
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-utensils"></i>
+                Mi plan alimenticio
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-calendar-days"></i>
+                Mis clases
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-qrcode"></i>
+                Mi código QR
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Mi progreso
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-apple-whole"></i>
+                Catálogo
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-circle-info"></i>
+                Información del gimnasio
+            </a>
+
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Salir
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <section class="dashboard-header">
+
+            <div class="header-text">
+
+                <div class="text">
+
+                    <h2>
+                        Hola, Miguel
+                        <i class="fa-solid fa-user"></i>
+                    </h2>
+
+                    <p>
+                        Vas por un excelente camino. Esta semana completaste 4 de tus
+                        5 entrenamientos programados, registras un 92% de asistencia
+                        y tu membresía permanecerá activa durante los próximos 28 días.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="header-cards">
+
+                <div class="mini-card">
+                    <i class="fa-solid fa-chart-simple"></i>
+
+                    <div>
+                        <h3>92%</h3>
+                        <span>Asistencia</span>
+                    </div>
+
+                </div>
+
+                <div class="mini-card">
+
+                    <i class="fa-solid fa-dumbbell"></i>
+
+                    <div>
+                        <h3>4 / 5</h3>
+                        <span>Rutinas</span>
+                    </div>
+
+                </div>
+
+                <div class="mini-card">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    <div>
+                        <h3>8</h3>
+                        <span>Clases</span>
+                    </div>
+
+                </div>
+
+                <div class="mini-card">
+
+                    <i class="fa-solid fa-medal"></i>
+
+                    <div>
+                        <h3>+1.5kg</h3>
+                        <span>Progreso</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="bottom-content">
+
+            <div class="weekly-attendance">
+
+                <h3>Mi progreso semanal</h3>
+
+                <canvas id="progressChart"></canvas>
+
+            </div>
+
+            <div class="upcoming-expirations">
+
+                <h3>Próximas clases</h3>
+
+                <div class="expiration-card">
+
+                    <div>
+                        <h4>Spinning</h4>
+                        <span>Lunes • 6:00 PM</span>
+                    </div>
+
+                    <i class="fa-solid fa-bicycle"></i>
+
+                </div>
+
+                <div class="expiration-card">
+
+                    <div>
+                        <h4>CrossFit</h4>
+                        <span>Miércoles • 5:00 PM</span>
+                    </div>
+
+                    <i class="fa-solid fa-fire"></i>
+
+                </div>
+
+                <div class="expiration-card">
+
+                    <div>
+                        <h4>Yoga</h4>
+                        <span>Viernes • 8:00 AM</span>
+                    </div>
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="gym-goals">
+
+            <h3>Objetivos personales</h3>
+
+            <div class="goal">
+
+                <span>Peso ideal</span>
+
+                <div class="progress">
+                    <div style="width:75%;"></div>
+                </div>
+
+                <span>75%</span>
+
+            </div>
+
+            <div class="goal">
+
+                <span>Masa muscular</span>
+
+                <div class="progress">
+                    <div style="width:68%;"></div>
+                </div>
+
+                <span>68%</span>
+
+            </div>
+
+            <div class="goal">
+
+                <span>Resistencia</span>
+
+                <div class="progress">
+                    <div style="width:85%;"></div>
+                </div>
+
+                <span>85%</span>
+
+            </div>
+
+            <div class="goal">
+
+                <span>Disciplina</span>
+
+                <div class="progress">
+                    <div style="width:92%;"></div>
+                </div>
+
+                <span>92%</span>
+
+            </div>
+
+        </section>
+
+        <section class="dashboard-content">
+
+            <div class="membership-card">
+
+                <h3>Mi membresía</h3>
+
+                <h2>Premium</h2>
+
+                <p>
+                    Tu membresía estará activa hasta el
+                    <strong>28 de agosto de 2026</strong>.
+                </p>
+
+                <button>Renovar membresía</button>
+
+            </div>
+
+            <div class="upcoming-expirations">
+
+                <h3>Mi código QR</h3>
+
+                <img src="../IMG/HjDfGg.jpg" alt="QR" width="180">
+
+                <p style="margin-top:20px;">
+                    Presenta este código al ingresar al gimnasio.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../JS/cliente.js"></script>
+
+</body>
+</html>

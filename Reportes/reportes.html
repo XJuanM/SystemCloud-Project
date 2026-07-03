@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/reportes.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <img src="../IMG/logoSinFondo2.png" alt="Logo">
+                <h2>System Cloud</h2>
+                <p>Panel entrenador</p>
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="../Usuarios/usuarios.html">
+                    <i class="fa-solid fa-users"></i>
+                    Usuarios
+                </a>
+
+                <a href="../Rutinas/rutinas.html">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    Rutinas
+                </a>
+
+                <a href="../Planes Alimenticios/planes.html">
+                    <i class="fa-solid fa-jar-wheat"></i>
+                    Planes Alimenticios
+                </a>
+
+                <a href="../Clases/clases.html">
+                    <i class="fa-solid fa-people-group"></i>
+                    Clases
+                </a>
+
+                <a href="../Inventario/inventario.html">
+                    <i class="fa-solid fa-box"></i>
+                    Inventario
+                </a>
+
+                <a href="../Reportes/reportes.html" style="background-color:var(--azulito); color:var(--blanco);">
+                    <i class="fa-solid fa-bug"></i>
+                    Reportes
+                </a>
+
+                <a href="../HTML/index.html">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Salir
+                </a>
+
+            </nav>
+        </aside>
+
+    <main class="dashboard-main">
+    <section class="dashboard-header">
+            <div class="header-text">
+                <div class="text">
+                <h2 class="titulo">Reportes<i class="fa-solid fa-chart-column"></i></h2>
+                <p id="headerSummary">
+                    Cargando resumen de reportes...
+                </p>
+                </div>
+            </div>
+
+        <div class="header-cards">
+
+        <div class="mini-card">
+            <i class="fa-solid fa-file-lines"></i>
+
+            <div>
+                <h3 id="statTotalReports">0</h3>
+                <span>Reportes generados</span>
+            </div>
+        </div>
+
+        <div class="mini-card">
+            <i class="fa-solid fa-calendar-days"></i>
+
+            <div>
+                <h3 id="statMonthReports">0</h3>
+                <span>Este mes</span>
+            </div>
+        </div>
+
+        <div class="mini-card">
+            <i class="fa-solid fa-hourglass-half"></i>
+
+            <div>
+                <h3 id="statPendingReports">0</h3>
+                <span>En proceso</span>
+            </div>
+        </div>
+
+        <div class="mini-card">
+            <i class="fa-solid fa-file-export"></i>
+
+            <div>
+                <h3 id="statTopFormat">—</h3>
+                <span>Formato más usado</span>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <section class="dashboard-content reports-content">
+
+    <div class="reports-chart-wrap">
+
+        <div class="reports-chart-head">
+            <h3>Reportes generados por mes</h3>
+
+            <div class="chart-legend">
+                <span><i></i>Últimos 6 meses</span>
+            </div>
+        </div>
+
+        <canvas id="reportsChart"></canvas>
+
+    </div>
+
+    <div class="upcoming-expirations recent-reports">
+
+        <h3>Reportes recientes</h3>
+
+        <div id="recentReportsList">
+        </div>
+
+    </div>
+
+</section>
+
+<section class="gym-goals reports-manager">
+
+    <div class="reports-manager-head">
+        <h3>Gestión de reportes</h3>
+
+        <div class="reports-manager-actions">
+
+            <div class="inventory-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Buscar reporte...">
+            </div>
+
+            <select id="filterType" class="filter-select">
+                <option value="todos">Todos los tipos</option>
+                <option value="Financiero">Financiero</option>
+                <option value="Asistencia">Asistencia</option>
+                <option value="Clientes">Clientes</option>
+                <option value="Rendimiento">Rendimiento</option>
+            </select>
+
+            <button class="btn-add-product" id="btnGenerateReport">
+                <i class="fa-solid fa-plus"></i>
+                Generar reporte
+            </button>
+
+        </div>
+    </div>
+
+    <table class="inventory-table reports-table">
+        <thead>
+            <tr>
+                <th>Reporte</th>
+                <th>Tipo</th>
+                <th>Rango</th>
+                <th>Formato</th>
+                <th>Estado</th>
+                <th>Generado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody id="reportsTableBody">
+        </tbody>
+    </table>
+
+    <p id="emptyState" class="empty-state" style="display:none;">
+        No se encontraron reportes que coincidan con tu búsqueda.
+    </p>
+
+</section>
+</main>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+
+        <div class="modal-header">
+            <h3>Generar reporte</h3>
+            <button class="modal-close" id="btnCloseModal" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label for="inputReportType">Tipo de reporte</label>
+                <select id="inputReportType">
+                    <option value="Financiero">Financiero — ingresos y pagos</option>
+                    <option value="Asistencia">Asistencia — check-ins de clientes</option>
+                    <option value="Clientes">Clientes — altas y bajas</option>
+                    <option value="Rendimiento">Rendimiento — rutinas y progreso</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="inputDateFrom">Desde</label>
+                    <input type="date" id="inputDateFrom">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDateTo">Hasta</label>
+                    <input type="date" id="inputDateTo">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputFormat">Formato de salida</label>
+                <select id="inputFormat">
+                    <option value="PDF">PDF</option>
+                    <option value="Excel">Excel</option>
+                    <option value="CSV">CSV</option>
+                </select>
+            </div>
+
+            <p class="form-error" id="formError"></p>
+
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-cancel" id="btnCancelModal">Cancelar</button>
+            <button class="btn-save" id="btnSaveReport">
+                <i class="fa-solid fa-bolt"></i>
+                Generar
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/reportes.js"></script>
+</body>
+</html>

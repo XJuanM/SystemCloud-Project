@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Membresía</title>
+
+    <link rel="stylesheet" href="../CSS/cliente.css">
+    <link rel="stylesheet" href="../CSS/membresia.css">
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="../IMG/logoSinFondo2.png" alt="Logo">
+            <h2>System Cloud</h2>
+            <p>Panel Cliente</p>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="../Cliente/cliente.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="../Perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Mi perfil
+            </a>
+
+            <a href="../Mi Membresia/membresia.html">
+                <i class="fa-solid fa-credit-card"></i>
+                Mi membresía
+            </a>
+
+            <a href="../RutinaCliente/rutina.html">
+                <i class="fa-solid fa-dumbbell"></i>
+                Mis rutinas
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-utensils"></i>
+                Mi plan alimenticio
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-calendar-days"></i>
+                Mis clases
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-qrcode"></i>
+                Mi código QR
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Mi progreso
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-apple-whole"></i>
+                Catálogo
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-circle-info"></i>
+                Información del gimnasio
+            </a>
+
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Salir
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <section class="membership-hero">
+
+            <div class="hero-ring-card">
+                <svg class="ring-svg" viewBox="0 0 220 220">
+                    <defs>
+                        <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#0a9696"/>
+                            <stop offset="100%" stop-color="#31f0f0"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="ring-track" cx="110" cy="110" r="95"></circle>
+                    <circle id="ringProgress" class="ring-progress" cx="110" cy="110" r="95"></circle>
+                </svg>
+
+                <div class="ring-center">
+                    <h2 id="daysLeftLabel">--</h2>
+                    <span>días restantes</span>
+                </div>
+            </div>
+
+            <div class="hero-info">
+                <span id="statusBadge" class="plan-badge">PREMIUM · ACTIVA</span>
+                <h1>Tu membresía está activa</h1>
+                <p>
+                    Plan <strong id="planNameText">Premium</strong>, vigente desde el
+                    <strong id="startDateText">-</strong> hasta el
+                    <strong id="expirationDateText">-</strong>.
+                </p>
+
+                <div class="hero-actions">
+                    <button id="renewBtn" class="btn-primary">
+                        <i class="fa-solid fa-rotate"></i> Renovar membresía
+                    </button>
+                    <button id="freezeBtn" class="btn-secondary">
+                        <i class="fa-solid fa-snowflake"></i> Congelar membresía
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="membership-details">
+
+            <div class="benefits-card">
+                <h3>Beneficios incluidos</h3>
+                <ul id="benefitsList"></ul>
+            </div>
+
+            <div class="plan-card">
+                <h3>Tu plan</h3>
+
+                <div class="plan-price">
+                    <span class="amount" id="planAmount">$0</span>
+                    <span class="period">/ mes</span>
+                </div>
+
+                <div class="plan-meta">
+                    <div><span>Método de pago</span><span id="paymentMethod">-</span></div>
+                    <div><span>Próximo cobro</span><span id="nextBilling">-</span></div>
+                    <div><span>Estado</span><span id="planStatus">-</span></div>
+                    <div><span>Sede asignada</span><span id="planLocation">-</span></div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="payment-history">
+            <h3>Historial de pagos</h3>
+
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Concepto</th>
+                        <th>Monto</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="paymentTableBody">
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+</div>
+
+<div class="modal-overlay" id="renewModal">
+    <div class="modal">
+        <h3>Elige tu renovación</h3>
+
+        <div class="plan-options" id="planOptions"></div>
+
+        <div class="modal-summary">
+            <span>Total a pagar</span>
+            <span id="modalTotal">$0</span>
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-secondary" id="cancelRenew">Cancelar</button>
+            <button class="btn-primary" id="confirmRenew">Confirmar pago</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Membresía renovada</span>
+</div>
+
+<script src="../js/membresia.js"></script>
+
+</body>
+</html>

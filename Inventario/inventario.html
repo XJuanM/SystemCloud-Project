@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">">
+    <link rel="stylesheet" href="../CSS/inventario.css">
+</head>
+<body>
+
+<div class="dashboard-layout">
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">
+                <img src="../IMG/logoSinFondo2.png" alt="Logo">
+                <h2>System Cloud</h2>
+                <p>Panel entrenador</p>
+            </div>
+
+
+            <nav class="sidebar-menu">
+
+                <a href="../Usuarios/usuarios.html">
+                    <i class="fa-solid fa-users"></i>
+                    Usuarios
+                </a>
+
+                <a href="../Rutinas/rutinas.html">
+                    <i class="fa-solid fa-dumbbell"></i>
+                    Rutinas
+                </a>
+
+                <a href="../Planes Alimenticios/planes.html">
+                    <i class="fa-solid fa-jar-wheat"></i>
+                    Planes Alimenticios
+                </a>
+
+                <a href="../Clases/clases.html">
+                    <i class="fa-solid fa-people-group"></i>
+                    Clases
+                </a>
+
+                <a href="../Inventario/inventario.html" style="background-color:var(--azulito); color:var(--blanco);">
+                    <i class="fa-solid fa-box"></i>
+                    Inventario
+                </a>
+
+                <a href="../Reportes/reportes.html">
+                    <i class="fa-solid fa-bug"></i>
+                    Reportes
+                </a>
+
+                <a href="../HTML/index.html">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Salir
+                </a>
+
+            </nav>
+        </aside>
+
+    <main class="dashboard-main">
+    <section class="dashboard-header">
+            <div class="header-text">
+                <div class="text">
+                <h2 class="titulo">Inventario<i class="fa-solid fa-box"></i></h2>
+                <p id="headerSummary">
+                    Cargando resumen del inventario...
+                </p>
+                </div>
+            </div>
+
+        <div class="header-cards">
+
+        <div class="mini-card">
+            <i class="fa-solid fa-boxes-stacked"></i>
+
+            <div>
+                <h3 id="statTotalProducts">0</h3>
+                <span>Productos totales</span>
+            </div>
+        </div>
+
+        <div class="mini-card">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+
+            <div>
+                <h3 id="statLowStock">0</h3>
+                <span>Stock bajo</span>
+            </div>
+        </div>
+
+        <div class="mini-card">
+            <i class="fa-solid fa-sack-dollar"></i>
+
+            <div>
+                <h3 id="statTotalValue">$0</h3>
+                <span>Valor del inventario</span>
+            </div>
+        </div>
+
+        <div class="mini-card">
+            <i class="fa-solid fa-truck-ramp-box"></i>
+
+            <div>
+                <h3 id="statMovements">0</h3>
+                <span>Movimientos hoy</span>
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <section class="dashboard-content inventory-content">
+
+    <div class="inventory-table-wrap">
+
+        <div class="inventory-table-head">
+            <h3>Productos en stock</h3>
+
+            <div class="inventory-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Buscar producto o SKU...">
+            </div>
+
+            <button class="btn-add-product" id="btnAddProduct">
+                <i class="fa-solid fa-plus"></i>
+                Nuevo producto
+            </button>
+        </div>
+
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>Stock</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="inventoryTableBody">
+            
+            </tbody>
+        </table>
+
+        <p id="emptyState" class="empty-state" style="display:none;">
+            No se encontraron productos que coincidan con tu búsqueda.
+        </p>
+
+    </div>
+
+    <div class="upcoming-expirations stock-alerts">
+
+        <h3>Alertas de stock</h3>
+
+        <div id="alertsList">
+        </div>
+
+    </div>
+
+</section>
+
+<section class="gym-goals">
+
+    <h3>Distribución por categoría</h3>
+
+    <div class="category-list" id="categoryList">
+    </div>
+
+</section>
+</main>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+
+        <div class="modal-header">
+            <h3 id="modalTitle">Nuevo producto</h3>
+            <button class="modal-close" id="btnCloseModal" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="form-group">
+                <label for="inputName">Nombre del producto</label>
+                <input type="text" id="inputName" placeholder="Ej. Mancuernas 10kg (par)">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="inputSku">SKU</label>
+                    <input type="text" id="inputSku" placeholder="Ej. SKU-1042">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputCategory">Categoría</label>
+                    <select id="inputCategory">
+                        <option value="Equipamiento">Equipamiento</option>
+                        <option value="Suplementos">Suplementos</option>
+                        <option value="Merchandising">Merchandising</option>
+                        <option value="Limpieza e higiene">Limpieza e higiene</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="inputStock">Stock</label>
+                    <input type="number" id="inputStock" min="0" placeholder="0">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPrice">Precio (COP)</label>
+                    <input type="number" id="inputPrice" min="0" placeholder="0">
+                </div>
+            </div>
+
+            <p class="form-error" id="formError"></p>
+
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-cancel" id="btnCancelModal">Cancelar</button>
+            <button class="btn-save" id="btnSaveProduct">Guardar producto</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== Toast de confirmación ===== -->
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../js/inventario.js"></script>
+</body>
+</html>

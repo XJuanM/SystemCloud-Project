@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil</title>
+
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="../CSS/perfil.css">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="../IMG/logoSinFondo2.png" alt="Logo">
+            <h2>System Cloud</h2>
+            <p>Panel Cliente</p>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="../Cliente/cliente.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="../Perfil/perfil.html" style="background-color:var(--azulito); color:var(--blanco);">
+                <i class="fa-solid fa-user"></i>
+                Mi perfil
+            </a>
+
+            <a href="../Mi Membresia/membresia.html">
+                <i class="fa-solid fa-credit-card"></i>
+                Mi membresía
+            </a>
+
+            <a href="../RutinaCliente/rutina.html">
+                <i class="fa-solid fa-dumbbell"></i>
+                Mis rutinas
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-utensils"></i>
+                Mi plan alimenticio
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-calendar-days"></i>
+                Mis clases
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Mi progreso
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-apple-whole"></i>
+                Catálogo
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-circle-info"></i>
+                Información del gimnasio
+            </a>
+
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Salir
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <section class="dashboard-header">
+
+            <div class="header-text">
+
+                <div class="text">
+
+                    <h2>
+                        Mi perfil
+                        <i class="fa-solid fa-user"></i>
+                    </h2>
+
+                    <p>
+                        Administra tu información personal, tu seguridad y tus
+                        preferencias de notificación desde un solo lugar.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="header-cards">
+
+                <div class="mini-card">
+                    <i class="fa-solid fa-calendar-day"></i>
+
+                    <div>
+                        <h3 id="statMemberSince">—</h3>
+                        <span>Miembro desde</span>
+                    </div>
+                </div>
+
+                <div class="mini-card" id="card2">
+                    <i class="fa-solid fa-crown"></i>
+
+                    <div>
+                        <h3 id="statMembership">Premium</h3>
+                        <span>Membresía</span>
+                    </div>
+                </div>
+
+                <div class="mini-card" id="card3">
+                    <i class="fa-solid fa-dumbbell"></i>
+
+                    <div>
+                        <h3 id="statRoutines">0</h3>
+                        <span>Rutinas completadas</span>
+                    </div>
+                </div>
+
+                <div class="mini-card" id="card4">
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    <div>
+                        <h3 id="statClasses">0</h3>
+                        <span>Clases asistidas</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="profile-content">
+
+            <div class="profile-card">
+
+                <div class="avatar-wrap">
+                    <img id="avatarPreview" src="../IMG/HjDfGg.jpg" alt="Foto de perfil">
+
+                    <button class="avatar-edit-btn" id="btnEditAvatar" title="Cambiar foto">
+                        <i class="fa-solid fa-camera"></i>
+                    </button>
+
+                    <input type="file" id="avatarInput" accept="image/*" hidden>
+                </div>
+
+                <h3 class="profile-name" id="profileName">Miguel Ramírez</h3>
+                <span class="profile-role">Cliente Premium</span>
+
+                <div class="profile-quick-stats">
+
+                    <div class="quick-stat">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span id="quickEmail">miguel.ramirez@correo.com</span>
+                    </div>
+
+                    <div class="quick-stat">
+                        <i class="fa-solid fa-phone"></i>
+                        <span id="quickPhone">+57 300 123 4567</span>
+                    </div>
+
+                    <div class="quick-stat">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="quickAddress">Bogotá, Colombia</span>
+                    </div>
+
+                </div>
+
+                <div class="profile-completion">
+                    <div class="profile-completion-head">
+                        <span>Perfil completo</span>
+                        <span id="completionPercent">0%</span>
+                    </div>
+
+                    <div class="progress">
+                        <div id="completionBar" style="width:0%;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="profile-panel">
+
+                <div class="profile-tabs">
+                    <button class="tab-btn active" data-tab="personal">
+                        <i class="fa-solid fa-id-card"></i>
+                        Información personal
+                    </button>
+
+                    <button class="tab-btn" data-tab="security">
+                        <i class="fa-solid fa-lock"></i>
+                        Seguridad
+                    </button>
+
+                    <button class="tab-btn" data-tab="preferences">
+                        <i class="fa-solid fa-sliders"></i>
+                        Preferencias
+                    </button>
+                </div>
+
+                <div class="tab-content active" id="tab-personal">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="inputFullName">Nombre completo</label>
+                            <input type="text" id="inputFullName" placeholder="Tu nombre completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail">Correo electrónico</label>
+                            <input type="email" id="inputEmail" placeholder="tucorreo@ejemplo.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputPhone">Teléfono</label>
+                            <input type="tel" id="inputPhone" placeholder="+57 300 000 0000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputBirthdate">Fecha de nacimiento</label>
+                            <input type="date" id="inputBirthdate">
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="inputAddress">Dirección</label>
+                            <input type="text" id="inputAddress" placeholder="Ciudad, dirección">
+                        </div>
+
+                        <div class="form-group form-group-full">
+                            <label for="inputBio">Sobre mí</label>
+                            <textarea id="inputBio" rows="3" placeholder="Cuéntanos un poco sobre tus objetivos..."></textarea>
+                        </div>
+
+                    </div>
+
+                    <p class="form-error" id="personalError"></p>
+
+                    <div class="panel-actions">
+                        <button class="btn-save" id="btnSavePersonal">
+                            <i class="fa-solid fa-check"></i>
+                            Guardar cambios
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="tab-content" id="tab-security">
+
+                    <div class="form-grid">
+
+                        <div class="form-group form-group-full">
+                            <label for="inputCurrentPassword">Contraseña actual</label>
+                            <input type="password" id="inputCurrentPassword" placeholder="••••••••">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputNewPassword">Nueva contraseña</label>
+                            <input type="password" id="inputNewPassword" placeholder="Mínimo 8 caracteres">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputConfirmPassword">Confirmar contraseña</label>
+                            <input type="password" id="inputConfirmPassword" placeholder="Repite la nueva contraseña">
+                        </div>
+
+                    </div>
+
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="password-strength-bar">
+                            <div id="strengthFill"></div>
+                        </div>
+                        <span id="strengthLabel">Seguridad de la contraseña</span>
+                    </div>
+
+                    <p class="form-error" id="securityError"></p>
+                    <p class="form-success" id="securitySuccess"></p>
+
+                    <div class="panel-actions">
+                        <button class="btn-save" id="btnSavePassword">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            Actualizar contraseña
+                        </button>
+                    </div>
+
+                    <hr class="panel-divider">
+
+                    <div class="danger-zone">
+                        <div>
+                            <h4>Cerrar todas las sesiones</h4>
+                            <span>Cierra tu sesión en todos los dispositivos conectados.</span>
+                        </div>
+                        <button class="btn-outline-danger" id="btnCloseSessions">Cerrar sesiones</button>
+                    </div>
+
+                </div>
+
+                <div class="tab-content" id="tab-preferences">
+
+                    <div class="toggle-row">
+                        <div>
+                            <h4>Notificaciones por correo</h4>
+                            <span>Recibe novedades, promociones y recordatorios en tu email.</span>
+                        </div>
+
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="toggleEmail" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="toggle-row">
+                        <div>
+                            <h4>Notificaciones push</h4>
+                            <span>Alertas en tiempo real en tu navegador o app móvil.</span>
+                        </div>
+
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="togglePush" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="toggle-row">
+                        <div>
+                            <h4>Recordatorios de clases</h4>
+                            <span>Aviso 1 hora antes de cada clase reservada.</span>
+                        </div>
+
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="toggleReminders" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="toggle-row">
+                        <div>
+                            <h4>Boletín informativo</h4>
+                            <span>Consejos de entrenamiento y nutrición cada mes.</span>
+                        </div>
+
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="toggleNewsletter">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="toggle-row">
+                        <div>
+                            <h4>Perfil visible para otros miembros</h4>
+                            <span>Otros usuarios podrán ver tu nombre y logros en clases grupales.</span>
+                        </div>
+
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="togglePublicProfile">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../js/perfil.js"></script>
+
+</body>
+</html>

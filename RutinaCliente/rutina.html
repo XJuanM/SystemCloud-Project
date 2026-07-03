@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Rutina</title>
+
+    <link rel="stylesheet" href="../CSS/rutina.css">
+    <script src="https://kit.fontawesome.com/a0994db117.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon">
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <img src="../IMG/logoSinFondo2.png" alt="Logo">
+            <h2>System Cloud</h2>
+            <p>Panel Cliente</p>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="../Cliente/cliente.html">
+                <i class="fa-solid fa-house"></i>
+                Inicio
+            </a>
+
+            <a href="../Perfil/perfil.html">
+                <i class="fa-solid fa-user"></i>
+                Mi perfil
+            </a>
+
+            <a href="../Mi Membresia/membresia.html">
+                <i class="fa-solid fa-credit-card"></i>
+                Mi membresía
+            </a>
+
+            <a href="../RutinaCliente/rutina.html">
+                <i class="fa-solid fa-dumbbell"></i>
+                Mis rutinas
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-utensils"></i>
+                Mi plan alimenticio
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-calendar-days"></i>
+                Mis clases
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-qrcode"></i>
+                Mi código QR
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-chart-line"></i>
+                Mi progreso
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-apple-whole"></i>
+                Catálogo
+            </a>
+
+            <a href="#">
+                <i class="fa-solid fa-circle-info"></i>
+                Información del gimnasio
+            </a>
+
+            <a href="../HTML/index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Salir
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="dashboard-main">
+
+        <section class="routine-hero">
+
+            <div class="hero-ring-card">
+                <svg class="ring-svg" viewBox="0 0 200 200">
+                    <defs>
+                        <linearGradient id="routineRingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#0a9696"/>
+                            <stop offset="100%" stop-color="#31f0f0"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="ring-track" cx="100" cy="100" r="86"></circle>
+                    <circle id="ringProgress" class="ring-progress" cx="100" cy="100" r="86"></circle>
+                </svg>
+
+                <div class="ring-center">
+                    <h2 id="ringPercent">0%</h2>
+                    <span>completado esta semana</span>
+                </div>
+            </div>
+
+            <div class="hero-info">
+                <span class="routine-badge" id="routineBadge">RUTINA</span>
+                <h1 id="clienteNombre">Hola</h1>
+                <p>
+                    Objetivo: <strong id="objetivoText">-</strong> ·
+                    Nivel <strong id="nivelText">-</strong> ·
+                    Duración <strong id="duracionText">-</strong>
+                </p>
+
+                <div class="mini-stats">
+                    <div><h3 id="statCompletados">0</h3><span>Ejercicios hechos</span></div>
+                    <div><h3 id="statTotal">0</h3><span>Ejercicios totales</span></div>
+                    <div><h3 id="statDias">0</h3><span>Días con rutina</span></div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="day-selector" id="daySelector"></section>
+
+        <section class="day-panel">
+
+            <div class="day-panel-header">
+                <h3 id="dayTitle">Lunes</h3>
+                <span id="dayCount">0 ejercicios</span>
+            </div>
+
+            <div id="exerciseList" class="exercise-list"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Ejercicio completado</span>
+</div>
+
+<script src="../JS/rutina.js"></script>
+
+</body>
+</html>
