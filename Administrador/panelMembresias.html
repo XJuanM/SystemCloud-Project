@@ -1,9 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Panel de Usuarios</title>
+
     <script
       src="https://kit.fontawesome.com/a0994db117.js"
       crossorigin="anonymous"
@@ -11,21 +13,27 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Pliant:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
     <link rel="icon" href="../IMG/logoSinFondo2.png" type="image/x-icon" />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
+
     <link rel="stylesheet" href="../CSS/panelMembresias.css" />
   </head>
+
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-systemcloud">
@@ -43,6 +51,7 @@
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#menuPrincipal"
+            aria-label="Abrir menú"
           >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -62,22 +71,27 @@
 
     <main class="py-5">
       <div class="container">
-        <div class="text-center mb-5">
-          <br /><br /><br /><br />
-          <h1 class="fw-bold">Gestion de Membresias</h1>
+        <div class="text-center mb-5 pt-5">
+          <h1 class="fw-bold">Gestión de Membresías</h1>
         </div>
 
         <div class="card bg-dark border-secondary contenedor-busqueda">
           <div class="container-fluid mt-4">
             <div class="row g-4">
-              <div class="col-lg-6 col-md-6 ">
+              <div class="col-lg-6 col-md-6">
                 <div class="membership-card">
                   <div class="card-icons">
-                    <button class="btn-icon edit">
+                    <button
+                      class="btn-icon edit"
+                      aria-label="Editar membresía mensual"
+                    >
                       <i class="fa-regular fa-pen-to-square"></i>
                     </button>
 
-                    <button class="btn-icon delete">
+                    <button
+                      class="btn-icon delete"
+                      aria-label="Eliminar membresía mensual"
+                    >
                       <i class="fa-regular fa-trash-can"></i>
                     </button>
                   </div>
@@ -96,11 +110,17 @@
               <div class="col-lg-6 col-md-6">
                 <div class="membership-card">
                   <div class="card-icons">
-                    <button class="btn-icon edit">
+                    <button
+                      class="btn-icon edit"
+                      aria-label="Editar membresía semestral"
+                    >
                       <i class="fa-regular fa-pen-to-square"></i>
                     </button>
 
-                    <button class="btn-icon delete">
+                    <button
+                      class="btn-icon delete"
+                      aria-label="Eliminar membresía semestral"
+                    >
                       <i class="fa-regular fa-trash-can"></i>
                     </button>
                   </div>
@@ -119,11 +139,17 @@
               <div class="col-lg-6 col-md-6">
                 <div class="membership-card">
                   <div class="card-icons">
-                    <button class="btn-icon edit">
+                    <button
+                      class="btn-icon edit"
+                      aria-label="Editar membresía anual"
+                    >
                       <i class="fa-regular fa-pen-to-square"></i>
                     </button>
 
-                    <button class="btn-icon delete">
+                    <button
+                      class="btn-icon delete"
+                      aria-label="Eliminar membresía anual"
+                    >
                       <i class="fa-regular fa-trash-can"></i>
                     </button>
                   </div>
