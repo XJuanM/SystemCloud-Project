@@ -1,0 +1,34 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Julian",
+      "apellido": "Pinto",
+      "correo": "julian@gmail.com",
+      "telefono": "3001234567",
+      "rol": "Cliente",
+      "estado": "Activo",
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "nombre": "Dilan",
+      "apellido": "Bohorquez",
+      "correo": "dilan@gmail.com",
+      "telefono": "3115558899",
+      "rol": "Entrenador",
+      "estado": "Activo",
+      "password": "123"
+    },
+    {
+      "id": 3,
+      "nombre": "Juan",
+      "apellido": "Martínez",
+      "correo": "juan@gmail.com",
+      "telefono": "3207774455",
+      "rol": "Administrador",
+      "estado": "Inactivo",
+      "password": "123"
+    }
+  ]
+}
