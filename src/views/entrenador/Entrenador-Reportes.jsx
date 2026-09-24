@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../supabase.js';
-import '../views/reportes.css';
+import { supabase } from '../../supabase.js';
+import './entrenador-Reportes.css';
 
 export default function Reportes() {
     const [reportes, setReportes] = useState([]);

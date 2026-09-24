@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../views/rutinasCliente.css';
+import './cliente-Rutinas.css';
 
 export default function Rutina() {
     return (

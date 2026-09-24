@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../supabase'; // Asegúrate de que la ruta apunte a tu archivo de conexión
+import { supabase } from '../../supabase'; // Asegúrate de que la ruta apunte a tu archivo de conexión
 
 export default function CatalogoAlimentos() {
     const [alimentos, setAlimentos] = useState([]);

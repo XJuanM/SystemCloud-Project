@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../supabase';
+import { supabase } from '../../supabase';
 
 export default function MisClasesCliente() {
     const [clasesDisponibles, setClasesDisponibles] = useState([]);

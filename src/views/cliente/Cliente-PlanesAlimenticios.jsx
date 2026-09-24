@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../views/plan-alimenticio.css';
+import './cliente-PlanesAlimenticios.css';
 
 export default function PlanAlimenticioCliente() {
     return (

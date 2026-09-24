@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import '../views/miMembresia.css';
+import './cliente-Membresia.css';
 
 export default function Membresia() {
     const [isModalOpen, setIsModalOpen] = useState(false);

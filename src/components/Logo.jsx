@@ -1,14 +1,12 @@
-import logoProyect from "../assets/LogoProyectoSinFondo.png";
+import logoProyect from "../img/PrimeLogo1.png";
 
 export default function Logo() {
   return (
-    <section>
         <img
           src={logoProyect}
-          width="300"
-          height="300"
+          width="90"
+          height="90"
           alt="Logo del proyecto"
         />
-    </section>
   );
 }

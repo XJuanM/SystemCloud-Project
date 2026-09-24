@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../supabase.js';
-import '../views/clases.css';
+import { supabase } from '../../supabase.js';
+import './entrenador-Clases.css';
 
 export default function Clases() {
     const [clases, setClases] = useState([]);

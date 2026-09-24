@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../supabase';
+import { supabase } from '../../supabase';
+import './cliente-Progreso.css';
 
 export default function Progreso() {
     // Estados para la lista de registros

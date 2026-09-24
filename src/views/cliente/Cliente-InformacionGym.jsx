@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../views/informacionGym.css';
+import './cliente-InformacionGym.css';
 
 export default function InformacionGimnasio() {
     // ESTADO PARA EL FILTRO DE ENTRENADORES

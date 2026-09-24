@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../views/clientes.css';
+import './clientes.css';
 
 export default function DashboardCliente() { 
     return (  

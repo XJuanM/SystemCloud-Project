@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../views/perfil.css';
+import './cliente-Perfil.css';
 
 export default function Perfil() {
     return (

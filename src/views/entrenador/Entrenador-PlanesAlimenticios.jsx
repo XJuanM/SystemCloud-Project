@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../supabase.js';
-import Paginacion from '../components/Paginacion.jsx';
-import '../views/planesAlimenticios.css';
+import { supabase } from '../../supabase.js';
+import Paginacion from '../../components/Paginacion.jsx';
+import './entrenador-PlanesAlimenticios.css';
 
 const ITEMS_POR_PAGINA = 8;
 
