@@ -1,7 +1,26 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../views/informacionGym.css';
 
 export default function InformacionGimnasio() {
+    // ESTADO PARA EL FILTRO DE ENTRENADORES
+    const [filtroActual, setFiltroActual] = useState('todos');
+
+    // DATOS SIMULADOS DE ENTRENADORES (Modo lectura para el cliente)
+    const entrenadores = [
+        { id: 1, nombre: "Dilan Bohorquez", rol: "Entrenador Personal", categoria: "fuerza", icono: "fa-dumbbell" },
+        { id: 2, nombre: "Ana García", rol: "Instructora", categoria: "cardio", icono: "fa-person-running" },
+        { id: 3, nombre: "Carlos Ruiz", rol: "Instructor de Yoga", categoria: "yoga", icono: "fa-child-reaching" },
+        { id: 4, nombre: "Sofía López", rol: "Nutricionista Deportiva", categoria: "nutricion", icono: "fa-apple-whole" },
+        { id: 5, nombre: "Miguel Torres", rol: "Entrenador de Pesas", categoria: "fuerza", icono: "fa-dumbbell" }
+    ];
+
+    // LÓGICA DE FILTRADO
+    const entrenadoresFiltrados = entrenadores.filter(entrenador => {
+        if (filtroActual === 'todos') return true;
+        return entrenador.categoria === filtroActual;
+    });
+
     return (
         <>
             <div className="dashboard-layout">
@@ -13,55 +32,19 @@ export default function InformacionGimnasio() {
                     </div>
 
                     <nav className="sidebar-menu">
-                        <Link to="/cliente">
-                            <i className="fa-solid fa-house"></i>
-                            Inicio
-                        </Link>
-
-                        <Link to="/perfil">
-                            <i className="fa-solid fa-user"></i>
-                            Mi perfil
-                        </Link>
-
-                        <Link to="/membresia">
-                            <i className="fa-solid fa-credit-card"></i>
-                            Mi membresía
-                        </Link>
-
-                        <Link to="/rutina-cliente">
-                            <i className="fa-solid fa-dumbbell"></i>
-                            Mis rutinas
-                        </Link>
-
-                        <Link to="/plan-alimenticio">
-                            <i className="fa-solid fa-utensils"></i>
-                            Mi plan alimenticio
-                        </Link>
-
-                        <Link to="/mis-clases">
-                            <i className="fa-solid fa-calendar-days"></i>
-                            Mis clases
-                        </Link>
-
-                        <Link to="/progreso">
-                            <i className="fa-solid fa-chart-line"></i>
-                            Mi progreso
-                        </Link>
-
-                        <Link to="/catalogo">
-                            <i className="fa-solid fa-apple-whole"></i>
-                            Catálogo
-                        </Link>
-
-                        <Link to="/informacion-gimnasio" style={{ backgroundColor: "var(--azulito)", color: "var(--blanco)" }}>
+                    
+                        <Link to="/perfil"><i className="fa-solid fa-user"></i> Mi perfil</Link>
+                        <Link to="/membresia"><i className="fa-solid fa-credit-card"></i> Mi membresía</Link>
+                        <Link to="/rutina-cliente"><i className="fa-solid fa-dumbbell"></i> Mis rutinas</Link>
+                        <Link to="/plan-alimenticio"><i className="fa-solid fa-utensils"></i> Mi plan alimenticio</Link>
+                        <Link to="/mis-clases"><i className="fa-solid fa-calendar-days"></i> Mis clases</Link>
+                        <Link to="/progreso"><i className="fa-solid fa-chart-line"></i> Mi progreso</Link>
+                        <Link to="/catalogo"><i className="fa-solid fa-apple-whole"></i> Catálogo</Link>
+                        <Link to="/informacionGym" style={{ backgroundColor: "var(--azulito)", color: "var(--blanco)" }}>
                             <i className="fa-solid fa-circle-info"></i>
-                            Información del gimnasio
+                            <span>Información del gimnasio</span>
                         </Link>
-
-                        <Link to="/">
-                            <i className="fa-solid fa-right-from-bracket"></i>
-                            Salir
-                        </Link>
+                        <Link to="/"><i className="fa-solid fa-right-from-bracket"></i> Salir</Link>
                     </nav>
                 </aside>
 
@@ -74,9 +57,9 @@ export default function InformacionGimnasio() {
                                     <i className="fa-solid fa-circle-info"></i>
                                 </h2>
                                 <p>
-                                    Todo lo que necesitas saber antes de entrenar: horarios, sedes,
+                                    Todo lo que necesitas saber antes de entrenar: horarios,
                                     instalaciones, nuestro equipo de entrenadores y el reglamento
-                                    interno. Elige tu sede y revisa los detalles al instante.
+                                    interno.
                                 </p>
                             </div>
                         </div>
@@ -89,23 +72,13 @@ export default function InformacionGimnasio() {
                                     <span>Horario general</span>
                                 </div>
                             </div>
-
-                            <div className="stat-card">
-                                <i className="fa-solid fa-location-dot"></i>
-                                <div>
-                                    <h3 id="statSedes">0</h3>
-                                    <span>Sedes activas</span>
-                                </div>
-                            </div>
-
                             <div className="stat-card">
                                 <i className="fa-solid fa-user-tie"></i>
                                 <div>
-                                    <h3 id="statEntrenadores">0</h3>
+                                    <h3 id="statEntrenadores">{entrenadores.length}</h3>
                                     <span>Entrenadores certificados</span>
                                 </div>
                             </div>
-
                             <div className="stat-card">
                                 <i className="fa-solid fa-calendar-week"></i>
                                 <div>
@@ -135,40 +108,36 @@ export default function InformacionGimnasio() {
                         </div>
 
                         <div className="hero-info">
-                            <span className="info-badge" id="sedeBadge">SEDE PRINCIPAL</span>
-                            <h1 id="sedeNombre">Cargando sede...</h1>
-                            <p id="sedeDescripcion"></p>
+                            <h1 id="gymNombre">System Cloud Gym</h1>
+                            <p id="gymDescripcion">Cargando información del gimnasio...</p>
 
                             <div className="contact-grid">
                                 <div className="contact-item">
                                     <i className="fa-solid fa-location-dot"></i>
                                     <div>
                                         <span>Dirección</span>
-                                        <p id="sedeDireccion">--</p>
+                                        <p id="gymDireccion">--</p>
                                     </div>
                                 </div>
-
                                 <div className="contact-item">
                                     <i className="fa-solid fa-phone"></i>
                                     <div>
                                         <span>Teléfono</span>
-                                        <p id="sedeTelefono">--</p>
+                                        <p id="gymTelefono">--</p>
                                     </div>
                                 </div>
-
                                 <div className="contact-item">
                                     <i className="fa-solid fa-envelope"></i>
                                     <div>
                                         <span>Correo</span>
-                                        <p id="sedeCorreo">--</p>
+                                        <p id="gymCorreo">--</p>
                                     </div>
                                 </div>
-
                                 <div className="contact-item">
                                     <i className="fa-brands fa-instagram"></i>
                                     <div>
                                         <span>Redes sociales</span>
-                                        <p id="sedeRedes">--</p>
+                                        <p id="gymRedes">--</p>
                                     </div>
                                 </div>
                             </div>
@@ -178,13 +147,6 @@ export default function InformacionGimnasio() {
                             <h4><i className="fa-solid fa-calendar-days"></i> Horario de la semana</h4>
                             <div className="hours-list" id="hoursList"></div>
                             <p>Hoy: <span id="hoyEstado">--</span></p>
-                        </div>
-                    </section>
-
-                    <section className="info-controls">
-                        <h3>Selecciona tu sede</h3>
-                        <div className="range-selector" id="sedeSelector">
-                            <button data-sede="centro" className="range-btn active">Sede Centro</button>
                         </div>
                     </section>
 
@@ -202,20 +164,37 @@ export default function InformacionGimnasio() {
                         <div className="team-card">
                             <div className="team-header">
                                 <h3>Nuestros entrenadores</h3>
-                                <div className="records-filter" id="teamFilter">
-                                    <button data-cat="todos" className="filter-btn active">Todos</button>
-                                    <button data-cat="fuerza" className="filter-btn">Fuerza</button>
-                                    <button data-cat="cardio" className="filter-btn">Cardio</button>
-                                    <button data-cat="yoga" className="filter-btn">Yoga</button>
-                                    <button data-cat="nutricion" className="filter-btn">Nutrición</button>
+                                {/* BOTONES DE FILTRO CON EVENTOS onClick */}
+                                <div className="records-filter">
+                                    <button onClick={() => setFiltroActual('todos')} className={`filter-btn ${filtroActual === 'todos' ? 'active' : ''}`}>Todos</button>
+                                    <button onClick={() => setFiltroActual('fuerza')} className={`filter-btn ${filtroActual === 'fuerza' ? 'active' : ''}`}>Fuerza</button>
+                                    <button onClick={() => setFiltroActual('cardio')} className={`filter-btn ${filtroActual === 'cardio' ? 'active' : ''}`}>Cardio</button>
+                                    <button onClick={() => setFiltroActual('yoga')} className={`filter-btn ${filtroActual === 'yoga' ? 'active' : ''}`}>Yoga</button>
+                                    <button onClick={() => setFiltroActual('nutricion')} className={`filter-btn ${filtroActual === 'nutricion' ? 'active' : ''}`}>Nutrición</button>
                                 </div>
                             </div>
-                            <div className="team-list" id="teamList"></div>
+
+                            {/* LISTA DINÁMICA DE ENTRENADORES */}
+                            <div className="team-list">
+                                {entrenadoresFiltrados.length > 0 ? (
+                                    entrenadoresFiltrados.map((entrenador) => (
+                                        <div key={entrenador.id} className="team-item">
+                                            <i className={`fa-solid ${entrenador.icono}`}></i>
+                                            <div className="team-body">
+                                                <h5>{entrenador.nombre}</h5>
+                                                <span className="team-role">{entrenador.rol}</span>
+                                            </div>
+                                            <span className="team-tag">{entrenador.categoria}</span>
+                                        </div>
+                                    ))
+                                ) : (
+                                    <p className="text-muted mt-2" style={{ fontSize: '0.8rem' }}>No hay entrenadores en esta categoría.</p>
+                                )}
+                            </div>
                         </div>
                     </section>
                 </main>
             </div>
-
             <div className="toast" id="toast"></div>
         </>
     );

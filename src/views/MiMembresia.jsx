@@ -18,10 +18,7 @@ export default function Membresia() {
                     </div>
 
                     <nav className="sidebar-menu">
-                        <Link to="/cliente">
-                            <i className="fa-solid fa-house"></i>
-                            Inicio
-                        </Link>
+                        
 
                         <Link to="/perfil">
                             <i className="fa-solid fa-user"></i>
@@ -58,7 +55,7 @@ export default function Membresia() {
                             Catálogo
                         </Link>
 
-                        <Link to="/informacion-gimnasio">
+                        <Link to="/informacionGym">
                             <i className="fa-solid fa-circle-info"></i>
                             Información del gimnasio
                         </Link>

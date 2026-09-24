@@ -13,10 +13,7 @@ export default function Perfil() {
                     </div>
 
                     <nav className="sidebar-menu">
-                        <Link to="/cliente">
-                            <i className="fa-solid fa-house"></i>
-                            Inicio
-                        </Link>
+                        
 
                         <Link to="/perfil" style={{ backgroundColor: "var(--azulito)", color: "var(--blanco)" }}>
                             <i className="fa-solid fa-user"></i>
@@ -53,7 +50,7 @@ export default function Perfil() {
                             Catálogo
                         </Link>
 
-                        <Link to="/informacion-gimnasio">
+                        <Link to="/informacionGym">
                             <i className="fa-solid fa-circle-info"></i>
                             Información del gimnasio
                         </Link>

@@ -9,8 +9,10 @@ import Progreso from './views/Progreso';
 import Usuarios from './views/Usuarios';
 import RutinasEntrenador from './views/RutinasEntrenador';
 import PlanesAlimenticios from './views/PlanesAlimenticios';
+import MisClasesCliente from './views/MisClasesCliente';
 import Clases from './views/Clases';
 import Reportes from './views/Reportes';
+import CatalogoAlimentos from './views/CatalogoAlimentos';
 import Inventario from './views/Inventario';
 import InformacionGym from './views/InformacionGym'; 
 import './App.css';
@@ -25,6 +27,8 @@ function App() {
         <Route path="/plan-alimenticio" element={<PlanAlimenticioCliente />} />
         <Route path="/rutina-cliente" element={<Rutina />} />
         <Route path="/progreso" element={<Progreso />} />
+        <Route path="/mis-clases" element={<MisClasesCliente />} />
+        <Route path="/catalogo" element={<CatalogoAlimentos />} />
         <Route path="/informacionGym" element={<InformacionGym />} /> 
 
         <Route path="/entrenador" element={<DashboardEntrenador />} />
