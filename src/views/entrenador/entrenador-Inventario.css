@@ -73,7 +73,7 @@
 .inventario-page .inv-card:hover {
     transform: translateY(-2px);
     border-color: var(--tono);
-    box-shadow: 0 0 14px rgba(10, 150, 150, .18);
+    box-shadow: 0 0 14px rgba(8, 125, 235, 0.5);
 }
 
 .inventario-page .inv-card--low { --tono: #ffc107; }
@@ -329,4 +329,151 @@
 .inv-btn-danger:disabled {
     opacity: .6;
     cursor: not-allowed;
+}
+
+
+/* =====================================================
+   FIX: header desbordado (scroll horizontal) + espacio
+   vacío entre el header y la sección de equipos
+   ===================================================== */
+
+/* Nada dentro de la página puede empujar el ancho más allá del viewport */
+.inventario-page,
+.inventario-page .dashboard-main {
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+/* El main apila header + contenido desde arriba, sin repartir espacio sobrante */
+.inventario-page .dashboard-main {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-content: flex-start !important;
+    grid-template-rows: none !important;
+    gap: 0 !important;
+    box-sizing: border-box;
+}
+
+/* Header: ancho = al del contenedor, altura según su contenido, hijos que pueden envolver */
+.inventario-page .dashboard-header {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    flex: 0 0 auto;
+}
+
+.inventario-page .header-text {
+    flex: 1 1 340px;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100%;
+}
+
+.inventario-page .header-text .text,
+.inventario-page .header-text h2,
+.inventario-page #headerSummary {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.inventario-page .header-cards {
+    flex: 2 1 640px;
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Contenido: pegado al header (sólo 20px de separación) */
+.inventario-page .inventory-content {
+    flex: 0 0 auto !important;
+    box-sizing: border-box;
+    min-width: 0;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 20px auto 0 !important;
+    padding-top: 0 !important;
+    align-content: flex-start;
+}
+
+.inventario-page .inv-card {
+    min-width: 0;
+}
+
+
+/* =====================================================
+   FIX RESPONSIVE: opciones del sidebar (mismo criterio
+   que Clases y Rutinas). Solo afecta .sidebar,
+   .sidebar-menu y sus enlaces en pantallas <= 992px.
+   ===================================================== */
+
+@media (max-width:992px){
+
+    .inventario-page .sidebar{
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .inventario-page .sidebar-logo{
+        flex:0 0 auto;
+    }
+
+    .inventario-page .sidebar-menu{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-content:flex-start;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .inventario-page .sidebar-menu a{
+        width:220px;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
+        white-space:nowrap;
+    }
+}
+
+@media (max-width:768px){
+
+    .inventario-page .sidebar-menu{
+        flex-direction:column;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        align-content:flex-start;
+        align-items:stretch;
+        gap:10px;
+        height:auto;
+    }
+
+    .inventario-page .sidebar-menu a{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
+    }
 }

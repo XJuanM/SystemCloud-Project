@@ -6,7 +6,7 @@
 
 :root{
     --blanco: #fffceb;
-    --azulito: #0a9696;
+    --azulito: rgba(8, 125, 235, 0.5);
     --negro :#000000;
     --gris : rgb(41, 39, 39);
     --negro :#000000
@@ -102,15 +102,15 @@ body{
 
     background: linear-gradient(
     to bottom,
-    rgba(10,150,150,.28) 0%,
-    rgba(6,70,70,.18) 12%,
-    rgba(3,30,30,.08) 22%,
+    rgba(8, 125, 235, 0.5) 0%,
+    rgba(4, 106, 201, 0.2) 12%,
+    rgba(3, 32, 46, 0.08) 22%,
     transparent 40%
 );
 
     text-shadow:
-    0 0 20px rgba(10,150,150,.4),
-    0 0 20px rgba(10,150,150,.2);
+    0 0 20px rgba(8, 125, 235, 0.5),
+    0 0 20px rgba(8, 125, 235, 0.5);
 
     width: 100%;
     max-width: 1500px;
@@ -133,9 +133,9 @@ body{
 .header-text:hover{
     transform: translateY(-4px);
 
-    border-color: rgba(10,150,150,.5);
+    border-color: rgba(8, 125, 235, 0.5);
 
-    box-shadow: 0 0 18px rgba(10,150,150,.2);
+    box-shadow: 0 0 18px rgba(8, 125, 235, 0.5);
 }
 
 .text p{
@@ -169,9 +169,9 @@ body{
     
     background: linear-gradient(
     to top,
-    rgba(10,150,150,.28) 0%,
-    rgba(6,70,70,.18) 12%,
-    rgba(3,30,30,.08) 22%,
+    rgba(8, 125, 235, 0.5) 0%,
+    rgba(4, 106, 201, 0.2) 12%,
+    rgba(3, 32, 46, 0.08) 22%,
     transparent 40%
 );
     border: solid 2px var(--negro);
@@ -373,7 +373,7 @@ body{
 
     border-color: var(--azulito);
 
-    box-shadow: 0 0 10px rgba(10,150,150,.35);
+    box-shadow: 0 0 10px rgba(8, 125, 235, 0.5);
 
 }
 
@@ -462,13 +462,13 @@ body{
 
 .accordion-button:hover{
 
-    background: rgba(10,150,150,.18);
+    background: rgba(8, 125, 235, 0.5);
 
 }
 
 .accordion-button:not(.collapsed){
 
-    background: rgba(10,150,150,.22);
+    background: rgba(8, 125, 235, 0.5);
 
     color: var(--blanco);
 
@@ -528,7 +528,7 @@ body{
 
 .accordion-body .table-hover tbody tr:hover td{
 
-    background: rgba(10,150,150,.15);
+    background: rgba(8, 125, 235, 0.5);
 
 }
 
@@ -544,11 +544,11 @@ body{
 
 .accordion-body .btn-success:hover{
 
-    background: #12bcbc;
+    background: rgba(8, 125, 235, 0.5);
 
     transform: translateY(-1px);
 
-    box-shadow: 0 0 10px rgba(10,150,150,.35);
+    box-shadow: 0 0 10px rgba(8, 125, 235, 0.5);
 
 }
 
@@ -605,9 +605,9 @@ body{
 
     background:linear-gradient(
         to top,
-        rgba(10,150,150,.28) 0%,
-        rgba(6,70,70,.18) 12%,
-        rgba(3,30,30,.08) 22%,
+        rgba(8, 125, 235, 0.5) 0%,
+        rgba(4, 106, 201, 0.2) 12%,
+        rgba(3, 32, 46, 0.08) 22%,
         transparent 40%
     );
 
@@ -622,9 +622,9 @@ body{
 
     transform:translateY(-4px);
 
-    border-color:rgba(10,150,150,.5);
+    border-color:rgba(8, 125, 235, 0.5);
 
-    box-shadow:0 0 18px rgba(10,150,150,.2);
+    box-shadow:0 0 18px rgba(8, 125, 235, 0.5);
 
 }
 
@@ -754,15 +754,15 @@ body{
 
     background: linear-gradient(
     to bottom,
-    rgba(10,150,150,.28) 0%,
-    rgba(6,70,70,.18) 12%,
-    rgba(3,30,30,.08) 22%,
+    rgba(8, 125, 235, 0.5) 0%,
+    rgba(4, 106, 201, 0.2) 12%,
+    rgba(3, 32, 46, 0.08) 22%,
     transparent 40%
 );
 
     text-shadow:
-    0 0 20px rgba(10,150,150,.4),
-    0 0 20px rgba(10,150,150,.2);
+    0 0 20px rgba(8, 125, 235, 0.5),
+    0 0 20px rgba(8, 125, 235, 0.5);
 
     display:flex;
     width:100%;
@@ -787,9 +787,9 @@ body{
 .planes-page .header-text:hover{
     transform:translateY(-4px);
 
-    border-color:rgba(10,150,150,.5);
+    border-color:rgba(8, 125, 235, 0.5);
 
-    box-shadow:0 0 18px rgba(10,150,150,.2);
+    box-shadow:0 0 18px rgba(8, 125, 235, 0.5);
 }
 
 .planes-page .header-text h2{
@@ -1258,11 +1258,11 @@ body{
 }
 
 .planes-page .card-header > .btn-success:hover{
-    background-color:rgb(66,224,224);
+    background-color:rgba(8, 125, 235, 0.5);
     color:var(--blanco);
     border-color:transparent;
     transform:translateY(-2px);
-    box-shadow:0 0 18px rgba(10,150,150,.55), 0 6px 14px rgba(0,0,0,.25);
+    box-shadow:0 0 18px rgba(8, 125, 235, 0.5), 0 6px 14px rgba(0,0,0,.25);
 }
 
 .planes-page .card-header > .btn-success:hover::after{
@@ -1280,7 +1280,7 @@ body{
 .planes-page .card-header > .btn-success:active{
     background-color:var(--azulito);
     transform:translateY(0) scale(.97);
-    box-shadow:0 0 10px rgba(10,150,150,.45);
+    box-shadow:0 0 10px rgba(8, 125, 235, 0.5);
 }
 
 .planes-page .table .btn{
@@ -1304,7 +1304,7 @@ body{
     transform:translateY(0) scale(.94);
 }
 
-.planes-page .table .btn-info:hover{    box-shadow:0 0 12px rgba(10,150,150,.6); }
+.planes-page .table .btn-info:hover{    box-shadow:0 0 12px rgba(8, 125, 235, 0.5); }
 .planes-page .table .btn-warning:hover{ box-shadow:0 0 12px rgba(255,193,7,.55); }
 .planes-page .table .btn-primary:hover{ box-shadow:0 0 12px rgba(13,110,253,.55); }
 .planes-page .table .btn-danger:hover{  box-shadow:0 0 12px rgba(220,53,69,.6); }
@@ -1399,5 +1399,73 @@ body{
         margin:2px;
         padding:.2rem .5rem;
         font-size:.78rem;
+    }
+}
+
+
+/* =====================================================
+   FIX RESPONSIVE: opciones del sidebar (mismo criterio
+   que Clases y Rutinas). Solo afecta .sidebar,
+   .sidebar-menu y sus enlaces en pantallas <= 992px.
+   ===================================================== */
+
+@media (max-width:992px){
+
+    .planes-page .sidebar{
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .planes-page .sidebar-logo{
+        flex:0 0 auto;
+    }
+
+    .planes-page .sidebar-menu{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-content:flex-start;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .planes-page .sidebar-menu a{
+        width:220px;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
+        white-space:nowrap;
+    }
+}
+
+@media (max-width:768px){
+
+    .planes-page .sidebar-menu{
+        flex-direction:column;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        align-content:flex-start;
+        align-items:stretch;
+        gap:10px;
+        height:auto;
+    }
+
+    .planes-page .sidebar-menu a{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
     }
 }

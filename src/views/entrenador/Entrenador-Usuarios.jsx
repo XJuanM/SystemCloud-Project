@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import bcrypt from 'bcryptjs';
 import { supabase } from '../../supabase.js';
 import Paginacion from '../../components/Paginacion.jsx';
 import './entrenador-Usuarios.css';
@@ -75,13 +76,19 @@ export default function Usuarios() {
         e.preventDefault();
 
         try {
+            let passwordAGuardar = form.password;
+            if (!form.id_usuario) {
+                const salt = await bcrypt.genSalt(10);
+                passwordAGuardar = await bcrypt.hash(form.password, salt);
+            }
+
             const datosAEnviar = {
                 nombre_apellido: form.nombre_apellido,
                 tipo_rol: 'Cliente',
                 telefono: form.telefono ? Number(form.telefono) : null,
                 direccion: form.direccion,
                 correo: form.correo,
-                password: form.password
+                password: passwordAGuardar
             };
 
             if (form.id_usuario) {

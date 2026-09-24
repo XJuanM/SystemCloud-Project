@@ -119,7 +119,7 @@ export default function Index() {
   };
 
   return (
-    <>
+    <div className="landing">
       <header className="header">
         <nav className="navbar navbar-expand-lg navbar-sc">
           <div className="navbar-logo">
@@ -396,6 +396,6 @@ export default function Index() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }

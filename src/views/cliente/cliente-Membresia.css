@@ -2,8 +2,8 @@
 
 :root{
     --blanco:#fffceb;
-    --azulito:#0a9696;
-    --azulito-claro:#43e6e6;
+    --azulito:rgba(8, 125, 235, 0.5);
+    --azulito-claro:rgba(8, 125, 235, 0.5);
     --negro:#000;
     --gris:rgb(41,39,39);
     --gris-claro:rgba(255,255,255,.04);
@@ -45,7 +45,7 @@
     stroke-width:14;
     stroke-linecap:round;
     transition:stroke-dashoffset 1s ease;
-    filter:drop-shadow(0 0 10px rgba(10,150,150,.6));
+    filter:drop-shadow(0 0 10px rgba(8, 125, 235, 0.5));
 }
 
 .ring-center{
@@ -62,7 +62,7 @@
     font-size:2.6rem;
     line-height:1;
     color:var(--azulito-claro);
-    text-shadow:0 0 18px rgba(10,150,150,.45);
+    text-shadow:0 0 18px rgba(8, 125, 235, 0.5);
 }
 
 .ring-center span{
@@ -137,19 +137,19 @@
 }
 
 .btn-primary:hover{
-    background:#11baba;
+    background:rgba(8, 125, 235, 0.5);
     transform:translateY(-2px);
-    box-shadow:0 0 18px rgba(10,150,150,.35);
+    box-shadow:0 0 18px rgba(8, 125, 235, 0.5);
 }
 
 .btn-secondary{
     background:transparent;
     color:var(--azulito-claro);
-    border:1px solid rgba(10,150,150,.5);
+    border:1px solid rgba(8, 125, 235, 0.5);
 }
 
 .btn-secondary:hover{
-    background:rgba(10,150,150,.12);
+    background:rgba(8, 125, 235, 0.5);
     transform:translateY(-2px);
 }
 
@@ -166,9 +166,9 @@
 .payment-history{
     background:linear-gradient(
         to bottom,
-        rgba(10,150,150,.16) 0%,
-        rgba(6,70,70,.10) 15%,
-        rgba(3,30,30,.05) 30%,
+        rgba(8, 125, 235, 0.5) 0%,
+        rgba(4, 106, 201, 0.2) 15%,
+        rgba(3, 32, 46, 0.08) 30%,
         transparent 50%
     );
     border:1px solid rgba(255,255,255,.08);
@@ -182,8 +182,8 @@
 .plan-card:hover,
 .payment-history:hover{
     transform:translateY(-4px);
-    border-color:rgba(10,150,150,.5);
-    box-shadow:0 0 18px rgba(10,150,150,.2);
+    border-color:rgba(8, 125, 235, 0.5);
+    box-shadow:0 0 18px rgba(8, 125, 235, 0.5);
 }
 
 .benefits-card{
@@ -226,7 +226,7 @@
     align-items:center;
     justify-content:center;
     border-radius:10px;
-    background:rgba(10,150,150,.18);
+    background:rgba(8, 125, 235, 0.5);
     color:var(--azulito-claro);
     font-size:14px;
 }
@@ -297,7 +297,7 @@ table.history-table{
 }
 
 .history-table tbody tr:hover{
-    background:rgba(10,150,150,.08);
+    background:rgba(8, 125, 235, 0.5);
 }
 
 .status-pill{
@@ -308,7 +308,7 @@ table.history-table{
 }
 
 .status-pill.pagado{
-    background:rgba(10,150,150,.2);
+    background:rgba(8, 125, 235, 0.5);
     color:#5cf0f0;
 }
 
@@ -340,13 +340,13 @@ table.history-table{
 .modal{
     width:min(420px,90vw);
     background:var(--gris);
-    border:1px solid rgba(10,150,150,.4);
+    border:1px solid rgba(8, 125, 235, 0.5);
     border-radius:16px;
     padding:30px;
     color:var(--blanco);
     transform:translateY(20px);
     transition:.25s;
-    box-shadow:0 0 40px rgba(10,150,150,.25);
+    box-shadow:0 0 40px rgba(8, 125, 235, 0.5);
 }
 
 .modal-overlay.active .modal{
@@ -377,12 +377,12 @@ table.history-table{
 }
 
 .plan-option:hover{
-    border-color:rgba(10,150,150,.5);
+    border-color:rgba(8, 125, 235, 0.5);
 }
 
 .plan-option.selected{
     border-color:var(--azulito);
-    background:rgba(10,150,150,.14);
+    background:rgba(8, 125, 235, 0.5);
 }
 
 .plan-option .opt-name{
@@ -434,7 +434,7 @@ table.history-table{
     transform:translateY(120%);
     opacity:0;
     transition:.35s;
-    box-shadow:0 0 20px rgba(10,150,150,.3);
+    box-shadow:0 0 20px rgba(8, 125, 235, 0.5);
     z-index:200;
 }
 
@@ -476,5 +476,76 @@ table.history-table{
     }
     .membership-hero{
         padding:20px;
+    }
+}
+
+
+/* =====================================================
+   FIX RESPONSIVE: opciones del sidebar (mismo criterio
+   que Clases y Rutinas del entrenador).
+   Solo afecta .sidebar, .sidebar-menu y sus enlaces en
+   pantallas <= 992px. Se antepone .dashboard-layout para
+   ganar en especificidad aunque Vite junte los .css en
+   otro orden.
+   ===================================================== */
+
+@media (max-width:992px){
+
+    .dashboard-layout .sidebar{
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .dashboard-layout .sidebar-logo{
+        flex:0 0 auto;
+    }
+
+    .dashboard-layout .sidebar-menu{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-content:flex-start;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .dashboard-layout .sidebar-menu a{
+        width:220px;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
+        white-space:nowrap;
+    }
+}
+
+@media (max-width:768px){
+
+    .dashboard-layout .sidebar-menu{
+        flex-direction:column;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        align-content:flex-start;
+        align-items:stretch;
+        gap:10px;
+        height:auto;
+    }
+
+    .dashboard-layout .sidebar-menu a{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
     }
 }

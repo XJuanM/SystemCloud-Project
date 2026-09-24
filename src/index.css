@@ -1,3 +1,12 @@
+/* =====================================================================
+   index.css  (landing + login/registro)
+   Todas las reglas van bajo .landing para que NO se filtren a los
+   dashboards (Usuarios, Rutinas, Clases, Planes...). Al importar un CSS
+   en React queda global; sin este prefijo, .modal-content, .input-group,
+   .close-btn, etc. pisaban las clases de Bootstrap en todo el proyecto.
+   Los bloques  *  y  html, body, #root  se dejaron sin prefijo.
+   ===================================================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +22,7 @@ html, body, #root {
   position: absolute; 
 }
 
-.header {
+.landing .header {
   width: 100%;
   position: absolute; 
   top: 0;
@@ -21,7 +30,7 @@ html, body, #root {
   z-index: 100;
 }
 
-.navbar-sc {
+.landing .navbar-sc {
   display: flex;
   align-items: center;
   height: 90px; 
@@ -38,20 +47,20 @@ html, body, #root {
   box-shadow: none; 
 }
 
-.navbar-logo,
-.navbar-links {
+.landing .navbar-logo,
+.landing .navbar-links {
   flex: 1; 
   display: flex;
 }
 
-.navbar-logo {
+.landing .navbar-logo {
   justify-content: flex-start; 
   width: 50%; 
   display: flex;
   align-items: center;
 }
 
-.navbar-links {
+.landing .navbar-links {
   justify-content: flex-end;
   width: 50%; 
   display: flex;
@@ -59,7 +68,7 @@ html, body, #root {
   gap: 40px;
 }
 
-.navbar-links a {
+.landing .navbar-links a {
   color: #e0e0e0;
   text-decoration: none;
   font-size: 16px;
@@ -69,13 +78,13 @@ html, body, #root {
   transform-origin: bottom center;
 }
 
-.navbar-links a:hover {
+.landing .navbar-links a:hover {
   color: #2887bf;
   transform: scale(1.15);
   text-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
 }
 
-section.hero {
+.landing section.hero {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -99,7 +108,7 @@ background-position: center;
 
 }
 
-.hero {
+.landing .hero {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,12 +120,12 @@ background-position: center;
   font-family: 'Montserrat', sans-serif; 
 }
 
-.hero-content {
+.landing .hero-content {
   max-width: 800px; 
   animation: fadeIn 1s ease-out; 
 }
 
-.hero-content h1 {
+.landing .hero-content h1 {
   font-size: 4.5rem;
   font-weight: 800;
   margin-bottom: 15px;
@@ -125,21 +134,21 @@ background-position: center;
   -webkit-text-fill-color: transparent;
 }
 
-.hero-subtitle {
+.landing .hero-subtitle {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 20px;
   color: #e0e0e0;
 }
 
-.hero-description {
+.landing .hero-description {
   font-size: 1.1rem;
   line-height: 1.6;
   color: #aaaaaa;
   margin-bottom: 35px;
 }
 
-.cta-button {
+.landing .cta-button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -153,7 +162,7 @@ background-position: center;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
 
-.cta-button:hover {
+.landing .cta-button:hover {
   background-color: #0056b3;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5);
@@ -170,14 +179,14 @@ background-position: center;
   }
 }
 
-.services-section {
+.landing .services-section {
   padding: 80px 20px;
   background-color: #111111;
   text-align: center;
   font-family: 'Montserrat', sans-serif;
 }
 
-.section-title {
+.landing .section-title {
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 50px;
@@ -186,7 +195,7 @@ background-position: center;
   -webkit-text-fill-color: transparent;
 }
 
-.cards-container {
+.landing .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
@@ -194,7 +203,7 @@ background-position: center;
   margin: 0 auto;
 }
 
-.sc-card {
+.landing .sc-card {
   background-color: #1a1a2e;
   border: 1px solid #2887bf;
   border-radius: 16px;
@@ -206,25 +215,25 @@ background-position: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
-.sc-card:hover {
+.landing .sc-card:hover {
   transform: translateY(-10px);
   border-color: #2887bf;
   box-shadow: 0 10px 30px rgba(0, 123, 255, 0.15);
 }
 
-.card-icon {
+.landing .card-icon {
   font-size: 3rem;
   margin-bottom: 20px;
 }
 
-.sc-card h3 {
+.landing .sc-card h3 {
   color: white;
   font-size: 1.5rem;
   margin-bottom: 15px;
   font-weight: 600;
 }
 
-.sc-card p {
+.landing .sc-card p {
   color: #aaaaaa;
   font-size: 1rem;
   line-height: 1.6;
@@ -232,7 +241,7 @@ background-position: center;
   flex-grow: 1;
 }
 
-.card-link {
+.landing .card-link {
   color: #0dcaf0;
   text-decoration: none;
   font-weight: 600;
@@ -240,12 +249,12 @@ background-position: center;
   transition: color 0.3s;
 }
 
-.card-link:hover {
+.landing .card-link:hover {
   color: white;
   text-decoration: underline;
 }
 
-.footer-system {
+.landing .footer-system {
   border: 2px solid #2887bf;
   background-color: #111111;
   color: #e0e0e0;
@@ -254,12 +263,12 @@ background-position: center;
   border-top: 1px solid rgba(0, 123, 255, 0.2);
 }
 
-.footer-brand .footer-logo {
+.landing .footer-brand .footer-logo {
   max-width: 80px;
   margin-bottom: 15px;
 }
 
-.footer-brand h2 {
+.landing .footer-brand h2 {
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 15px;
@@ -268,55 +277,55 @@ background-position: center;
   -webkit-text-fill-color: transparent;
 }
 
-.footer-brand p {
+.landing .footer-brand p {
   font-size: 0.95rem;
   color: #aaaaaa;
   line-height: 1.6;
 }
 
-.footer-system h4 {
+.landing .footer-system h4 {
   color: white;
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 20px;
 }
 
-.footer-links,
-.footer-contact {
+.landing .footer-links,
+.landing .footer-contact {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer-links li,
-.footer-contact li {
+.landing .footer-links li,
+.landing .footer-contact li {
   margin-bottom: 12px;
   font-size: 0.95rem;
   color: #aaaaaa;
 }
 
-.footer-links a {
+.landing .footer-links a {
   color: #aaaaaa;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
+.landing .footer-links a:hover {
   color: #0dcaf0;
   text-decoration: none;
 }
 
-.footer-contact .icon {
+.landing .footer-contact .icon {
   margin-right: 8px;
 }
 
-.redes {
+.landing .redes {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.social-link {
+.landing .social-link {
   color: #aaaaaa;
   text-decoration: none;
   font-size: 0.95rem;
@@ -326,25 +335,25 @@ background-position: center;
   gap: 8px;
 }
 
-.social-link i {
+.landing .social-link i {
   color: #007bff;
   font-size: 1.1rem;
 }
 
-.social-link:hover {
+.landing .social-link:hover {
   color: white;
 }
 
-.social-link:hover i {
+.landing .social-link:hover i {
   color: #0dcaf0;
 }
 
-.footer-divider {
+.landing .footer-divider {
   border-color: rgba(255, 255, 255, 0.1);
   margin: 40px 0 20px;
 }
 
-.footer-copy {
+.landing .footer-copy {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -353,33 +362,33 @@ background-position: center;
   color: #777777;
 }
 
-.footer-legal {
+.landing .footer-legal {
   display: flex;
   gap: 20px;
 }
 
-.footer-legal a {
+.landing .footer-legal a {
   color: #777777;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-legal a:hover {
+.landing .footer-legal a:hover {
   color: #0dcaf0;
 }
 
 @media (max-width: 991px) {
-  .footer-system h4 {
+  .landing .footer-system h4 {
     margin-top: 30px;
   }
-  .footer-copy {
+  .landing .footer-copy {
     flex-direction: column;
     text-align: center;
     gap: 15px;
   }
 }
 
-.sc-modal {
+.landing .sc-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -393,7 +402,7 @@ background-position: center;
   align-items: center;
 }
 
-.modal-content {
+.landing .modal-content {
   background-color: #1a1a2e;
   border: 1px solid rgba(0, 123, 255, 0.3);
   border-radius: 20px;
@@ -407,7 +416,7 @@ background-position: center;
   animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.modal-content h2 {
+.landing .modal-content h2 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 30px;
@@ -418,7 +427,7 @@ background-position: center;
   -webkit-text-fill-color: transparent;
 }
 
-.close-btn {
+.landing .close-btn {
   position: absolute;
   top: 15px;
   right: 20px;
@@ -429,25 +438,25 @@ background-position: center;
   line-height: 1;
 }
 
-.close-btn:hover {
+.landing .close-btn:hover {
   color: #0dcaf0;
   transform: scale(1.1);
 }
 
-.input-group {
+.landing .input-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-.input-group label {
+.landing .input-group label {
   font-size: 0.9rem;
   color: #aaaaaa;
   margin-bottom: 8px;
   font-weight: 500;
 }
 
-.input-group input {
+.landing .input-group input {
   background-color: #111111;
   border: 1px solid #333333;
   border-radius: 10px;
@@ -459,13 +468,13 @@ background-position: center;
   outline: none;
 }
 
-.input-group input:focus {
+.landing .input-group input:focus {
   border-color: #007bff;
   box-shadow: 0 0 12px rgba(0, 123, 255, 0.25);
   background-color: #151515;
 }
 
-.btn-submit {
+.landing .btn-submit {
   width: 100%;
   background: linear-gradient(45deg, #007bff, #0dcaf0);
   color: #000;
@@ -479,26 +488,26 @@ background-position: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.btn-submit:hover {
+.landing .btn-submit:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(13, 202, 240, 0.4);
   color: white;
 }
 
-.modal-links {
+.landing .modal-links {
   display: flex;
   justify-content: space-between;
   margin-top: 25px;
   font-size: 0.85rem;
 }
 
-.modal-links a {
+.landing .modal-links a {
   color: #aaaaaa;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.modal-links a:hover {
+.landing .modal-links a:hover {
   color: #0dcaf0;
 }
 

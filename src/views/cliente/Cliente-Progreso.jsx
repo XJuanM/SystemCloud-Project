@@ -131,7 +131,7 @@ export default function Progreso() {
                     <Link to="/progreso" style={{ backgroundColor: "var(--azulito)", color: "var(--blanco)" }}>
                         <i className="fa-solid fa-chart-line"></i> Mi progreso
                     </Link>
-                    <Link to="/catalogo"><i className="fa-solid fa-apple-whole"></i> Catálogo</Link>
+                    <Link to="/catalogo"><i className="fa-solid fa-apple-whole"></i> Catálogo de Alimentos</Link>
                     <Link to="/informacionGym"><i className="fa-solid fa-circle-info"></i> Información del gimnasio</Link>
                     <Link to="/"><i className="fa-solid fa-right-from-bracket"></i> Salir</Link>
                 </nav>
@@ -140,7 +140,7 @@ export default function Progreso() {
             <main className="dashboard-main p-4 w-100" style={{ overflowY: 'auto' }}>
                 <h2 className="text-white mb-4">
                     <i className="fa-solid fa-chart-line me-2" style={{ color: 'var(--azulito)' }}></i>
-                    Mi Progreso
+                    Mi Progresos
                 </h2>
 
                 <div className="row g-4">

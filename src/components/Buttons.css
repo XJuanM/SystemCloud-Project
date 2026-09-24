@@ -1,4 +1,7 @@
-button {
+/* Antes estas reglas eran sobre el elemento <button>, o sea, afectaban a TODOS los
+   botones del proyecto (dashboards incluidos). Ahora solo aplican al componente Btn,
+   que siempre lleva la clase .btnLogin. */
+.btnLogin {
   background-color: transparent;
   color: #2887bf; 
   height: 40px; /* Altura ligeramente más pequeña para un diseño más compacto */
@@ -12,7 +15,7 @@ button {
   transition: all 0.3s ease;
 }
 
-button:hover {
+.btnLogin:hover {
   background: linear-gradient(180deg, #2887bf, #242659); /* Degradado moderno al pasar el mouse */
   color: white;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4); /* Brillo más suave y expandido */

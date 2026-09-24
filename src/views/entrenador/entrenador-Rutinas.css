@@ -6,7 +6,7 @@
 
 :root{
     --blanco: #fffceb;
-    --azulito: #0a9696;
+    --azulito: rgba(8, 125, 235, 0.5);
     --negro :#000000;
     --gris : rgb(41, 39, 39);
     --negro :#000000
@@ -32,7 +32,7 @@ body{
 
 
 .rutinas-page{
-    --sidebar-ancho: 320px;
+    --sidebar-ancho: 400px;
 }
 
 .rutinas-page .sidebar {
@@ -60,7 +60,7 @@ body{
     flex-shrink: 0;
     width: 100%;
     max-width: 1500px;
-    margin: 0;
+    margin: 0 auto;
 }
 
 .rutinas-page .sidebar-logo {
@@ -76,8 +76,8 @@ body{
 
 .rutinas-page .sidebar-logo h2 {
     color: var(--azulito);
-    font-size: 38px;
-    font-weight: 700;
+    font-size: 36px;
+    font-weight: 580;
     margin-top: 10px;
     margin-bottom: 5px;
 }
@@ -119,15 +119,15 @@ body{
 
     background: linear-gradient(
     to bottom,
-    rgba(10,150,150,.28) 0%,
-    rgba(6,70,70,.18) 12%,
-    rgba(3,30,30,.08) 22%,
+    rgba(8, 125, 235, 0.5) 0%,
+    rgba(4, 106, 201, 0.2) 12%,
+    rgba(3, 32, 46, 0.08) 22%,
     transparent 40%
 );
 
     text-shadow:
-    0 0 20px rgba(10,150,150,.4),
-    0 0 20px rgba(10,150,150,.2);
+    0 0 20px rgba(8, 125, 235, 0.5),
+    0 0 20px rgba(4, 106, 201, 0.2) ;
 
     width: 100%;
     max-width: 1500px;
@@ -138,7 +138,7 @@ body{
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border: 1px solid rgba(4, 106, 201, 0.2) ;
     border-radius: 13px;
 
     color: var(--blanco);
@@ -150,9 +150,9 @@ body{
 .rutinas-page .header-text:hover{
     transform: translateY(-4px);
 
-    border-color: rgba(10,150,150,.5);
+    border-color: rgba(8, 125, 235, 0.5);
 
-    box-shadow: 0 0 18px rgba(10,150,150,.2);
+    box-shadow: 0 0 18px rgba(4, 106, 201, 0.2);
 }
 
 .rutinas-page .text p{
@@ -178,7 +178,7 @@ body{
 
 .rutinas-page .routine-manager,
 .rutinas-page .user-manager{
-    margin: 20px 0 0;
+    margin: 20px auto 0;
     width: 100%;
     max-width: 1500px;
     border: solid 2px var(--negro);
@@ -190,9 +190,9 @@ body{
     
     background: linear-gradient(
     to top,
-    rgba(10,150,150,.28) 0%,
-    rgba(6,70,70,.18) 12%,
-    rgba(3,30,30,.08) 22%,
+    rgba(8, 125, 235, 0.5) 0%,
+    rgba(4, 106, 201, 0.2) 12%,
+    rgba(3, 32, 46, 0.08)22%,
     transparent 40%
 );
     border: solid 2px var(--negro);
@@ -265,7 +265,7 @@ body{
 
 
 .rutinas-page .table-hover tbody tr:hover td{
-    background-color: #104949;
+    background-color: rgba(4, 106, 201, 0.2);
     color: var(--blanco);
 }
 
@@ -349,7 +349,7 @@ body{
 
     background: var(--gris);
 
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(3, 32, 46, 0.08);
 
     border-radius: 15px;
 
@@ -359,7 +359,7 @@ body{
 
 .modal-header{
 
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(3, 32, 46, 0.08);
 
     padding: 20px 25px;
 
@@ -387,7 +387,7 @@ body{
 
 .modal-footer{
 
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid rgba(3, 32, 46, 0.08);
 
 }
 
@@ -411,9 +411,9 @@ body{
 }
 .cliente-info{
 
-    background: rgba(255,255,255,.03);
+    background: rgba(3, 32, 46, 0.08);
 
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(3, 32, 46, 0.08);
 
     border-radius: 12px;
 
@@ -445,7 +445,7 @@ body{
 
     color: var(--blanco);
 
-    border: 1px solid rgba(255,255,255,.15);
+    border: 1px solid rgba(3, 32, 46, 0.08);
 
 }
 
@@ -459,7 +459,7 @@ body{
 
     border-color: var(--azulito);
 
-    box-shadow: 0 0 10px rgba(10,150,150,.35);
+    box-shadow: 0 0 10px rgba(3, 32, 46, 0.08);
 
 }
 
@@ -512,7 +512,7 @@ body{
 
     --bs-accordion-bg: transparent;
 
-    --bs-accordion-border-color: rgba(255,255,255,.08);
+    --bs-accordion-border-color: rgba(3, 32, 46, 0.08);
 
     --bs-accordion-border-radius: 12px;
 
@@ -522,7 +522,7 @@ body{
 
     background: rgba(255,255,255,.03);
 
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(3, 32, 46, 0.08);
 
     border-radius: 12px !important;
 
@@ -534,7 +534,7 @@ body{
 
 .accordion-button{
 
-    background: rgba(255,255,255,.04);
+    background: rgba(3, 32, 46, 0.08);
 
     color: var(--blanco);
 
@@ -548,13 +548,13 @@ body{
 
 .accordion-button:hover{
 
-    background: rgba(10,150,150,.18);
+    background: rgba(4, 106, 201, 0.2);
 
 }
 
 .accordion-button:not(.collapsed){
 
-    background: rgba(10,150,150,.22);
+    background: rgba(4, 106, 201, 0.2);
 
     color: var(--blanco);
 
@@ -596,7 +596,7 @@ body{
 
     background: transparent;
 
-    color: rgb(70,220,220);
+    color: rgba(8, 125, 235, 0.5);
 
     border-color: rgba(255,255,255,.08);
 
@@ -614,7 +614,7 @@ body{
 
 .accordion-body .table-hover tbody tr:hover td{
 
-    background: rgba(10,150,150,.15);
+    background: rgba(8, 125, 235, 0.5);
 
 }
 
@@ -630,11 +630,11 @@ body{
 
 .accordion-body .btn-success:hover{
 
-    background: #12bcbc;
+    background: rgba(8, 125, 235, 0.5);
 
     transform: translateY(-1px);
 
-    box-shadow: 0 0 10px rgba(10,150,150,.35);
+    box-shadow: 0 0 10px rgba(8, 125, 235, 0.5);
 
 }
 
@@ -693,9 +693,9 @@ body{
 
     background:linear-gradient(
         to top,
-        rgba(10,150,150,.28) 0%,
-        rgba(6,70,70,.18) 12%,
-        rgba(3,30,30,.08) 22%,
+        rgba(8, 125, 235, 0.5) 0%,
+        rgba(4, 106, 201, 0.2) 12%,
+        rgba(3, 32, 46, 0.08) 22%,
         transparent 40%
     );
 
@@ -710,9 +710,9 @@ body{
 
     transform:translateY(-4px);
 
-    border-color:rgba(10,150,150,.5);
+    border-color:rgba(8, 125, 235, 0.5);
 
-    box-shadow:0 0 18px rgba(10,150,150,.2);
+    box-shadow:0 0 18px rgba(8, 125, 235, 0.5);
 
 }
 
@@ -799,6 +799,10 @@ body{
 }
 
 @media (max-width:1400px){
+
+    .rutinas-page{
+        --sidebar-ancho: 320px;
+    }
 
     .rutinas-page .dashboard-main,
     .rutinas-page .dashboard-header,
@@ -1193,11 +1197,11 @@ body{
 }
 
 .rutinas-page .card-header > .btn-success:hover{
-    background-color:rgb(66,224,224);
+    background-color:rgba(8, 125, 235, 0.5);
     color:var(--blanco);
     border-color:transparent;
     transform:translateY(-2px);
-    box-shadow:0 0 18px rgba(10,150,150,.55), 0 6px 14px rgba(0,0,0,.25);
+    box-shadow:0 0 18px rgba(8, 125, 235, 0.5), 0 6px 14px rgba(0,0,0,.25);
 }
 
 .rutinas-page .card-header > .btn-success:hover::after{
@@ -1216,7 +1220,7 @@ body{
 .rutinas-page .card-header > .btn-success:active{
     background-color:var(--azulito);
     transform:translateY(0) scale(.97);
-    box-shadow:0 0 10px rgba(10,150,150,.45);
+    box-shadow:0 0 10px rgba(8, 125, 235, 0.5);
 }
 
 
@@ -1241,7 +1245,7 @@ body{
     transform:translateY(0) scale(.94);
 }
 
-.rutinas-page .table .btn-info:hover{    box-shadow:0 0 12px rgba(10,150,150,.6); }
+.rutinas-page .table .btn-info:hover{    box-shadow:0 0 12px rgba(8, 125, 235, 0.5); }
 .rutinas-page .table .btn-warning:hover{ box-shadow:0 0 12px rgba(255,193,7,.55); }
 .rutinas-page .table .btn-primary:hover{ box-shadow:0 0 12px rgba(13,110,253,.55); }
 .rutinas-page .table .btn-danger:hover{  box-shadow:0 0 12px rgba(220,53,69,.6); }

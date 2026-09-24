@@ -47,7 +47,7 @@ export default function Rutina() {
 
                         <Link to="/catalogo">
                             <i className="fa-solid fa-apple-whole"></i>
-                            Catálogo
+                            Catálogo de Alimentos
                         </Link>
 
                         <Link to="/informacionGym">

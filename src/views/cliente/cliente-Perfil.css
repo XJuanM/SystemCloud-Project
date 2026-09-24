@@ -6,7 +6,7 @@
 
 :root{
     --blanco: #fffceb;
-    --azulito: #0a9696;
+    --azulito: rgba(8, 125, 235, 0.5);
     --negro :#000000;
     --gris : rgb(41, 39, 39);
     --negro :#000000
@@ -100,30 +100,28 @@ body{
 .dashboard-header{
     background-color: var(--gris);
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: stretch;
-    padding: 30px;
-    gap: 40px;
+    padding: 30px 30px 25px;
+    gap: 25px;
 }
 
 .header-text{
-
     background: linear-gradient(
-    to bottom,
-    rgba(10,150,150,.28) 0%,
-    rgba(6,70,70,.18) 12%,
-    rgba(3,30,30,.08) 22%,
-    transparent 40%
-);
+        to bottom,
+        rgba(8, 125, 235, 0.5) 0%,
+        rgba(4, 106, 201, 0.2) 12%,
+        rgba(3, 32, 46, 0.08) 22%,
+        transparent 40%
+    );
 
     text-shadow:
-    0 0 20px rgba(10,150,150,.4),
-    0 0 20px rgba(10,150,150,.2);
+        0 0 20px rgba(8, 125, 235, 0.301),
+        0 0 20px rgba(4, 106, 201, 0.2);
 
-    width: 650px;
-    height: 180px;
+    min-width: 0;
+    padding: 24px 30px;
 
     display: flex;
     text-align: center;
@@ -134,107 +132,74 @@ body{
     border-radius: 13px;
 
     color: var(--blanco);
-    flex-shrink: 0;
-
     transition: .3s;
 }
 
 .header-text:hover{
     transform: translateY(-4px);
-
-    border-color: rgba(10,150,150,.5);
-
-    box-shadow: 0 0 18px rgba(10,150,150,.2);
+    border-color: rgba(8, 125, 235, 0.5);
+    box-shadow: 0 0 18px rgba(3, 32, 46, 0.08);
 }
 
 .text p{
-    width: 550px;
-}
-
-.header-text h2{
-    margin-top: 20px;
+    max-width: 550px;
+    margin: 12px auto 0;
+    font-weight: 500;
 }
 
 .header-text .fa-solid {
     padding-left: 20px;
 }
 
-.header-text p{
-    font-weight: 500;
-    margin-top: 15px;
-    margin-bottom: 20px;
-}
-
 .header-cards{
-    flex: 1;
-    display: flex;
-    margin-top: 26px;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
-    align-items: flex-start;
+    margin: 0;
 }
 
 .mini-card{
     display: flex;
     align-items: center;
     gap: 15px;
-
-    padding: 18px;
-
-    background: rgba(255,255,255,.04);
-
-    border: 1px solid rgba(255,255,255,.12);
-
+    min-width: 0;
+    padding: 16px 18px;
+    background: rgba(3, 32, 46, 0.08);
+    border: 1px solid rgba(3, 32, 46, 0.08);
     border-radius: 12px;
-
     color: var(--blanco);
-
     transition: .3s;
 }
 
 .mini-card:hover{
     transform: translateY(-4px);
-
-    border-color: rgba(10,150,150,.5);
-
-    box-shadow: 0 0 18px rgba(10,150,150,.2);
+    border-color: rgba(8, 125, 235, 0.5);
+    box-shadow: 0 0 18px rgba(8, 125, 235, 0.5);
 }
 
 .mini-card i{
     width: 48px;
     height: 48px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     border-radius: 10px;
-
-    background: rgba(10,150,150,.18);
-
-    color: rgb(66, 224, 224);
-
+    background: rgba(3, 32, 46, 0.08);
+    color: rgba(31, 137, 236, 0.849);
     font-size: 20px;
-
     flex-shrink: 0;
+}
+
+.mini-card > div{
+    min-width: 0;
 }
 
 .mini-card h3{
     margin: 0;
     font-size: 20px;
     font-weight: bold;
-}
-
-#card2{
-    height: 126px;
-}
-
-#card3{
-    height: 126px;
-}
-
-#card4{
-    height: 126px;
+    overflow-wrap: anywhere;
+    text-transform: capitalize;
 }
 
 .mini-card span{
@@ -259,9 +224,9 @@ body{
 .upcoming-expirations,
 .gym-goals{
 
-    background:rgba(255,255,255,.03);
+    background:rgba(3, 32, 46, 0.08);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(4, 106, 201, 0.2);
 
     border-radius:12px;
 
@@ -288,11 +253,11 @@ body{
 
     transform: translateY(-4px);
 
-    border-color: rgba(10,150,150,.5);
+    border-color: rgba(4, 106, 201, 0.2);
 
     box-shadow:
-        0 0 18px rgba(10,150,150,.2),
-        0 10px 25px rgba(0,0,0,.18);
+        0 0 18px rgba(4, 106, 201, 0.2),
+        0 10px 25px rgba(3, 32, 46, 0.08);
 
 }
 
@@ -305,7 +270,7 @@ body{
 
     padding:25px;
 
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(4, 106, 201, 0.2);
 
     color:white;
 
@@ -325,10 +290,10 @@ body{
 
     transform: translateY(-4px);
 
-    border-color: rgba(10,150,150,.5);
+    border-color: rgba(30, 136, 236, 0.63);
 
     box-shadow:
-        0 0 18px rgba(10,150,150,.2),
+        0 0 18px rgba(4, 106, 201, 0.2),
         0 10px 25px rgba(0,0,0,.18);
 
 }
@@ -342,10 +307,10 @@ body{
 
     transform: translateY(-4px);
 
-    border-color: rgba(10,150,150,.5);
+    border-color: rgba(30, 136, 236, 0.63);
 
     box-shadow:
-        0 0 18px rgba(10,150,150,.2),
+        0 0 18px rgba(4, 106, 201, 0.2),
         0 10px 25px rgba(0,0,0,.18);
 
 }
@@ -404,8 +369,8 @@ body{
 
     background:linear-gradient(
         90deg,
-        rgb(0,190,170),
-        rgb(0,255,220)
+        rgba(8, 125, 235, 0.5),
+        rgba(18, 127, 230, 0.836)
     );
 
 }
@@ -413,49 +378,13 @@ body{
 @media (max-width:1200px){
 
     .dashboard-header{
-
-        flex-direction:column;
-
-        gap:25px;
-
-    }
-
-    .header-text{
-
-        width:100%;
-
-        margin-left:0;
-
-    }
-
-    .text p{
-
-        width:90%;
-
-        margin:auto;
-
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .header-cards{
-
-        width:100%;
-
-        margin-top:0;
-
-        display:flex;
-
-        flex-wrap:wrap;
-
-        justify-content:center;
-
-        gap:20px;
-
-    }
-
-    .mini-card{
-
-        flex:1 1 220px;
-
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
     }
 
     .dashboard-content{
@@ -550,9 +479,7 @@ body{
 
     .header-text{
 
-        height:auto;
-
-        padding:25px;
+        padding:20px;
 
     }
 
@@ -564,21 +491,13 @@ body{
 
     .text p{
 
-        width:100%;
-
         font-size:.95rem;
 
     }
 
     .header-cards{
 
-        flex-direction:column;
-
-    }
-
-    .mini-card{
-
-        width:100%;
+        grid-template-columns:1fr;
 
     }
 
@@ -692,9 +611,9 @@ body{
 
 .profile-card:hover{
     transform: translateY(-4px);
-    border-color: rgba(10,150,150,.5);
+    border-color: rgba(8, 125, 235, 0.5);
     box-shadow:
-        0 0 18px rgba(10,150,150,.2),
+        0 0 18px rgba(4, 106, 201, 0.329),
         0 10px 25px rgba(0,0,0,.18);
 }
 
@@ -711,7 +630,7 @@ body{
     border-radius:50%;
     object-fit:cover;
     border:3px solid var(--azulito);
-    box-shadow:0 0 20px rgba(10,150,150,.35);
+    box-shadow:0 0 20px rgba(4, 106, 201, 0.329);
 }
 
 .avatar-edit-btn{
@@ -733,7 +652,7 @@ body{
 }
 
 .avatar-edit-btn:hover{
-    background:rgb(66, 224, 224);
+    background:rgba(4, 106, 201, 0.459);
     transform:scale(1.06);
 }
 
@@ -744,8 +663,8 @@ body{
 
 .profile-role{
     display:inline-block;
-    background:rgba(10,150,150,.18);
-    color:rgb(66, 224, 224);
+    background:rgba(4, 106, 201, 0.459);
+    color:rgba(8, 125, 235, 0.5);
     font-size:.78rem;
     font-weight:700;
     padding:5px 14px;
@@ -775,8 +694,8 @@ body{
     height:32px;
     flex-shrink:0;
     border-radius:8px;
-    background:rgba(10,150,150,.14);
-    color:rgb(66, 224, 224);
+    background:rgba(4, 106, 201, 0.459);
+    color:rgba(8, 125, 235, 0.5);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -801,7 +720,7 @@ body{
 }
 
 .profile-completion .progress div{
-    background:linear-gradient(90deg, rgb(0,190,170), rgb(0,255,220));
+    background:linear-gradient(90deg, rgba(8, 125, 235, 0.5), rgba(8, 125, 235, 0.5));
 }
 
 
@@ -819,9 +738,9 @@ body{
 
 .profile-panel:hover{
     transform: translateY(-4px);
-    border-color: rgba(10,150,150,.5);
+    border-color: rgba(8, 125, 235, 0.5);
     box-shadow:
-        0 0 18px rgba(10,150,150,.2),
+        0 0 18px rgba(4, 106, 201, 0.2),
         0 10px 25px rgba(0,0,0,.18);
 }
 
@@ -854,7 +773,7 @@ body{
 }
 
 .tab-btn.active{
-    color:rgb(66, 224, 224);
+    color:rgba(33, 134, 230, 0.829);
     border-bottom-color:var(--azulito);
 }
 
@@ -897,8 +816,8 @@ body{
 
 .form-group input,
 .form-group textarea{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.14);
+    background:rgba(3, 32, 46, 0.08);
+    border:1px solid rgba(4, 106, 201, 0.2);
     border-radius:9px;
     padding:12px 14px;
     color:var(--blanco);
@@ -913,7 +832,7 @@ body{
 .form-group input:focus,
 .form-group textarea:focus{
     border-color:var(--azulito);
-    box-shadow:0 0 0 3px rgba(10,150,150,.18);
+    box-shadow:0 0 0 3px rgba(8, 125, 235, 0.5);
 }
 
 .form-error{
@@ -924,7 +843,7 @@ body{
 }
 
 .form-success{
-    color:rgb(60,220,170);
+    color:rgba(8, 125, 235, 0.5);
     font-size:.82rem;
     min-height:18px;
     margin-top:-4px;
@@ -953,8 +872,10 @@ body{
 }
 
 .btn-save:hover{
-    background:rgb(66, 224, 224);
-    box-shadow:0 0 14px rgba(10,150,150,.4);
+    background:rgba(8, 125, 235, 0.842)
+;
+    box-shadow:0 0 14px rgba(8, 114, 214, 0.2)
+;
 }
 
 .btn-save:disabled{
@@ -992,7 +913,7 @@ body{
 
 .panel-divider{
     border:none;
-    border-top:1px solid rgba(255,255,255,.08);
+    border-top:1px solid rgba(4, 106, 201, 0.2);;
     margin:28px 0;
 }
 
@@ -1039,7 +960,7 @@ body{
     align-items:center;
     gap:20px;
     padding:18px 0;
-    border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(4, 106, 201, 0.2);;
 }
 
 .toggle-row:last-child{
@@ -1074,7 +995,7 @@ body{
     position:absolute;
     cursor:pointer;
     inset:0;
-    background:rgba(255,255,255,.15);
+    background:rgba(4, 106, 201, 0.2);
     border-radius:50px;
     transition:.25s;
 }
@@ -1106,7 +1027,7 @@ body{
     left:50%;
     transform:translateX(-50%) translateY(20px);
     background:#1c1c1c;
-    border:1px solid rgba(10,150,150,.5);
+    border:1px solid rgba(8, 125, 235, 0.5);
     color:var(--blanco);
     padding:14px 24px;
     border-radius:10px;
@@ -1128,7 +1049,7 @@ body{
 }
 
 .toast i{
-    color:rgb(66, 224, 224);
+    color:rgba(50, 147, 238, 0.829);
 }
 
 
@@ -1136,6 +1057,7 @@ body{
 
     .profile-content{
         flex-direction:column;
+        align-items:stretch;
     }
 
     .profile-card{
@@ -1201,5 +1123,173 @@ body{
     .profile-card,
     .profile-panel{
         padding:20px;
+    }
+}
+
+
+/* =====================================================
+   FIX: header desbordado (scroll horizontal) + espacio vacío
+   Todo va bajo .perfil-page para que ningún otro CSS de la
+   app (Vite junta todos los .css en uno global) lo pise.
+   ===================================================== */
+
+.perfil-page {
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+/* main: puede encogerse (min-width:0) y apila desde arriba sin repartir espacio */
+.perfil-page .dashboard-main {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-content: flex-start !important;
+    gap: 0 !important;
+    min-width: 0 !important;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+/* Header: 2 columnas iguales que colapsan a 1 cuando no caben */
+.perfil-page .dashboard-header {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)) !important;
+    grid-template-rows: none !important;
+    align-items: stretch;
+    gap: 25px;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+}
+
+.perfil-page .header-text {
+    grid-column: auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0;
+}
+
+.perfil-page .header-text h2 {
+    overflow-wrap: anywhere;
+}
+
+.perfil-page .text p {
+    max-width: 550px !important;
+    margin: 12px auto 0 !important;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.perfil-page .header-cards {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 18px;
+    width: auto !important;
+    max-width: 100%;
+    min-width: 0 !important;
+    margin: 0 !important;
+}
+
+/* Contenido: pegado al header (solo queda el padding de 25px del header) */
+.perfil-page .profile-content {
+    flex: 0 0 auto !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding-top: 0 !important;
+    align-content: flex-start;
+}
+
+.perfil-page .form-group {
+    min-width: 0;
+}
+
+.perfil-page .form-group input {
+    width: 100%;
+    min-width: 0;
+}
+
+@media (max-width: 560px) {
+    .perfil-page .header-cards {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* =====================================================
+   FIX RESPONSIVE: opciones del sidebar (mismo criterio
+   que Clases y Rutinas del entrenador).
+   Solo afecta .sidebar, .sidebar-menu y sus enlaces en
+   pantallas <= 992px. Se antepone .dashboard-layout para
+   ganar en especificidad aunque Vite junte los .css en
+   otro orden.
+   ===================================================== */
+
+@media (max-width:992px){
+
+    .dashboard-layout .sidebar{
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .dashboard-layout .sidebar-logo{
+        flex:0 0 auto;
+    }
+
+    .dashboard-layout .sidebar-menu{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-content:flex-start;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .dashboard-layout .sidebar-menu a{
+        width:220px;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
+        white-space:nowrap;
+    }
+}
+
+@media (max-width:768px){
+
+    .dashboard-layout .sidebar-menu{
+        flex-direction:column;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        align-content:flex-start;
+        align-items:stretch;
+        gap:10px;
+        height:auto;
+    }
+
+    .dashboard-layout .sidebar-menu a{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
     }
 }

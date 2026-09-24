@@ -6,8 +6,8 @@
 
 :root{
     --blanco:#fffceb;
-    --azulito:#0a9696;
-    --azulito-claro:#43e6e6;
+    --azulito:rgba(8, 125, 235, 0.5);
+    --azulito-claro:rgba(8, 125, 235, 0.5);
     --negro:#000;
     --gris:rgb(41,39,39);
     --verde:#4caf6d;
@@ -26,6 +26,8 @@ body{
 .dashboard-layout{
     display:flex;
     height:100vh; /* Forzado a ocupar solo el 100% de la pantalla */
+    height:100dvh; /* En móvil descuenta la barra del navegador */
+    max-width:100%;
     overflow:hidden; /* Evita el scroll en el layout principal */
 }
 
@@ -34,7 +36,14 @@ body{
     display:flex;
     flex-direction:column;
     background:var(--gris);
+    min-width:0; /* Sin esto el main crece con su contenido y el layout lo recorta */
     overflow-y:auto; /* Permite scroll interno solo si el contenido es extremo */
+    overflow-x:clip; /* Nada puede generar scroll horizontal */
+}
+
+/* En un flex-column con altura fija, los hijos se comprimen y se montan unos sobre otros */
+.dashboard-main > *{
+    flex-shrink:0;
 }
 
 .dashboard-main h3{
@@ -50,6 +59,7 @@ body{
     border-right:3px solid var(--azulito);
     padding:20px 15px;
     flex-shrink:0;
+    overflow-y:auto; /* Si el menú no cabe en pantallas bajas, scrollea en vez de cortarse */
 }
 
 .sidebar-logo{
@@ -116,7 +126,7 @@ body{
 }
 
 ::-webkit-scrollbar-thumb:hover{
-    background:#19bcbc;
+    background:rgba(8, 125, 235, 0.5);
 }
 
 .info-header{
@@ -124,31 +134,33 @@ body{
     justify-content:space-between;
     align-items:flex-start;
     flex-direction: row;
+    flex-wrap:wrap; /* Antes no envolvía: el texto de 550px + las tarjetas se salían */
     gap:16px;
     padding:15px 25px;
 }
 
 .info-header-text{
-    width:550px;
+    flex:0 1 550px; /* Antes width fija de 550px con flex-shrink:0 */
+    max-width:100%;
+    min-width:0;
     min-height:110px;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    flex-shrink:0;
     color:var(--blanco);
     border-radius:12px;
     border:1px solid rgba(255,255,255,.10);
     background:linear-gradient(
         to bottom,
-        rgba(10,150,150,.28) 0%,
-        rgba(6,70,70,.18) 12%,
-        rgba(3,30,30,.08) 22%,
+        rgba(8, 125, 235, 0.5) 0%,
+        rgba(4, 106, 201, 0.2) 12%,
+        rgba(3, 32, 46, 0.08) 22%,
         transparent 40%
     );
     text-shadow:
-        0 0 20px rgba(10,150,150,.4),
-        0 0 20px rgba(10,150,150,.2);
+        0 0 20px rgba(8, 125, 235, 0.5),
+        0 0 20px rgba(8, 125, 235, 0.5);
     padding: 10px;
 }
 
@@ -177,7 +189,9 @@ body{
     display:flex;
     gap:12px;
     flex-direction:row;
-    flex:2;
+    flex:1 1 320px;
+    min-width:0;
+    flex-wrap:wrap;
     justify-content:flex-end;
 }
 
@@ -189,12 +203,22 @@ body{
     border:1px solid rgba(255,255,255,.08);
     border-radius:12px;
     padding:10px 14px;
-    min-width:140px;
+    min-width:min(140px,100%);
+    max-width:100%;
     transition:.25s;
 }
 
+.stat-card > div{
+    min-width:0;
+}
+
+.stat-card h3,
+.stat-card span{
+    overflow-wrap:anywhere;
+}
+
 .stat-card:hover{
-    border-color:rgba(10,150,150,.4);
+    border-color:rgba(8, 125, 235, 0.5);
     transform:translateY(-2px);
 }
 
@@ -207,7 +231,7 @@ body{
     align-items:center;
     justify-content:center;
     border-radius:10px;
-    background:rgba(10,150,150,.12);
+    background:rgba(8, 125, 235, 0.5);
     flex-shrink:0;
 }
 
@@ -260,7 +284,7 @@ body{
     stroke-dasharray:502.4;
     stroke-dashoffset:502.4;
     transition:stroke-dashoffset .8s ease;
-    filter:drop-shadow(0 0 10px rgba(10,150,150,.55));
+    filter:drop-shadow(0 0 10px rgba(8, 125, 235, 0.5));
 }
 
 .ring-center{
@@ -277,7 +301,7 @@ body{
     font-size:1.6rem;
     line-height:1;
     color:var(--azulito-claro);
-    text-shadow:0 0 14px rgba(10,150,150,.45);
+    text-shadow:0 0 14px rgba(8, 125, 235, 0.5);
 }
 
 .ring-center span{
@@ -294,7 +318,7 @@ body{
 
 .hero-info{
     flex:1.4;
-    min-width:280px;
+    min-width:min(280px,100%);
     color:var(--blanco);
 }
 
@@ -311,6 +335,7 @@ body{
 }
 
 .hero-info h1{
+    overflow-wrap:anywhere;
     font-size:1.4rem;
     margin-bottom:6px;
 }
@@ -324,7 +349,7 @@ body{
 
 .contact-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,minmax(0,1fr)); /* 1fr solo deja que un correo largo ensanche la columna */
     gap:10px;
 }
 
@@ -336,6 +361,11 @@ body{
     border:1px solid rgba(255,255,255,.08);
     border-radius:10px;
     padding:8px 12px;
+    min-width:0;
+}
+
+.contact-item > div{
+    min-width:0;
 }
 
 .contact-item i{
@@ -344,7 +374,7 @@ body{
     width:28px;
     height:28px;
     border-radius:8px;
-    background:rgba(10,150,150,.12);
+    background:rgba(8, 125, 235, 0.5);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -363,11 +393,13 @@ body{
     font-size:.8rem;
     color:#e9e9e9;
     margin: 0;
+    overflow-wrap:anywhere;
 }
 
 .hours-card{
     flex-shrink:0;
     width:210px;
+    max-width:100%;
     background:rgba(255,255,255,.03);
     border:1px solid rgba(255,255,255,.08);
     border-radius:12px;
@@ -397,6 +429,7 @@ body{
 .hour-row{
     display:flex;
     justify-content:space-between;
+    gap:8px;
     font-size:.7rem;
     color:#c9c9c9;
     padding:4px 6px;
@@ -408,7 +441,7 @@ body{
 }
 
 .hour-row.today{
-    background:rgba(10,150,150,.16);
+    background:rgba(8, 125, 235, 0.5);
     color:var(--azulito-claro);
     font-weight:700;
 }
@@ -473,9 +506,9 @@ body{
     margin:10px 25px 10px;
     background:linear-gradient(
         to bottom,
-        rgba(10,150,150,.16) 0%,
-        rgba(6,70,70,.10) 15%,
-        rgba(3,30,30,.05) 30%,
+        rgba(8, 125, 235, 0.5) 0%,
+        rgba(4, 106, 201, 0.2) 15%,
+        rgba(3, 32, 46, 0.08) 30%,
         transparent 50%
     );
     border:1px solid rgba(255,255,255,.08);
@@ -485,7 +518,7 @@ body{
 
 .facilities-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));
     gap:10px;
 }
 
@@ -497,11 +530,17 @@ body{
     border:1px solid rgba(255,255,255,.08);
     border-radius:10px;
     padding:10px;
+    min-width:0;
     transition:.25s;
 }
 
+.facility-card > div{
+    min-width:0;
+    overflow-wrap:anywhere;
+}
+
 .facility-card:hover{
-    border-color:rgba(10,150,150,.4);
+    border-color:rgba(8, 125, 235, 0.5);
     transform:translateY(-2px);
 }
 
@@ -511,7 +550,7 @@ body{
     width:34px;
     height:34px;
     border-radius:8px;
-    background:rgba(10,150,150,.12);
+    background:rgba(8, 125, 235, 0.5);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -540,7 +579,7 @@ body{
 
 .reglamento-card, .team-card{
     flex:1;
-    min-width:260px;
+    min-width:min(260px,100%);
     background:rgba(255,255,255,.03);
     border:1px solid rgba(255,255,255,.08);
     border-radius:12px;
@@ -580,7 +619,7 @@ body{
 }
 
 .accordion-question:hover{
-    background:rgba(10,150,150,.08);
+    background:rgba(8, 125, 235, 0.5);
 }
 
 .accordion-question i{
@@ -662,8 +701,8 @@ body{
 }
 
 .team-item:hover{
-    border-color:rgba(10,150,150,.35);
-    background:rgba(10,150,150,.06);
+    border-color:rgba(8, 125, 235, 0.5);
+    background:rgba(8, 125, 235, 0.5);
 }
 
 .team-item i{
@@ -672,7 +711,7 @@ body{
     width:30px;
     height:30px;
     border-radius:8px;
-    background:rgba(10,150,150,.12);
+    background:rgba(8, 125, 235, 0.5);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -681,6 +720,8 @@ body{
 
 .team-item .team-body{
     flex:1;
+    min-width:0;
+    overflow-wrap:anywhere;
 }
 
 .team-item h5{
@@ -718,7 +759,7 @@ body{
     transform:translateY(120%);
     opacity:0;
     transition:.35s;
-    box-shadow:0 0 15px rgba(10,150,150,.3);
+    box-shadow:0 0 15px rgba(8, 125, 235, 0.5);
     z-index:200;
 }
 
@@ -754,10 +795,109 @@ body{
         flex:1 1 200px;
         justify-content:center;
     }
+    .info-header-text{
+        flex:1 1 100%;
+        max-width:none;
+    }
     .info-stats{
+        flex-basis:100%;
         justify-content:flex-start;
     }
     .dashboard-main {
         overflow-y: visible;
+    }
+}
+
+@media (max-width:768px){
+    .info-header,
+    .info-hero,
+    .info-controls{
+        padding-left:15px;
+        padding-right:15px;
+    }
+    .info-facilities-wrap,
+    .info-log{
+        margin-left:15px;
+        margin-right:15px;
+    }
+    .contact-grid{
+        grid-template-columns:minmax(0,1fr);
+    }
+    .hours-card{
+        width:100%;
+    }
+    .hero-ring-card{
+        margin:0 auto;
+    }
+}
+
+
+/* =====================================================
+   FIX RESPONSIVE: opciones del sidebar (mismo criterio
+   que Clases y Rutinas del entrenador).
+   Solo afecta .sidebar, .sidebar-menu y sus enlaces en
+   pantallas <= 992px. Se antepone .dashboard-layout para
+   ganar en especificidad aunque Vite junte los .css en
+   otro orden.
+   ===================================================== */
+
+@media (max-width:992px){
+
+    .dashboard-layout .sidebar{
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .dashboard-layout .sidebar-logo{
+        flex:0 0 auto;
+    }
+
+    .dashboard-layout .sidebar-menu{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-content:flex-start;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .dashboard-layout .sidebar-menu a{
+        width:220px;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
+        white-space:nowrap;
+    }
+}
+
+@media (max-width:768px){
+
+    .dashboard-layout .sidebar-menu{
+        flex-direction:column;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        align-content:flex-start;
+        align-items:stretch;
+        gap:10px;
+        height:auto;
+    }
+
+    .dashboard-layout .sidebar-menu a{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
     }
 }

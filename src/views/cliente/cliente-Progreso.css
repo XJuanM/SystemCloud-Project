@@ -6,8 +6,8 @@
 
 :root{
     --blanco:#fffceb;
-    --azulito:#0a9696;
-    --azulito-claro:#43e6e6;
+    --azulito:rgba(8, 125, 235, 0.5);
+    --azulito-claro:rgba(8, 125, 235, 0.5);
     --negro:#000;
     --gris:rgb(41,39,39);
     --verde:#4caf6d;
@@ -111,7 +111,7 @@ body{
 }
 
 ::-webkit-scrollbar-thumb:hover{
-    background:#19bcbc;
+    background:rgba(8, 125, 235, 0.5);
 }
 
 
@@ -137,14 +137,14 @@ body{
     border:1px solid rgba(255,255,255,.10);
     background:linear-gradient(
         to bottom,
-        rgba(10,150,150,.28) 0%,
-        rgba(6,70,70,.18) 12%,
-        rgba(3,30,30,.08) 22%,
+        rgba(8, 125, 235, 0.5) 0%,
+        rgba(4, 106, 201, 0.2) 12%,
+        rgba(3, 32, 46, 0.08) 22%,
         transparent 40%
     );
     text-shadow:
-        0 0 20px rgba(10,150,150,.4),
-        0 0 20px rgba(10,150,150,.2);
+        0 0 20px rgba(8, 125, 235, 0.5),
+        0 0 20px rgba(8, 125, 235, 0.5);
     transition:.3s;
 }
 
@@ -189,7 +189,7 @@ body{
 }
 
 .stat-card:hover{
-    border-color:rgba(10,150,150,.4);
+    border-color:rgba(8, 125, 235, 0.5);
     transform:translateY(-3px);
 }
 
@@ -202,7 +202,7 @@ body{
     align-items:center;
     justify-content:center;
     border-radius:12px;
-    background:rgba(10,150,150,.12);
+    background:rgba(8, 125, 235, 0.5);
     flex-shrink:0;
 }
 
@@ -256,7 +256,7 @@ body{
     stroke-dasharray:502.4;
     stroke-dashoffset:502.4;
     transition:stroke-dashoffset .8s ease;
-    filter:drop-shadow(0 0 10px rgba(10,150,150,.55));
+    filter:drop-shadow(0 0 10px rgba(8, 125, 235, 0.5));
 }
 
 .ring-center{
@@ -273,7 +273,7 @@ body{
     font-size:2.1rem;
     line-height:1;
     color:var(--azulito-claro);
-    text-shadow:0 0 18px rgba(10,150,150,.45);
+    text-shadow:0 0 18px rgba(8, 125, 235, 0.5);
 }
 
 .ring-center span{
@@ -401,10 +401,10 @@ body{
     cursor:default;
 }
 
-.heat-cell.level-1{ background:rgba(10,150,150,.30); }
-.heat-cell.level-2{ background:rgba(10,150,150,.55); }
-.heat-cell.level-3{ background:rgba(10,150,150,.80); }
-.heat-cell.level-4{ background:var(--azulito-claro); box-shadow:0 0 6px rgba(10,150,150,.6); }
+.heat-cell.level-1{ background:rgba(8, 125, 235, 0.5); }
+.heat-cell.level-2{ background:rgba(8, 125, 235, 0.5); }
+.heat-cell.level-3{ background:rgba(8, 125, 235, 0.5); }
+.heat-cell.level-4{ background:var(--azulito-claro); box-shadow:0 0 6px rgba(8, 125, 235, 0.5); }
 
 .streak-card p{
     font-size:.78rem;
@@ -466,9 +466,9 @@ body{
     margin:20px 30px 30px;
     background:linear-gradient(
         to bottom,
-        rgba(10,150,150,.16) 0%,
-        rgba(6,70,70,.10) 15%,
-        rgba(3,30,30,.05) 30%,
+        rgba(8, 125, 235, 0.5) 0%,
+        rgba(4, 106, 201, 0.2) 15%,
+        rgba(3, 32, 46, 0.08) 30%,
         transparent 50%
     );
     border:1px solid rgba(255,255,255,.08);
@@ -657,8 +657,8 @@ body{
 }
 
 .record-item:hover{
-    border-color:rgba(10,150,150,.35);
-    background:rgba(10,150,150,.06);
+    border-color:rgba(8, 125, 235, 0.5);
+    background:rgba(8, 125, 235, 0.5);
 }
 
 .record-item i{
@@ -667,7 +667,7 @@ body{
     width:36px;
     height:36px;
     border-radius:10px;
-    background:rgba(10,150,150,.12);
+    background:rgba(8, 125, 235, 0.5);
     display:flex;
     align-items:center;
     justify-content:center;
@@ -710,7 +710,7 @@ body{
     transform:translateY(120%);
     opacity:0;
     transition:.35s;
-    box-shadow:0 0 20px rgba(10,150,150,.3);
+    box-shadow:0 0 20px rgba(8, 125, 235, 0.5);
     z-index:200;
 }
 
@@ -799,5 +799,76 @@ body{
     .progreso-log{
         margin-left:20px;
         margin-right:20px;
+    }
+}
+
+
+/* =====================================================
+   FIX RESPONSIVE: opciones del sidebar (mismo criterio
+   que Clases y Rutinas del entrenador).
+   Solo afecta .sidebar, .sidebar-menu y sus enlaces en
+   pantallas <= 992px. Se antepone .dashboard-layout para
+   ganar en especificidad aunque Vite junte los .css en
+   otro orden.
+   ===================================================== */
+
+@media (max-width:992px){
+
+    .dashboard-layout .sidebar{
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .dashboard-layout .sidebar-logo{
+        flex:0 0 auto;
+    }
+
+    .dashboard-layout .sidebar-menu{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-content:flex-start;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .dashboard-layout .sidebar-menu a{
+        width:220px;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
+        white-space:nowrap;
+    }
+}
+
+@media (max-width:768px){
+
+    .dashboard-layout .sidebar-menu{
+        flex-direction:column;
+        flex-wrap:nowrap;
+        justify-content:flex-start;
+        align-content:flex-start;
+        align-items:stretch;
+        gap:10px;
+        height:auto;
+    }
+
+    .dashboard-layout .sidebar-menu a{
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
     }
 }

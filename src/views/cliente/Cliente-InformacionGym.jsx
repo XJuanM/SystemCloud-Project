@@ -39,7 +39,7 @@ export default function InformacionGimnasio() {
                         <Link to="/plan-alimenticio"><i className="fa-solid fa-utensils"></i> Mi plan alimenticio</Link>
                         <Link to="/mis-clases"><i className="fa-solid fa-calendar-days"></i> Mis clases</Link>
                         <Link to="/progreso"><i className="fa-solid fa-chart-line"></i> Mi progreso</Link>
-                        <Link to="/catalogo"><i className="fa-solid fa-apple-whole"></i> Catálogo</Link>
+                        <Link to="/catalogo"><i className="fa-solid fa-apple-whole"></i> Catálogo de Alimentos</Link>
                         <Link to="/informacionGym" style={{ backgroundColor: "var(--azulito)", color: "var(--blanco)" }}>
                             <i className="fa-solid fa-circle-info"></i>
                             <span>Información del gimnasio</span>

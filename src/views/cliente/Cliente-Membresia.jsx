@@ -52,7 +52,7 @@ export default function Membresia() {
 
                         <Link to="/catalogo">
                             <i className="fa-solid fa-apple-whole"></i>
-                            Catálogo
+                            Catálogo de Alimentos
                         </Link>
 
                         <Link to="/informacionGym">
