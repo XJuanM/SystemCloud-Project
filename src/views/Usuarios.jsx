@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabase.js';
+import Paginacion from '../components/Paginacion.jsx';
 import '../views/usuarios.css';
+
+const ITEMS_POR_PAGINA = 8;
 
 export default function Usuarios() {
     const [usuarios, setUsuarios] = useState([]);
     const [busqueda, setBusqueda] = useState('');
+    const [paginaActual, setPaginaActual] = useState(1);
 
     const [modalOpen, setModalOpen] = useState(false);
     const [tituloModal, setTituloModal] = useState('Registrar Usuario');
@@ -33,6 +37,8 @@ export default function Usuarios() {
             const { data, error } = await supabase
                 .from('usuarios')
                 .select('*')
+                .eq('tipo_rol', 'Cliente')
+                .order('id_usuario', { ascending: true })
                 .range(0, 999);
             if (error) throw error;
             setUsuarios(data || []);
@@ -71,7 +77,7 @@ export default function Usuarios() {
         try {
             const datosAEnviar = {
                 nombre_apellido: form.nombre_apellido,
-                tipo_rol: form.tipo_rol,
+                tipo_rol: 'Cliente',
                 telefono: form.telefono ? Number(form.telefono) : null,
                 direccion: form.direccion,
                 correo: form.correo,
@@ -135,9 +141,19 @@ export default function Usuarios() {
         (u.correo && u.correo.toLowerCase().includes(busqueda.toLowerCase()))
     );
 
+    useEffect(() => {
+        setPaginaActual(1);
+    }, [busqueda]);
+
+    const totalPaginas = Math.max(1, Math.ceil(usuariosFiltrados.length / ITEMS_POR_PAGINA));
+    const usuariosPaginados = usuariosFiltrados.slice(
+        (paginaActual - 1) * ITEMS_POR_PAGINA,
+        paginaActual * ITEMS_POR_PAGINA
+    );
+
     return (
         <>
-            <div className="dashboard-layout">
+            <div className="dashboard-layout usuarios-page">
                 <aside className="sidebar">
                     <div className="sidebar-logo">
                         <img src="../IMG/logoSinFondo2.png" alt="Logo" />
@@ -230,8 +246,8 @@ export default function Usuarios() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {usuariosFiltrados.length > 0 ? (
-                                                usuariosFiltrados.map((u) => (
+                                            {usuariosPaginados.length > 0 ? (
+                                                usuariosPaginados.map((u) => (
                                                     <tr key={u.id_usuario}>
                                                         <td>{u.id_usuario}</td>
                                                         <td>{u.nombre_apellido}</td>
@@ -246,9 +262,6 @@ export default function Usuarios() {
                                                             <button className="btn btn-warning btn-sm me-1" onClick={() => abrirModalEditar(u)}>
                                                                 <i className="fa-solid fa-pen"></i>
                                                             </button>
-                                                            <button className="btn btn-danger btn-sm" onClick={() => confirmarEliminar(u)}>
-                                                                <i className="fa-solid fa-trash"></i>
-                                                            </button>
                                                         </td>
                                                     </tr>
                                                 ))
@@ -260,6 +273,12 @@ export default function Usuarios() {
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <Paginacion
+                                    paginaActual={paginaActual}
+                                    totalPaginas={totalPaginas}
+                                    onCambiarPagina={setPaginaActual}
+                                />
                             </div>
                         </div>
                     </section>
@@ -300,10 +319,8 @@ export default function Usuarios() {
                                         </div>
                                         <div className="col-md-6">
                                             <label className="form-label">Tipo de Rol</label>
-                                            <select name="tipo_rol" value={form.tipo_rol} onChange={handleChange} className="form-select bg-dark text-light border-secondary">
+                                            <select name="tipo_rol" value="Cliente" disabled className="form-select bg-dark text-light border-secondary">
                                                 <option value="Cliente">Cliente</option>
-                                                <option value="Entrenador">Entrenador</option>
-                                                <option value="Administrador">Administrador</option>
                                             </select>
                                         </div>
                                     </div>

@@ -653,12 +653,6 @@ body{
 }
 
 
-/* ============================================================
-   2. COMPONENTES PROPIOS DE REPORTES
-   ============================================================ */
-
-
-/* -------- Layout de la sección superior -------- */
 
 .reports-content{
     align-items:stretch;
@@ -721,7 +715,6 @@ body{
     overflow-y:auto;
 }
 
-/* -------- Tarjetas de reportes recientes -------- */
 
 .recent-report-card{
     display:flex;
@@ -779,7 +772,6 @@ body{
     margin-bottom:6px;
 }
 
-/* -------- Panel: gestión de reportes -------- */
 
 .reports-manager-head{
     display:flex;
@@ -812,7 +804,6 @@ body{
     background:#1c1c1c;
 }
 
-/* -------- Tabla de reportes (hereda .inventory-table) -------- */
 
 .reports-table td{
     vertical-align:middle;
@@ -909,10 +900,7 @@ body{
     border-color:rgba(255,255,255,.12);
 }
 
-/* ============================================
-   Componentes base compartidos (autónomos):
-   búsqueda, botón de acción, tabla, modal y toast
-   ============================================ */
+
 
 .inventory-search{
     display:flex;
@@ -1031,7 +1019,6 @@ body{
     font-size:.9rem;
 }
 
-/* -------- Modal: generar reporte -------- */
 
 .modal-overlay{
     display:none;
@@ -1187,7 +1174,6 @@ body{
     box-shadow:0 0 14px rgba(10,150,150,.4);
 }
 
-/* -------- Toast -------- */
 
 .toast{
     position:fixed;
@@ -1220,7 +1206,6 @@ body{
     color:rgb(66, 224, 224);
 }
 
-/* -------- Responsive -------- */
 
 @media (max-width:1200px){
 
@@ -1284,3 +1269,193 @@ body{
         padding:20px;
     }
 }
+
+
+.reportes-page .header-cards{
+    flex:1;
+    min-width:0;
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    grid-auto-rows:1fr;
+    gap:14px;
+    margin-top:0;
+    align-self:stretch;
+    align-items:stretch;
+}
+
+.reportes-page .mini-card{
+    min-width:0;
+    height:100%;
+    padding:14px 16px;
+    gap:14px;
+}
+
+.reportes-page .mini-card > div{
+    min-width:0;
+}
+
+.reportes-page .mini-card h3{
+    font-size:1.6rem;
+    line-height:1.1;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.reportes-page .mini-card span{
+    font-size:.85rem;
+    line-height:1.25;
+}
+
+@media (max-width:1200px){
+    .reportes-page .header-cards{
+        width:100%;
+        grid-template-columns:repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width:800px){
+    .reportes-page .header-cards{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width:480px){
+    .reportes-page .header-cards{
+        grid-template-columns:1fr;
+    }
+}
+
+
+@media (min-width:993px){
+
+    .reportes-page .dashboard-header{
+        padding:20px 24px;
+        gap:24px;
+    }
+
+    .reportes-page .header-text{
+        height:130px;
+    }
+
+    .reportes-page .header-text h2{
+        margin-top:0;
+        font-size:1.5rem;
+    }
+
+    .reportes-page .header-text .fa-solid{
+        padding-left:12px;
+    }
+
+    .reportes-page .text p{
+        width:100%;
+        max-width:480px;
+        margin:6px auto 0;
+        font-size:.88rem;
+    }
+
+    .reportes-page .header-cards{
+        gap:10px;
+    }
+
+    .reportes-page .mini-card{
+        padding:8px 12px;
+        gap:12px;
+    }
+
+    .reportes-page .mini-card i{
+        width:36px;
+        height:36px;
+        font-size:16px;
+        border-radius:8px;
+    }
+
+    .reportes-page .mini-card h3{
+        font-size:1.25rem;
+    }
+
+    .reportes-page .mini-card span{
+        margin-top:1px;
+        font-size:.78rem;
+    }
+
+    .reportes-page .gym-goals.reports-manager{
+        margin:16px 24px 20px;
+        padding:18px 20px;
+    }
+
+    .reportes-page .reports-manager-head{
+        margin-bottom:14px;
+        gap:12px;
+    }
+
+    .reportes-page .reports-manager-head h3{
+        font-size:1.1rem;
+        margin:0;
+    }
+
+    .reportes-page .reports-manager-actions{
+        gap:10px;
+    }
+
+    .reportes-page .inventory-search{
+        padding:7px 12px;
+    }
+
+    .reportes-page .inventory-search input{
+        font-size:.84rem;
+    }
+
+    .reportes-page .filter-select{
+        padding:7px 12px;
+        font-size:.82rem;
+    }
+
+    .reportes-page .btn-add-product{
+        padding:8px 16px;
+        font-size:.84rem;
+    }
+
+    .reportes-page .reports-table thead th{
+        padding:0 12px 10px;
+        font-size:.72rem;
+    }
+
+    .reportes-page .reports-table tbody td{
+        padding:8px 12px;
+        font-size:.84rem;
+    }
+
+    .reportes-page .reports-table .row-actions{
+        gap:8px;
+    }
+
+    .reportes-page .reports-table .row-actions button{
+        width:28px;
+        height:28px;
+        font-size:.78rem;
+    }
+
+    .reportes-page .dashboard-content{
+        padding:0 24px 20px;
+        gap:16px;
+    }
+
+    .reportes-page .recent-reports{
+        height:auto;
+        min-height:0;
+        padding:16px 20px;
+    }
+
+    .reportes-page .recent-reports h3{
+        font-size:1.05rem;
+        margin:0 0 6px;
+    }
+}
+
+@media (min-width:1201px){
+    .reportes-page .header-text{
+        width:560px;
+    }
+}
+

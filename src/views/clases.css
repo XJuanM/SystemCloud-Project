@@ -18,6 +18,7 @@ body{
     min-height: 100vh;
     color: var(--negro);
     font-family: 'Pliant';
+    overflow-x: hidden;
 }
 
 
@@ -757,4 +758,420 @@ body{
 
     color: rgb(70,220,220);
 
+}
+
+
+.clases-page.dashboard-layout{
+    width:100%;
+}
+
+.clases-page{
+    --sidebar-ancho:320px;
+}
+
+.clases-page .sidebar{
+    width:var(--sidebar-ancho);
+    flex-shrink:0; 
+}
+
+.clases-page .sidebar-menu a{
+    white-space:nowrap; 
+}
+
+
+.clases-page .rutinas-main{
+    flex:1;
+    min-width:0;
+}
+
+.clases-page .dashboard-header{
+    display:flex;
+    flex-shrink:0;
+    width:100%;
+    max-width:1500px;
+    min-width:0;
+    margin:0;
+}
+
+.clases-page .header-text{
+    width:100%;
+    max-width:1500px;
+}
+
+.clases-page .text p{
+    width:100%;
+    max-width:800px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.clases-page .routine-manager{
+    width:100%;
+    max-width:1500px;
+    min-width:0;
+    margin:20px 0 0; 
+}
+
+.clases-page .table-responsive{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+.clases-page .table{
+    width:100%;
+    min-width:900px; 
+    border-collapse:separate;
+    border-spacing:0;
+}
+
+.clases-page .table th,
+.clases-page .table td{
+    white-space:nowrap;
+}
+
+
+.clases-page .table .btn-sm{
+    width:34px;
+    height:34px;
+    padding:0;
+    margin:2px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:8px;
+    font-size:.85rem;
+    line-height:1;
+}
+
+
+.clases-page .card-header .btn-success{
+    width:auto;
+    height:auto;
+    padding:.5rem 1.1rem;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    white-space:nowrap;
+    flex-shrink:0;
+}
+
+.clases-page .card-header .btn-success i{
+    padding:0;
+    margin:0;
+}
+
+
+@media (max-width:1200px){
+
+    .clases-page{
+        --sidebar-ancho:280px;
+    }
+
+    .clases-page .sidebar{
+        padding:25px 18px;
+    }
+
+    .clases-page .sidebar-logo img{
+        width:70px;
+    }
+
+    .clases-page .sidebar-logo h2{
+        font-size:30px;
+    }
+
+    .clases-page .sidebar-logo p{
+        font-size:15px;
+    }
+
+    .clases-page .rutinas-main{
+        padding:25px;
+    }
+
+    .clases-page .header-text{
+        height:auto;
+        padding:30px;
+    }
+
+
+}
+
+
+@media (max-width:992px){
+
+    .clases-page.dashboard-layout{
+        flex-direction:column;
+    }
+
+    .clases-page .sidebar{
+
+        width:100%;
+        border-right:none;
+        border-bottom:3px solid var(--azulito);
+        padding:20px;
+
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+
+    }
+
+    .clases-page .sidebar-logo{
+        margin-bottom:20px;
+    }
+
+    .clases-page .sidebar-menu{
+
+        width:100%;
+        height:auto;
+        flex:0 0 auto;
+
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-content:flex-start;
+        align-items:flex-start;
+        gap:10px;
+
+    }
+
+    .clases-page .sidebar-menu a{
+
+        width:220px;
+        height:auto;
+        flex:0 0 auto;
+        justify-content:center;
+
+    }
+
+    .clases-page .rutinas-main{
+
+        width:100%;
+        padding:20px;
+
+    }
+
+    .clases-page .header-text{
+
+        height:auto;
+        padding:25px;
+
+    }
+
+    .clases-page .card-header{
+
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+
+    }
+
+
+
+}
+
+
+@media (max-width:768px){
+
+    .clases-page .sidebar{
+        padding:18px 12px;
+    }
+
+    .clases-page .sidebar-logo img{
+        width:70px;
+    }
+
+    .clases-page .sidebar-logo h2{
+        font-size:26px;
+    }
+
+    .clases-page .sidebar-menu{
+
+        flex-direction:column;
+        flex-wrap:nowrap;
+        justify-content:center;
+        align-content:flex-start;
+        align-items:stretch;
+        gap:10px;
+        height:auto;
+
+    }
+
+    .clases-page .sidebar-menu a{
+
+        width:100%;
+        height:auto;
+        min-height:0;
+        flex:0 0 auto;
+        margin:0;
+        justify-content:center;
+
+    }
+
+    .clases-page .rutinas-main{
+        padding:15px;
+    }
+
+    .clases-page .header-text{
+        padding:20px 15px;
+    }
+
+    .clases-page .header-text h2{
+        font-size:1.5rem;
+    }
+
+    .clases-page .header-text p{
+        font-size:.9rem;
+    }
+
+    .clases-page .card-header .btn{
+        width:100%;
+        margin:0;
+    }
+
+    .clases-page .table{
+        font-size:.82rem;
+        min-width:820px;
+    }
+
+
+
+}
+
+
+@media (max-width:480px){
+
+    .clases-page .sidebar-logo h2{
+        font-size:26px;
+    }
+
+    .clases-page .sidebar-logo p{
+        font-size:15px;
+    }
+
+    .clases-page .header-text h2{
+        font-size:1.25rem;
+    }
+
+    .clases-page .header-text p{
+        font-size:.85rem;
+    }
+
+    .clases-page .table{
+        font-size:.75rem;
+        min-width:760px;
+    }
+
+
+
+}
+
+.clases-page .card-header > .btn-success{
+    position:relative;
+    overflow:hidden;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:10px 20px;
+    background-color:var(--azulito);
+    color:var(--blanco);
+    border:1px solid transparent;
+    border-radius:10px;
+    font-size:.9rem;
+    font-weight:700;
+    line-height:1.2;
+    white-space:nowrap;
+    transition:transform .2s ease, background-color .25s, box-shadow .25s, color .25s;
+}
+
+.clases-page .card-header > .btn-success i{
+    display:inline-block;
+    margin:0 !important;
+    transition:transform .25s ease;
+}
+
+.clases-page .card-header > .btn-success::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-75%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+    transform:skewX(-20deg);
+    transition:left .55s ease;
+    pointer-events:none;
+}
+
+.clases-page .card-header > .btn-success:hover{
+    background-color:rgb(66,224,224);
+    color:var(--blanco);
+    border-color:transparent;
+    transform:translateY(-2px);
+    box-shadow:0 0 18px rgba(10,150,150,.55), 0 6px 14px rgba(0,0,0,.25);
+}
+
+.clases-page .card-header > .btn-success:hover::after{
+    left:130%;
+}
+
+.clases-page .card-header > .btn-success:hover .fa-plus{
+    transform:rotate(90deg);
+}
+
+.clases-page .card-header > .btn-success:hover i:not(.fa-plus){
+    transform:scale(1.15);
+}
+
+.clases-page .card-header > .btn-success:active{
+    background-color:var(--azulito);
+    transform:translateY(0) scale(.97);
+    box-shadow:0 0 10px rgba(10,150,150,.45);
+}
+
+.clases-page .table .btn{
+    transition:transform .2s ease, box-shadow .25s, background-color .25s, border-color .25s, color .25s;
+}
+
+.clases-page .table .btn i{
+    display:inline-block;
+    transition:transform .2s ease;
+}
+
+.clases-page .table .btn:hover{
+    transform:translateY(-2px);
+}
+
+.clases-page .table .btn:hover i{
+    transform:scale(1.15);
+}
+
+.clases-page .table .btn:active{
+    transform:translateY(0) scale(.94);
+}
+
+.clases-page .table .btn-info:hover{    box-shadow:0 0 12px rgba(10,150,150,.6); }
+.clases-page .table .btn-warning:hover{ box-shadow:0 0 12px rgba(255,193,7,.55); }
+.clases-page .table .btn-primary:hover{ box-shadow:0 0 12px rgba(13,110,253,.55); }
+.clases-page .table .btn-danger:hover{  box-shadow:0 0 12px rgba(220,53,69,.6); }
+
+@media (prefers-reduced-motion: reduce){
+
+    .clases-page .card-header > .btn-success,
+    .clases-page .table .btn{
+        transition:background-color .2s, box-shadow .2s !important;
+        transform:none !important;
+    }
+
+    .clases-page .card-header > .btn-success::after{
+        display:none;
+    }
+
+    .clases-page .card-header > .btn-success i,
+    .clases-page .table .btn i{
+        transform:none !important;
+    }
 }

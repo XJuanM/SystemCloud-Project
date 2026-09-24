@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabase.js';
+import Paginacion from '../components/Paginacion.jsx';
 import '../views/planesAlimenticios.css';
+
+const ITEMS_POR_PAGINA = 8;
 
 export default function PlanesAlimenticios() {
     const [planes, setPlanes] = useState([]);
     const [usuarios, setUsuarios] = useState([]);
     const [busqueda, setBusqueda] = useState('');
+    const [paginaActual, setPaginaActual] = useState(1);
 
     const [planSeleccionado, setPlanSeleccionado] = useState({
         cod_dieta: '',
@@ -31,6 +35,15 @@ export default function PlanesAlimenticios() {
         observaciones: ''
     });
 
+    const [alimentos, setAlimentos] = useState([]);
+
+    const [detalleDietaSeleccionada, setDetalleDietaSeleccionada] = useState([]);
+
+    const [nuevoDetalleAlimento, setNuevoDetalleAlimento] = useState({
+        id_alimento: '',
+        cantidad: ''
+    });
+
     useEffect(() => {
         obtenerDatos();
     }, []);
@@ -39,7 +52,6 @@ export default function PlanesAlimenticios() {
         try {
             console.log("Cargando datos desde Supabase...");
 
-            // 1. Obtener usuarios (con rango amplio)
             const { data: usuariosData, error: errorUsuarios } = await supabase
                 .from('usuarios')
                 .select('*')
@@ -48,7 +60,14 @@ export default function PlanesAlimenticios() {
             if (errorUsuarios) throw errorUsuarios;
             setUsuarios(usuariosData || []);
 
-            // 2. Obtener dietas (con rango amplio para evitar límite de 100)
+            const { data: alimentosData, error: errorAlimentos } = await supabase
+                .from('alimentos')
+                .select('*')
+                .range(0, 999);
+
+            if (errorAlimentos) throw errorAlimentos;
+            setAlimentos(alimentosData || []);
+
             const { data: dietasData, error: errorDietas } = await supabase
                 .from('dietas')
                 .select('*')
@@ -56,12 +75,33 @@ export default function PlanesAlimenticios() {
                 .order('cod_dieta', { ascending: true });
 
             if (errorDietas) throw errorDietas;
+            let detalleData = [];
+            let errorDetalle = null;
+            const TAM_PAGINA = 1000;
+            let pagina = 0;
 
-            // 3. Obtener detalles de dieta (con rango amplio para traer absolutamente todos)
-            const { data: detalleData, error: errorDetalle } = await supabase
-                .from('detalle_dieta')
-                .select('cod_dieta, caloriastotales')
-                .range(0, 9999);
+            while (true) {
+                const desde = pagina * TAM_PAGINA;
+                const hasta = desde + TAM_PAGINA - 1;
+
+                const { data: bloque, error: errorBloque } = await supabase
+                    .from('detalle_dieta')
+                    .select('cod_dieta, caloriastotales')
+                    .range(desde, hasta);
+
+                if (errorBloque) {
+                    errorDetalle = errorBloque;
+                    break;
+                }
+
+                if (!bloque || bloque.length === 0) break;
+
+                detalleData = detalleData.concat(bloque);
+
+                if (bloque.length < TAM_PAGINA) break;
+
+                pagina++;
+            }
 
             if (errorDetalle) {
                 console.warn("Aviso al cargar detalle_dieta:", errorDetalle.message);
@@ -70,7 +110,6 @@ export default function PlanesAlimenticios() {
             console.log("Dietas obtenidas:", dietasData?.length);
             console.log("Detalles obtenidos:", detalleData?.length);
 
-            // 4. Mapeo seguro y cálculo total de calorías
             const planesConCalculos = (dietasData || []).map((plan) => {
                 const idPlanUsuario = plan.id_usuario !== null && plan.id_usuario !== undefined ? String(plan.id_usuario).trim() : '';
                 
@@ -82,20 +121,20 @@ export default function PlanesAlimenticios() {
 
                 const nombreCompleto = clienteEncontrado?.nombre_apellido || clienteEncontrado?.nombre || 'Sin asignar';
 
-                // Filtrar alimentos del plan actual
                 const alimentosDelPlan = (detalleData || []).filter(d => 
                     d && Number(d.cod_dieta) === Number(plan.cod_dieta)
                 );
 
-                // Sumar calorías de los detalles
                 const sumaCalorias = alimentosDelPlan.reduce((acc, item) => {
                     const cals = Number(item?.caloriastotales) || 0;
                     return acc + cals;
                 }, 0);
 
-                // Lógica corregida: Si hay suma de detalles se usa, de lo contrario se usa calorias_objetivo de la dieta
-                const caloriasBaseObjetivo = Number(plan.calorias_objetivo) || 0;
-                const caloriasFinales = sumaCalorias > 0 ? sumaCalorias : caloriasBaseObjetivo;
+                const tieneObjetivo = plan.calorias_objetivo !== null && plan.calorias_objetivo !== undefined && plan.calorias_objetivo !== '';
+                const caloriasBaseObjetivo = tieneObjetivo ? Number(plan.calorias_objetivo) : null;
+                const caloriasFinales = sumaCalorias > 0
+                    ? sumaCalorias
+                    : (caloriasBaseObjetivo !== null ? caloriasBaseObjetivo : null);
 
                 return {
                     ...plan,
@@ -149,6 +188,94 @@ export default function PlanesAlimenticios() {
         }
     };
 
+    const cargarDetalleDieta = async (cod_dieta) => {
+        try {
+            const { data, error } = await supabase
+                .from('detalle_dieta')
+                .select('*')
+                .eq('cod_dieta', cod_dieta);
+
+            if (error) throw error;
+
+            const detalleConAlimento = (data || []).map(item => {
+                const alimentoEncontrado = alimentos.find(a =>
+                    String(a.id_alimento) === String(item.id_alimento)
+                );
+                return {
+                    ...item,
+                    alimento_nombre: alimentoEncontrado?.nombre || 'Alimento no encontrado'
+                };
+            });
+
+            setDetalleDietaSeleccionada(detalleConAlimento);
+        } catch (error) {
+            console.error("Error al cargar el detalle de la dieta:", error.message);
+            setDetalleDietaSeleccionada([]);
+        }
+    };
+
+    const abrirPlan = (plan) => {
+        setPlanSeleccionado(plan);
+        setNuevoDetalleAlimento({ id_alimento: '', cantidad: '' });
+        cargarDetalleDieta(plan.cod_dieta);
+    };
+
+    const agregarAlimentoADieta = async (e) => {
+        e.preventDefault();
+
+        if (!nuevoDetalleAlimento.id_alimento) {
+            alert("Selecciona un alimento del catálogo");
+            return;
+        }
+
+        const cantidad = Number(nuevoDetalleAlimento.cantidad) || 0;
+        if (cantidad <= 0) {
+            alert("Ingresa una cantidad válida");
+            return;
+        }
+
+        const alimentoElegido = alimentos.find(a => String(a.id_alimento) === String(nuevoDetalleAlimento.id_alimento));
+        const caloriasUnitarias = Number(alimentoElegido?.calorias) || 0;
+        const proteinasUnitarias = Number(alimentoElegido?.proteinas) || 0;
+
+        try {
+            const { error } = await supabase
+                .from('detalle_dieta')
+                .insert([
+                    {
+                        cod_dieta: planSeleccionado.cod_dieta,
+                        id_alimento: nuevoDetalleAlimento.id_alimento,
+                        cantidad: cantidad,
+                        caloriastotales: Math.round(caloriasUnitarias * cantidad),
+                        proteinastotales: Math.round(proteinasUnitarias * cantidad)
+                    }
+                ]);
+
+            if (error) throw error;
+
+            setNuevoDetalleAlimento({ id_alimento: '', cantidad: '' });
+            await cargarDetalleDieta(planSeleccionado.cod_dieta);
+            obtenerDatos();
+        } catch (error) {
+            alert("Error al agregar el alimento: " + error.message);
+        }
+    };
+
+    const eliminarAlimentoDeDieta = async (cod_detalled) => {
+        try {
+            const { error } = await supabase
+                .from('detalle_dieta')
+                .delete()
+                .eq('cod_detalled', cod_detalled);
+
+            if (error) throw error;
+            await cargarDetalleDieta(planSeleccionado.cod_dieta);
+            obtenerDatos();
+        } catch (error) {
+            alert("Error al eliminar el alimento: " + error.message);
+        }
+    };
+
     const actualizarPlan = async (e) => {
         e.preventDefault();
         try {
@@ -179,9 +306,19 @@ export default function PlanesAlimenticios() {
         (p.usuarios?.nombre_completo && p.usuarios.nombre_completo.toLowerCase().includes(busqueda.toLowerCase()))
     );
 
+    useEffect(() => {
+        setPaginaActual(1);
+    }, [busqueda]);
+
+    const totalPaginas = Math.max(1, Math.ceil(planesFiltradas.length / ITEMS_POR_PAGINA));
+    const planesPaginadas = planesFiltradas.slice(
+        (paginaActual - 1) * ITEMS_POR_PAGINA,
+        paginaActual * ITEMS_POR_PAGINA
+    );
+
     return (
         <>
-            <div className="dashboard-layout">
+            <div className="dashboard-layout planes-page">
                 <aside className="sidebar">
                     <div className="sidebar-logo">
                         <img src="../IMG/logoSinFondo2.png" alt="Logo" />
@@ -274,8 +411,8 @@ export default function PlanesAlimenticios() {
                                             </thead>
 
                                             <tbody>
-                                                {planesFiltradas && planesFiltradas.length > 0 ? (
-                                                    planesFiltradas.map((plan) => (
+                                                {planesPaginadas && planesPaginadas.length > 0 ? (
+                                                    planesPaginadas.map((plan) => (
                                                         <tr key={plan.cod_dieta}>
                                                             <td>{plan.cod_dieta}</td>
                                                             <td>
@@ -287,7 +424,11 @@ export default function PlanesAlimenticios() {
                                                             <td>{plan.objetivo || 'Sin objetivo'}</td>
                                                             <td>{plan.nombre || 'Sin nombre'}</td>
                                                             <td>
-                                                                {plan.tipo_dieta || 'Normal'} ({plan.total_calorias || 0} kcal)
+                                                                {plan.tipo_dieta || 'Normal'} (
+                                                                {plan.total_calorias !== null && plan.total_calorias !== undefined
+                                                                    ? `${plan.total_calorias} kcal`
+                                                                    : <span className="text-muted">sin datos</span>
+                                                                })
                                                             </td>
                                                             <td>
                                                                 <span className="badge bg-success">Activo</span>
@@ -297,9 +438,18 @@ export default function PlanesAlimenticios() {
                                                                     className="btn btn-info btn-sm me-2"
                                                                     data-bs-toggle="modal" 
                                                                     data-bs-target="#modalVerPlan"
-                                                                    onClick={() => setPlanSeleccionado(plan)}
+                                                                    onClick={() => abrirPlan(plan)}
                                                                 >
                                                                     <i className="fa-solid fa-eye"></i>
+                                                                </button>
+                                                                <button 
+                                                                    className="btn btn-primary btn-sm me-2"
+                                                                    data-bs-toggle="modal" 
+                                                                    data-bs-target="#modalGestionarAlimentos"
+                                                                    onClick={() => abrirPlan(plan)}
+                                                                    title="Gestionar alimentos"
+                                                                >
+                                                                    <i className="fa-solid fa-apple-whole"></i>
                                                                 </button>
                                                                 <button 
                                                                     className="btn btn-warning btn-sm"
@@ -322,6 +472,12 @@ export default function PlanesAlimenticios() {
                                             </tbody>
                                         </table>
                                     </div>
+
+                                    <Paginacion
+                                        paginaActual={paginaActual}
+                                        totalPaginas={totalPaginas}
+                                        onCambiarPagina={setPaginaActual}
+                                    />
                                 </div>
                             </div>
                         </section>
@@ -448,10 +604,146 @@ export default function PlanesAlimenticios() {
                         <div className="modal-body">
                             <h4>Cliente: {planSeleccionado.usuarios?.nombre_completo}</h4>
                             <p className="text-info fw-semibold">Objetivo: {planSeleccionado.objetivo}</p>
-                            <p className="fw-semibold">Plan: {planSeleccionado.nombre} | Dieta: {planSeleccionado.tipo_dieta} | Calorías Totales: {planSeleccionado.total_calorias} kcal</p>
+                            <p className="fw-semibold">
+                                Plan: {planSeleccionado.nombre} | Dieta: {planSeleccionado.tipo_dieta} | Calorías Totales: {
+                                    planSeleccionado.total_calorias !== null && planSeleccionado.total_calorias !== undefined
+                                        ? `${planSeleccionado.total_calorias} kcal`
+                                        : 'sin datos'
+                                }
+                            </p>
                             <hr />
                             <h5>Observaciones y Directrices:</h5>
                             <p>{planSeleccionado.observaciones || 'Sin observaciones registradas.'}</p>
+                            <hr />
+                            <h5>Alimentos asignados</h5>
+                            {detalleDietaSeleccionada.length > 0 ? (
+                                <div className="table-responsive">
+                                    <table className="table table-sm table-hover align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th>Alimento</th>
+                                                <th>Cantidad</th>
+                                                <th>Calorías totales</th>
+                                                <th>Proteínas totales</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {detalleDietaSeleccionada.map((item) => (
+                                                <tr key={item.cod_detalled}>
+                                                    <td>{item.alimento_nombre}</td>
+                                                    <td>{item.cantidad ?? '-'}</td>
+                                                    <td>{item.caloriastotales ?? '-'} kcal</td>
+                                                    <td>{item.proteinastotales ?? '-'} g</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            ) : (
+                                <p className="text-muted">Este plan todavía no tiene alimentos asignados.</p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* MODAL GESTIONAR ALIMENTOS DE LA DIETA */}
+            <div className="modal fade" id="modalGestionarAlimentos" tabIndex="-1">
+                <div className="modal-dialog modal-xl modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">
+                                Alimentos de: {planSeleccionado.nombre || 'Plan'}
+                                {planSeleccionado.usuarios?.nombre_completo ? ` — ${planSeleccionado.usuarios.nombre_completo}` : ''}
+                            </h5>
+                            <button className="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="table-responsive mb-4">
+                                <table className="table table-sm table-hover align-middle">
+                                    <thead>
+                                        <tr>
+                                            <th>Alimento</th>
+                                            <th>Cantidad</th>
+                                            <th>Calorías totales</th>
+                                            <th>Proteínas totales</th>
+                                            <th className="text-center">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {detalleDietaSeleccionada.length > 0 ? (
+                                            detalleDietaSeleccionada.map((item) => (
+                                                <tr key={item.cod_detalled}>
+                                                    <td>{item.alimento_nombre}</td>
+                                                    <td>{item.cantidad ?? '-'}</td>
+                                                    <td>{item.caloriastotales ?? '-'} kcal</td>
+                                                    <td>{item.proteinastotales ?? '-'} g</td>
+                                                    <td className="text-center">
+                                                        <button
+                                                            className="btn btn-danger btn-sm"
+                                                            onClick={() => eliminarAlimentoDeDieta(item.cod_detalled)}
+                                                        >
+                                                            <i className="fa-solid fa-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))
+                                        ) : (
+                                            <tr>
+                                                <td colSpan="5" className="text-center text-muted py-3">
+                                                    Todavía no hay alimentos asignados a este plan.
+                                                </td>
+                                            </tr>
+                                        )}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <hr />
+                            <h6>Agregar alimento</h6>
+                            <form onSubmit={agregarAlimentoADieta} className="row g-2 align-items-end">
+                                <div className="col-md-6">
+                                    <label className="form-label">Alimento</label>
+                                    <select
+                                        className="form-select"
+                                        required
+                                        value={nuevoDetalleAlimento.id_alimento}
+                                        onChange={(e) => setNuevoDetalleAlimento({ ...nuevoDetalleAlimento, id_alimento: e.target.value })}
+                                    >
+                                        <option value="">-- Seleccione --</option>
+                                        {alimentos.map((a) => (
+                                            <option key={a.id_alimento} value={a.id_alimento}>
+                                                {a.nombre} ({a.calorias} kcal / {a.proteinas} g prot. por unidad)
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="col-md-3">
+                                    <label className="form-label">Cantidad</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        step="0.1"
+                                        required
+                                        className="form-control"
+                                        placeholder="Ej. 100"
+                                        value={nuevoDetalleAlimento.cantidad}
+                                        onChange={(e) => setNuevoDetalleAlimento({ ...nuevoDetalleAlimento, cantidad: e.target.value })}
+                                    />
+                                </div>
+                                <div className="col-md-3">
+                                    <button type="submit" className="btn btn-success w-100">
+                                        <i className="fa-solid fa-plus me-2"></i> Agregar
+                                    </button>
+                                </div>
+                            </form>
+                            <p className="text-muted small mt-2 mb-0">
+                                Las calorías y proteínas totales se calculan automáticamente multiplicando la cantidad
+                                por los valores del catálogo de alimentos.
+                            </p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
                 </div>
@@ -482,7 +774,7 @@ export default function PlanesAlimenticios() {
                                         <select 
                                             className="form-select"
                                             value={planSeleccionado.duracion || '8 semanas'}
-                                            onChange={(e) => setPlanSeleccionado({...planSeleznacionado, duracion: e.target.value})}
+                                            onChange={(e) => setPlanSeleccionado({...planSeleccionado, duracion: e.target.value})}
                                         >
                                             <option>4 semanas</option>
                                             <option>8 semanas</option>

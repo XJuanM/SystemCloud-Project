@@ -9,7 +9,6 @@ export default function Reportes() {
     const [busqueda, setBusqueda] = useState('');
     const [filtroTipo, setFiltroTipo] = useState('todos');
 
-    // Estados del Modal
     const [mostrarModal, setMostrarModal] = useState(false);
     const [tipoReporte, setTipoReporte] = useState('Financiero');
     const [fechaDesde, setFechaDesde] = useState('');
@@ -38,17 +37,13 @@ export default function Reportes() {
         }
     };
 
-    // Cálculos de estadísticas dinámicas
     const totalReportes = reportes.length;
     
-    // Reportes de este mes (calculado con la fecha actual del sistema)
-    const mesActual = new Date().toISOString().slice(0, 7); // "YYYY-MM"
+    const mesActual = new Date().toISOString().slice(0, 7); 
     const reportesEsteMes = reportes.filter(r => r.fecha_generado && r.fecha_generado.startsWith(mesActual)).length;
 
-    // Reportes en proceso
     const reportesEnProceso = reportes.filter(r => r.estado === 'En proceso').length;
 
-    // Formato más usado
     const obtenerFormatoMasUsado = () => {
         if (reportes.length === 0) return '—';
         const conteo = reportes.reduce((acc, curr) => {
@@ -58,7 +53,6 @@ export default function Reportes() {
         return Object.keys(conteo).reduce((a, b) => conteo[a] > conteo[b] ? a : b);
     };
 
-    // Filtrado de reportes por búsqueda y tipo
     const reportesFiltrados = reportes.filter(r => {
         const coincideBusqueda = (r.titulo && r.titulo.toLowerCase().includes(busqueda.toLowerCase())) ||
                                  (r.tipo && r.tipo.toLowerCase().includes(busqueda.toLowerCase()));
@@ -66,7 +60,6 @@ export default function Reportes() {
         return coincideBusqueda && coincideTipo;
     });
 
-    // Crear un nuevo reporte
     const generarReporte = async (e) => {
         e.preventDefault();
         if (!fechaDesde || !fechaHasta) {
@@ -101,7 +94,6 @@ export default function Reportes() {
         }
     };
 
-    // Eliminar reporte
     const eliminarReporte = async (cod_reporte) => {
         if (!window.confirm('¿Estás seguro de eliminar este reporte?')) return;
         try {
@@ -119,7 +111,7 @@ export default function Reportes() {
 
     return (
         <>
-            <div className="dashboard-layout">
+            <div className="dashboard-layout reportes-page">
                 <aside className="sidebar">
                     <div className="sidebar-logo">
                         <img src="../IMG/logoSinFondo2.png" alt="Logo" />
@@ -205,24 +197,6 @@ export default function Reportes() {
                         </div>
                     </section>
 
-                    <section className="dashboard-content reports-content">
-                        <div className="upcoming-expirations recent-reports" style={{ width: '100%' }}>
-                            <h3>Reportes recientes</h3>
-                            <div id="recentReportsList">
-                                {reportes.slice(0, 4).map(r => (
-                                    <div key={`recent-${r.cod_reporte}`} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                                        <div>
-                                            <strong style={{ display: 'block', fontSize: '0.9rem' }}>{r.titulo}</strong>
-                                            <span style={{ fontSize: '0.75rem', color: '#aaa' }}>{r.tipo} • {r.fecha_generado}</span>
-                                        </div>
-                                        <span className={`badge ${r.estado === 'Generado' ? 'badge-ok' : 'badge-low'}`} style={{ height: 'fit-content' }}>
-                                            {r.estado}
-                                        </span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
 
                     <section className="gym-goals reports-manager">
                         <div className="reports-manager-head">
@@ -300,6 +274,25 @@ export default function Reportes() {
                                 )}
                             </tbody>
                         </table>
+                    </section>
+
+                    <section className="dashboard-content reports-content">
+                        <div className="upcoming-expirations recent-reports" style={{ width: '100%' }}>
+                            <h3>Reportes recientes</h3>
+                            <div id="recentReportsList">
+                                {reportes.slice(0, 4).map(r => (
+                                    <div key={`recent-${r.cod_reporte}`} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                                        <div>
+                                            <strong style={{ display: 'block', fontSize: '0.9rem' }}>{r.titulo}</strong>
+                                            <span style={{ fontSize: '0.75rem', color: '#aaa' }}>{r.tipo} • {r.fecha_generado}</span>
+                                        </div>
+                                        <span className={`badge ${r.estado === 'Generado' ? 'badge-ok' : 'badge-low'}`} style={{ height: 'fit-content' }}>
+                                            {r.estado}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </section>
                 </main>
             </div>

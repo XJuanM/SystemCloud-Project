@@ -18,10 +18,11 @@ body{
     min-height: 100vh;
     color: var(--negro);
     font-family: 'Pliant';
+    overflow-x: hidden; 
 }
 
 
-.dashboard-layout {
+.dashboard-layout.rutinas-page {
     display: flex;
     width: 100%;
     min-height: 100vh;
@@ -29,58 +30,73 @@ body{
     padding: 0;
 }
 
-.sidebar {
-    width: 280px; /* <--- Reducido de 400px a 280px para que no deje espacios vacíos */
+
+.rutinas-page{
+    --sidebar-ancho: 320px;
+}
+
+.rutinas-page .sidebar {
+    width: var(--sidebar-ancho);
     background-color: var(--negro);
     border-right: 3px solid var(--azulito);
     padding: 30px 20px;
-    flex-shrink: 0; /* <--- Evita que la barra lateral se deforme o comprima */
+    flex-shrink: 0; 
 }
 
-.rutinas-main {
+.rutinas-page .dashboard-main {
     flex: 1;
     display: flex;
     flex-direction: column;
     background: var(--gris);
     padding: 30px;
-    width: calc(100% - 280px); /* <--- Ocupa exactamente el resto de la pantalla */
-    box-sizing: border-box;
+    min-width: 0;
+      
 }
 
-.sidebar-logo {
+
+
+.rutinas-page .dashboard-header {
+    display: flex;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0;
+}
+
+.rutinas-page .sidebar-logo {
     text-align: center;
     margin-bottom: 38px;
 }
 
 
-.sidebar-logo img {
+.rutinas-page .sidebar-logo img {
     width: 85px;
 }
 
 
-.sidebar-logo h2 {
+.rutinas-page .sidebar-logo h2 {
     color: var(--azulito);
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 700;
     margin-top: 10px;
     margin-bottom: 5px;
 }
 
 
-.sidebar-logo p {
+.rutinas-page .sidebar-logo p {
     color: var(--azulito);
     font-size: 16px;
 }
 
 
-.sidebar-menu {
+.rutinas-page .sidebar-menu {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
 
-.sidebar-menu a {
+.rutinas-page .sidebar-menu a {
     text-decoration: none;
     color: var(--azulito);
     padding: 14px 18px;
@@ -89,16 +105,17 @@ body{
     align-items: center;
     gap: 12px;
     font-weight: 700;
+    white-space: nowrap;
     transition: .3s;
 }
 
 
-.sidebar-menu a:hover {
+.rutinas-page .sidebar-menu a:hover {
     background-color: var(--azulito);
     color: var(--blanco);
 }
 
-.header-text{
+.rutinas-page .header-text{
 
     background: linear-gradient(
     to bottom,
@@ -130,7 +147,7 @@ body{
     transition: .3s;
 }
 
-.header-text:hover{
+.rutinas-page .header-text:hover{
     transform: translateY(-4px);
 
     border-color: rgba(10,150,150,.5);
@@ -138,34 +155,38 @@ body{
     box-shadow: 0 0 18px rgba(10,150,150,.2);
 }
 
-.text p{
+.rutinas-page .text p{
     width: 100%;
     max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.header-text h2{
+.rutinas-page .header-text h2{
     margin-top: 20px;
 }
 
-.header-text .fa-solid {
+.rutinas-page .header-text .fa-solid {
     padding-left: 20px;
 }
 
-.header-text p{
+.rutinas-page .header-text p{
     font-weight: 500;
     margin-top: 15px;
     margin-bottom: 20px;
 }
 
-.routine-manager{
-    margin-top: 20px;
+.rutinas-page .routine-manager,
+.rutinas-page .user-manager{
+    margin: 20px 0 0;
     width: 100%;
     max-width: 1500px;
     border: solid 2px var(--negro);
     border-radius: 15px;
 }
 
-.routine-manager .card{
+.rutinas-page .routine-manager .card,
+.rutinas-page .user-manager .card{
     
     background: linear-gradient(
     to top,
@@ -178,39 +199,72 @@ body{
     border-radius: 15px;
 }
 
-.routine-manager .card-header{
+.rutinas-page .routine-manager .card-header,
+.rutinas-page .user-manager .card-header{
     background-color: var(--negro);
     color: var(--blanco);
     border: solid 2px var(--negro);
 }
 
-.routine-manager input{
+.rutinas-page .routine-manager input,
+.rutinas-page .user-manager input{
     background-color: var(--negro);
     border: solid 1px var(--blanco);
     border-radius: 10px;
     transition: .2s;
 }
 
-.routine-manager input::placeholder{
+.rutinas-page .routine-manager input::placeholder,
+.rutinas-page .user-manager input::placeholder{
     color: var(--blanco);
 }
 
-.routine-manager input:focus{
+.rutinas-page .routine-manager input:focus,
+.rutinas-page .user-manager input:focus{
     background-color: var(--azulito);
     color: var(--blanco);
     border: solid 1px var(--blanco);
 }
 
-.table th,
-.table td{
+.rutinas-page .card-header .btn-success{
+    width: auto;
+    height: auto;
+    padding: .5rem 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.rutinas-page .card-header .btn-success i{
+    padding: 0;
+}
+
+.rutinas-page .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.rutinas-page .table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.rutinas-page .table th,
+.rutinas-page .table td{
     border: solid 1px transparent;
     background-color: transparent;
     color: var(--blanco);
     transition: .3s;
+    white-space: nowrap;
 }
 
 
-.table-hover tbody tr:hover td{
+.rutinas-page .table-hover tbody tr:hover td{
     background-color: #104949;
     color: var(--blanco);
 }
@@ -224,30 +278,56 @@ body{
     border: solid 1px transparent;
 }
 
+.btn-primary{
+    background-color: var(--azulito);
+    border: solid 1px transparent;
+    transition: .3s;
+}
+
+.btn-primary:hover{
+    background-color: var(--negro);
+    border: solid 1px var(--azulito);
+    color: var(--azulito);
+}
+
+/* Botones de acción en las tablas y modales (ver, gestionar, editar, eliminar):
+   se fija el mismo ancho/alto para que todos midan igual sin importar qué tan
+   ancho sea el ícono de FontAwesome que llevan dentro (dumbbell, eye, pen, trash...) */
+.btn-sm{
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: .85rem;
+    line-height: 1;
+}
+
 #modalVerRutina .modal-dialog{
     max-width: 500px;
 }
-/* Solución definitiva para centrar y mostrar el modal perfectamente */
 .modal {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    background-color: rgba(0, 0, 0, 0.6) !important; /* Fondo oscuro translúcido */
+    background-color: rgba(0, 0, 0, 0.6) !important; 
     z-index: 99999 !important;
-    display: none !important; /* Oculto por defecto */
+    display: none !important; 
     align-items: center !important;
     justify-content: center !important;
     padding: 0 !important;
 }
 
-/* Cuando Bootstrap abre el modal, le añade la clase .show y lo convertimos en flex */
+
 .modal.show {
     display: flex !important;
 }
 
-/* Forzamos que la caja del modal se centre y no sufra alteraciones */
+
 .modal-dialog {
     margin: auto !important;
     max-width: 650px !important;
@@ -256,7 +336,6 @@ body{
     pointer-events: auto !important;
 }
 
-/* Ocultamos el backdrop nativo de Bootstrap para evitar que bloquee o desalinee */
 .modal-backdrop {
     display: none !important;
 }
@@ -591,13 +670,15 @@ body{
 
 }
 
-.dashboard-info{
+.rutinas-page .dashboard-info{
 
     display:flex;
 
     gap:25px;
 
-    margin-top:25px;
+    width:100%;
+    max-width:1500px;
+    margin:25px auto 0;
 
 }
 
@@ -719,16 +800,14 @@ body{
 
 @media (max-width:1400px){
 
-    .sidebar{
-        width:320px;
-    }
-
-    .header-text,
-    .routine-manager{
+    .rutinas-page .dashboard-main,
+    .rutinas-page .dashboard-header,
+    .rutinas-page .header-text,
+    .rutinas-page .routine-manager{
         width:100%;
     }
 
-    .text p{
+    .rutinas-page .text p{
         width:100%;
         max-width:700px;
     }
@@ -738,29 +817,36 @@ body{
 
 @media (max-width:1200px){
 
-    .sidebar{
-        width:280px;
-        padding:25px 15px;
+    .rutinas-page{
+        --sidebar-ancho: 280px;
     }
 
-    .sidebar-logo img{
+    .rutinas-page .sidebar{
+        padding:25px 18px;
+    }
+
+    .rutinas-page .sidebar-logo img{
         width:70px;
     }
 
-    .sidebar-logo h2{
+    .rutinas-page .sidebar-logo h2{
         font-size:30px;
     }
 
-    .rutinas-main{
+    .rutinas-page .sidebar-logo p{
+        font-size:15px;
+    }
+
+    .rutinas-page .dashboard-main{
         padding:25px;
     }
 
-    .header-text{
+    .rutinas-page .header-text{
         height:auto;
         padding:30px;
     }
 
-    .dashboard-info{
+    .rutinas-page .dashboard-info{
         flex-direction:column;
     }
 
@@ -768,51 +854,54 @@ body{
 
 @media (max-width:992px){
 
-    .dashboard-layout{
+    .rutinas-page.dashboard-layout{
         flex-direction:column;
     }
 
-    .sidebar{
+    .rutinas-page .sidebar{
 
         width:100%;
+        height:auto;
         border-right:none;
         border-bottom:3px solid var(--azulito);
-
-        display:flex;
-        flex-direction:column;
-        align-items:center;
+        padding:20px;
 
     }
 
-    .sidebar-logo{
+    .rutinas-page .sidebar-logo{
         margin-bottom:20px;
     }
 
-    .sidebar-menu{
+    .rutinas-page .sidebar-menu{
 
         width:100%;
+        height:auto;
 
         flex-direction:row;
         flex-wrap:wrap;
         justify-content:center;
+        align-content:flex-start; 
+        align-items:flex-start;
+        gap:10px;
 
     }
 
-    .sidebar-menu a{
+    .rutinas-page .sidebar-menu a{
 
         width:220px;
+        height:auto;
         justify-content:center;
 
     }
 
-    .rutinas-main{
+    .rutinas-page .dashboard-main{
 
         width:100%;
         padding:20px;
 
     }
 
-    .header-text{
+    .rutinas-page .header-text{
 
         width:100%;
         height:auto;
@@ -820,31 +909,39 @@ body{
 
     }
 
-    .text{
+    .rutinas-page .text{
 
         width:100%;
 
     }
 
-    .text p{
+    .rutinas-page .text p{
 
         width:100%;
 
     }
 
-    .routine-manager{
+    .rutinas-page .routine-manager{
 
         width:100%;
 
     }
 
-    .table-responsive{
+    .rutinas-page .card-header{
+
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+
+    }
+
+    .rutinas-page .table-responsive{
 
         overflow-x:auto;
 
     }
 
-    .dashboard-info{
+    .rutinas-page .dashboard-info{
 
         flex-direction:column;
 
@@ -855,49 +952,69 @@ body{
 
 @media (max-width:768px){
 
-    .sidebar{
+    .rutinas-page .sidebar{
 
-        padding:20px 10px;
+        padding:18px 12px;
 
     }
 
-    .sidebar-menu{
+    .rutinas-page .sidebar-logo img{
+
+        width:70px;
+
+    }
+
+    .rutinas-page .sidebar-logo h2{
+
+        font-size:26px;
+
+    }
+
+
+    .rutinas-page .sidebar-menu{
 
         flex-direction:column;
+        flex-wrap:nowrap;
+        align-content:flex-start;
+        align-items:stretch;
+        height:auto;
 
     }
 
-    .sidebar-menu a{
+    .rutinas-page .sidebar-menu a{
 
         width:100%;
+        height:auto;
+        flex:0 0 auto;
+        justify-content:center;
 
     }
 
-    .rutinas-main{
+    .rutinas-page .dashboard-main{
 
         padding:15px;
 
     }
 
-    .header-text{
+    .rutinas-page .header-text{
 
         padding:20px 15px;
 
     }
 
-    .header-text h2{
+    .rutinas-page .header-text h2{
 
         font-size:1.5rem;
 
     }
 
-    .header-text p{
+    .rutinas-page .header-text p{
 
         font-size:.9rem;
 
     }
 
-    .routine-manager .card-header{
+    .rutinas-page .routine-manager .card-header{
 
         display:flex;
         flex-direction:column;
@@ -905,7 +1022,7 @@ body{
 
     }
 
-    .routine-manager .row{
+    .rutinas-page .routine-manager .row{
 
         flex-direction:column;
 
@@ -914,6 +1031,7 @@ body{
     .table{
 
         font-size:.82rem;
+        min-width: 620px;
 
     }
 
@@ -924,9 +1042,22 @@ body{
 
     }
 
+
+    .btn-sm{
+        width:34px;
+        height:34px;
+        margin:2px;
+    }
+
     .modal-dialog{
 
         margin:10px;
+
+    }
+
+    .modal-body{
+
+        padding:18px;
 
     }
 
@@ -954,43 +1085,44 @@ body{
 
 @media (max-width:480px){
 
-    .sidebar-logo h2{
+    .rutinas-page .sidebar-logo h2{
 
-        font-size:24px;
-
-    }
-
-    .sidebar-logo p{
-
-        font-size:14px;
+        font-size:26px;
 
     }
 
-    .header-text h2{
+    .rutinas-page .sidebar-logo p{
+
+        font-size:15px;
+
+    }
+
+    .rutinas-page .header-text h2{
 
         font-size:1.25rem;
 
     }
 
-    .header-text p{
+    .rutinas-page .header-text p{
 
         font-size:.85rem;
 
     }
 
-    .table{
+.rutinas-page .table{
 
         font-size:.75rem;
+        min-width: 560px;
 
     }
 
-    .modal-body{
+    .rutinas-page .modal-body{
 
         padding:15px;
 
     }
 
-    .cliente-info{
+    .rutinas-page .cliente-info{
 
         text-align:center;
 
@@ -998,57 +1130,233 @@ body{
 
 }
 
-.dashboard-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 20px;
+.rutinas-page .dashboard-main {
+    overflow-y: auto; 
 }
-.recent-activity, .attention-card {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+.rutinas-page .routine-manager .dataTables_wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow: hidden;
 }
-@media (max-width: 768px) {
-    .dashboard-info {
-        grid-template-columns: 1fr;
+
+.rutinas-page .routine-manager .dataTables_scrollBody {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.rutinas-page .routine-manager .table-responsive {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+}
+
+.rutinas-page .card-header > .btn-success{
+    position:relative;
+    overflow:hidden;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:10px 20px;
+    background-color:var(--azulito);
+    color:var(--blanco);
+    border:1px solid transparent;
+    border-radius:10px;
+    font-size:.9rem;
+    font-weight:700;
+    line-height:1.2;
+    white-space:nowrap;
+    transition:transform .2s ease, background-color .25s, box-shadow .25s, color .25s;
+}
+
+.rutinas-page .card-header > .btn-success i{
+    display:inline-block;
+    margin:0 !important;
+    transition:transform .25s ease;
+}
+
+
+.rutinas-page .card-header > .btn-success::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-75%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+    transform:skewX(-20deg);
+    transition:left .55s ease;
+    pointer-events:none;
+}
+
+.rutinas-page .card-header > .btn-success:hover{
+    background-color:rgb(66,224,224);
+    color:var(--blanco);
+    border-color:transparent;
+    transform:translateY(-2px);
+    box-shadow:0 0 18px rgba(10,150,150,.55), 0 6px 14px rgba(0,0,0,.25);
+}
+
+.rutinas-page .card-header > .btn-success:hover::after{
+    left:130%;
+}
+
+.rutinas-page .card-header > .btn-success:hover .fa-plus{
+    transform:rotate(90deg);
+}
+
+.rutinas-page .card-header > .btn-success:hover i:not(.fa-plus){
+    transform:scale(1.15);
+}
+
+
+.rutinas-page .card-header > .btn-success:active{
+    background-color:var(--azulito);
+    transform:translateY(0) scale(.97);
+    box-shadow:0 0 10px rgba(10,150,150,.45);
+}
+
+
+.rutinas-page .table .btn{
+    transition:transform .2s ease, box-shadow .25s, background-color .25s, border-color .25s, color .25s;
+}
+
+.rutinas-page .table .btn i{
+    display:inline-block;
+    transition:transform .2s ease;
+}
+
+.rutinas-page .table .btn:hover{
+    transform:translateY(-2px);
+}
+
+.rutinas-page .table .btn:hover i{
+    transform:scale(1.15);
+}
+
+.rutinas-page .table .btn:active{
+    transform:translateY(0) scale(.94);
+}
+
+.rutinas-page .table .btn-info:hover{    box-shadow:0 0 12px rgba(10,150,150,.6); }
+.rutinas-page .table .btn-warning:hover{ box-shadow:0 0 12px rgba(255,193,7,.55); }
+.rutinas-page .table .btn-primary:hover{ box-shadow:0 0 12px rgba(13,110,253,.55); }
+.rutinas-page .table .btn-danger:hover{  box-shadow:0 0 12px rgba(220,53,69,.6); }
+
+
+@media (prefers-reduced-motion: reduce){
+
+    .rutinas-page .card-header > .btn-success,
+    .rutinas-page .table .btn{
+        transition:background-color .2s, box-shadow .2s !important;
+        transform:none !important;
+    }
+
+    .rutinas-page .card-header > .btn-success::after{
+        display:none;
+    }
+
+    .rutinas-page .card-header > .btn-success i,
+    .rutinas-page .table .btn i{
+        transform:none !important;
     }
 }
 
-.rutinas-main {
-    flex: 1;
-    overflow-y: auto; /* Permite hacer scroll hacia abajo para ver los nuevos cuadros */
-    padding: 20px;
-}
 
-.dashboard-info {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-top: 25px;
-    margin-bottom: 30px;
-}
+@media (min-width:993px){
 
-.recent-activity, .attention-card {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+    .rutinas-page .dashboard-main{
+        padding:20px 24px;
+    }
 
-.recent-activity h3, .attention-card h3 {
-    font-size: 1.1rem;
-    color: #333;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+    .rutinas-page .header-text{
+        height:auto;
+        min-height:140px;
+        padding:14px 24px;
+    }
 
-/* Responsivo para pantallas pequeñas */
-@media (max-width: 992px) {
-    .dashboard-info {
-        grid-template-columns: 1fr;
+    .rutinas-page .header-text h2{
+        margin-top:0;
+        font-size:1.6rem;
+    }
+
+    .rutinas-page .header-text .fa-solid{
+        padding-left:12px;
+    }
+
+    .rutinas-page .header-text p{
+        margin-top:6px;
+        margin-bottom:0;
+        font-size:.9rem;
+    }
+
+    .rutinas-page .routine-manager,
+    .rutinas-page .user-manager{
+        margin-top:14px;
+    }
+
+    .rutinas-page .card-header{
+        padding:.45rem 1rem;
+    }
+
+    .rutinas-page .card-header h3,
+    .rutinas-page .card-header h4{
+        margin:0;
+        font-size:1.25rem;
+    }
+
+    .rutinas-page .card-header > .btn-success{
+        padding:8px 16px;
+        font-size:.85rem;
+    }
+
+    .rutinas-page .card-body{
+        padding:.75rem 1rem;
+    }
+
+    .rutinas-page .card-body .row.mb-3{
+        margin-bottom:.5rem !important;
+    }
+
+    .rutinas-page .card-body .form-control,
+    .rutinas-page .card-body .form-select{
+        padding:.3rem .65rem;
+        font-size:.88rem;
+    }
+
+    .rutinas-page .table th,
+    .rutinas-page .table td{
+        padding:.35rem .6rem;
+        font-size:.86rem;
+    }
+
+    .rutinas-page .table .btn{
+        margin:2px;
+        padding:.2rem .5rem;
+        font-size:.78rem;
+    }
+
+    .rutinas-page .dashboard-info{
+        margin-top:14px;
+        gap:16px;
+    }
+
+    .rutinas-page .recent-activity,
+    .rutinas-page .attention-card{
+        padding:16px 18px;
+    }
+
+    .rutinas-page .recent-activity h3,
+    .rutinas-page .attention-card h3{
+        margin-bottom:8px;
+        font-size:1.1rem;
+    }
+
+    .rutinas-page .activity-item,
+    .rutinas-page .attention-item{
+        padding:8px 0;
     }
 }

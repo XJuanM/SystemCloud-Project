@@ -224,6 +224,31 @@ body{
     border: solid 1px transparent;
 }
 
+.btn-primary{
+    background-color: var(--azulito);
+    border: solid 1px transparent;
+    transition: .3s;
+}
+
+.btn-primary:hover{
+    background-color: var(--negro);
+    border: solid 1px var(--azulito);
+    color: var(--azulito);
+}
+
+
+.btn-sm{
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: .85rem;
+    line-height: 1;
+}
+
 #modalVerRutina .modal-dialog{
     max-width: 500px;
 }
@@ -718,9 +743,83 @@ body{
 
 }
 
-/*==================================================
-                    1400px
-==================================================*/
+.planes-page .users-rutinas{
+    display:block;
+    width:100%;
+    max-width:1500px;
+    margin:0 auto;
+}
+
+.planes-page .header-text{
+
+    background: linear-gradient(
+    to bottom,
+    rgba(10,150,150,.28) 0%,
+    rgba(6,70,70,.18) 12%,
+    rgba(3,30,30,.08) 22%,
+    transparent 40%
+);
+
+    text-shadow:
+    0 0 20px rgba(10,150,150,.4),
+    0 0 20px rgba(10,150,150,.2);
+
+    display:flex;
+    width:100%;
+    max-width:1500px;
+    height:220px;
+    margin:0 auto;
+    padding:0;
+
+    text-align:center;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:13px;
+
+    color:var(--blanco);
+    flex-shrink:0;
+
+    transition:.3s;
+}
+
+.planes-page .header-text:hover{
+    transform:translateY(-4px);
+
+    border-color:rgba(10,150,150,.5);
+
+    box-shadow:0 0 18px rgba(10,150,150,.2);
+}
+
+.planes-page .header-text h2{
+    margin-top:20px;
+}
+
+.planes-page .header-text .fa-solid{
+    padding-left:20px;
+}
+
+.planes-page .header-text p{
+    font-weight:500;
+    margin-top:15px;
+    margin-bottom:20px;
+}
+
+.planes-page .text p{
+    width:100%;
+    max-width:800px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.planes-page .routine-manager{
+    width:100%;
+    max-width:1500px;
+    margin:20px auto 0;
+}
+
+
 
 @media (max-width:1400px){
 
@@ -741,9 +840,7 @@ body{
 }
 
 
-/*==================================================
-                    1200px
-==================================================*/
+
 
 @media (max-width:1200px){
 
@@ -780,9 +877,6 @@ body{
 }
 
 
-/*==================================================
-                    TABLETS
-==================================================*/
 
 @media (max-width:992px){
 
@@ -888,10 +982,6 @@ body{
 
 }
 
-
-/*==================================================
-                    MÓVILES
-==================================================*/
 
 @media (max-width:768px){
 
@@ -1013,10 +1103,6 @@ body{
 }
 
 
-/*==================================================
-                MÓVILES PEQUEÑOS
-==================================================*/
-
 @media (max-width:480px){
 
     .sidebar-logo h2{
@@ -1067,4 +1153,251 @@ body{
 
     }
 
+}
+
+
+@media (max-width:1400px){
+
+    .planes-page .text p{
+        max-width:700px;
+    }
+
+}
+
+@media (max-width:1200px){
+
+    .planes-page .header-text{
+        height:auto;
+        padding:30px;
+    }
+
+}
+
+@media (max-width:992px){
+
+    .planes-page .header-text{
+        height:auto;
+        padding:25px;
+    }
+
+    .planes-page .text{
+        width:100%;
+    }
+
+    .planes-page .text p{
+        max-width:none;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .planes-page .header-text{
+        padding:20px 15px;
+    }
+
+    .planes-page .header-text h2{
+        font-size:1.5rem;
+    }
+
+    .planes-page .header-text p{
+        font-size:.9rem;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .planes-page .header-text h2{
+        font-size:1.2rem;
+    }
+
+    .planes-page .header-text p{
+        font-size:.85rem;
+    }
+
+}
+
+
+.planes-page .card-header > .btn-success{
+    position:relative;
+    overflow:hidden;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:10px 20px;
+    background-color:var(--azulito);
+    color:var(--blanco);
+    border:1px solid transparent;
+    border-radius:10px;
+    font-size:.9rem;
+    font-weight:700;
+    line-height:1.2;
+    white-space:nowrap;
+    transition:transform .2s ease, background-color .25s, box-shadow .25s, color .25s;
+}
+
+.planes-page .card-header > .btn-success i{
+    display:inline-block;
+    margin:0 !important;
+    transition:transform .25s ease;
+}
+
+.planes-page .card-header > .btn-success::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-75%;
+    width:50%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+    transform:skewX(-20deg);
+    transition:left .55s ease;
+    pointer-events:none;
+}
+
+.planes-page .card-header > .btn-success:hover{
+    background-color:rgb(66,224,224);
+    color:var(--blanco);
+    border-color:transparent;
+    transform:translateY(-2px);
+    box-shadow:0 0 18px rgba(10,150,150,.55), 0 6px 14px rgba(0,0,0,.25);
+}
+
+.planes-page .card-header > .btn-success:hover::after{
+    left:130%;
+}
+
+.planes-page .card-header > .btn-success:hover .fa-plus{
+    transform:rotate(90deg);
+}
+
+.planes-page .card-header > .btn-success:hover i:not(.fa-plus){
+    transform:scale(1.15);
+}
+
+.planes-page .card-header > .btn-success:active{
+    background-color:var(--azulito);
+    transform:translateY(0) scale(.97);
+    box-shadow:0 0 10px rgba(10,150,150,.45);
+}
+
+.planes-page .table .btn{
+    transition:transform .2s ease, box-shadow .25s, background-color .25s, border-color .25s, color .25s;
+}
+
+.planes-page .table .btn i{
+    display:inline-block;
+    transition:transform .2s ease;
+}
+
+.planes-page .table .btn:hover{
+    transform:translateY(-2px);
+}
+
+.planes-page .table .btn:hover i{
+    transform:scale(1.15);
+}
+
+.planes-page .table .btn:active{
+    transform:translateY(0) scale(.94);
+}
+
+.planes-page .table .btn-info:hover{    box-shadow:0 0 12px rgba(10,150,150,.6); }
+.planes-page .table .btn-warning:hover{ box-shadow:0 0 12px rgba(255,193,7,.55); }
+.planes-page .table .btn-primary:hover{ box-shadow:0 0 12px rgba(13,110,253,.55); }
+.planes-page .table .btn-danger:hover{  box-shadow:0 0 12px rgba(220,53,69,.6); }
+
+@media (prefers-reduced-motion: reduce){
+
+    .planes-page .card-header > .btn-success,
+    .planes-page .table .btn{
+        transition:background-color .2s, box-shadow .2s !important;
+        transform:none !important;
+    }
+
+    .planes-page .card-header > .btn-success::after{
+        display:none;
+    }
+
+    .planes-page .card-header > .btn-success i,
+    .planes-page .table .btn i{
+        transform:none !important;
+    }
+}
+
+
+@media (min-width:993px){
+
+    .planes-page .dashboard-main{
+        padding:20px 24px;
+    }
+
+    .planes-page .header-text{
+        height:auto;
+        min-height:140px;
+        padding:14px 24px;
+    }
+
+    .planes-page .header-text h2{
+        margin-top:0;
+        font-size:1.6rem;
+    }
+
+    .planes-page .header-text .fa-solid{
+        padding-left:12px;
+    }
+
+    .planes-page .header-text p{
+        margin-top:6px;
+        margin-bottom:0;
+        font-size:.9rem;
+    }
+
+    .planes-page .routine-manager,
+    .planes-page .user-manager{
+        margin-top:14px;
+    }
+
+    .planes-page .card-header{
+        padding:.45rem 1rem;
+    }
+
+    .planes-page .card-header h3,
+    .planes-page .card-header h4{
+        margin:0;
+        font-size:1.25rem;
+    }
+
+    .planes-page .card-header > .btn-success{
+        padding:8px 16px;
+        font-size:.85rem;
+    }
+
+    .planes-page .card-body{
+        padding:.75rem 1rem;
+    }
+
+    .planes-page .card-body .row.mb-3{
+        margin-bottom:.5rem !important;
+    }
+
+    .planes-page .card-body .form-control,
+    .planes-page .card-body .form-select{
+        padding:.3rem .65rem;
+        font-size:.88rem;
+    }
+
+    .planes-page .table th,
+    .planes-page .table td{
+        padding:.35rem .6rem;
+        font-size:.86rem;
+    }
+
+    .planes-page .table .btn{
+        margin:2px;
+        padding:.2rem .5rem;
+        font-size:.78rem;
+    }
 }
