@@ -1,0 +1,51 @@
+/* Extras para la vista de membresías.
+   Se apoya en admin-Usuarios.css (variables --usr-*, tabla, modal, paginación). */
+
+/* Celda del plan */
+.usr-plan strong {
+  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.usr-plan small {
+  display: block;
+  margin-top: 3px;
+  color: var(--usr-muted);
+  font-size: 0.88rem;
+}
+
+/* Precio */
+.usr-precio {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Estados de la membresía */
+.usr-badge.activa   { background: rgba(46, 213, 115, 0.14); color: #2ed573; }
+.usr-badge.inactiva { background: rgba(255, 255, 255, 0.07); color: #b8c3cf; }
+.usr-badge.vencida  { background: rgba(255, 92, 108, 0.14); color: var(--usr-danger); }
+
+/* Textarea del formulario (mismo aspecto que los inputs) */
+.usr-campo textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 88px;
+  padding: 11px 14px;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--usr-text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  resize: vertical;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.usr-campo textarea:focus {
+  outline: none;
+  border-color: var(--usr-accent);
+  box-shadow: 0 0 0 3px var(--usr-accent-soft);
+}
+.usr-campo textarea::placeholder { color: rgba(138, 152, 168, 0.65); }

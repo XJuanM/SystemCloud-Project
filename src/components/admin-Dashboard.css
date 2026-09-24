@@ -1,0 +1,132 @@
+/* Contenedor principal de toda la pantalla */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #030406; /* Fondo casi negro, acorde a las sombras de la imagen */
+  color: #f0f0f0;
+}
+
+/* Barra lateral: Efecto Glassmorphism con un toque frío */
+.sc-sidebar {
+  width: 80px;
+  background: rgba(10, 15, 20, 0.6); 
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(0, 195, 255, 0.15); /* Reflejo sutil del azul neón */
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.8);
+}
+
+.sc-sidebar:hover {
+  width: 280px;
+}
+
+/* Estilos de los enlaces en la barra */
+.admin-link {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+/* Efecto hover con el acento azul neón de tu página */
+.admin-link:hover {
+  color: #ffffff;
+  background: rgba(0, 195, 255, 0.1); /* Fondo translúcido azul */
+  border-left: 4px solid #00c3ff; /* Azul neón extraído del borde de tus botones */
+  text-shadow: 0 0 8px rgba(0, 195, 255, 0.4); /* Resplandor azul en el texto */
+}
+
+.admin-link.active {
+  color: #ffffff;
+  background: rgba(0, 195, 255, 0.1); 
+  border-left: 4px solid #00c3ff; 
+  text-shadow: 0 0 8px rgba(0, 195, 255, 0.4); 
+}
+
+/* Iconos y texto de la barra */
+.admin-link .icon {
+  font-size: 1.4rem;
+  min-width: 45px;
+}
+
+.admin-link .text {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.sc-sidebar:hover .admin-link .text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Contenedor del contenido derecho */
+.dashboard-content {
+  flex: 1;
+  padding: 40px;
+  /* Resplandor azul sutil en el fondo derecho simulando la iluminación del gimnasio */
+  background: radial-gradient(circle at top right, rgba(0, 195, 255, 0.05), transparent 50%);
+}
+
+.dashboard-content h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #ffffff, #a0a0a0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard-content p {
+  color: #888888;
+  font-size: 1.1rem;
+}
+/* Contenedor principal */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #030406; 
+  color: #f0f0f0;
+}
+
+/* Barra lateral flotante */
+.sc-sidebar {
+  position: fixed; /* Fija la barra en la pantalla */
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1000; /* Asegura que flote por encima del contenido */
+  
+  width: 80px;
+  background: rgba(10, 15, 20, 0.95); /* Más opaco para tapar el contenido de abajo */
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-right: 1px solid rgba(0, 195, 255, 0.15); 
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.8);
+}
+
+.sc-sidebar:hover {
+  width: 280px;
+}
+
+/* Contenido derecho con margen fijo */
+.dashboard-content {
+  margin-left: 80px; /* Deja el espacio exacto para la barra colapsada */
+  width: calc(100% - 80px); /* Ajusta el ancho restante */
+  padding: 40px;
+  background: radial-gradient(circle at top right, rgba(0, 195, 255, 0.05), transparent 50%);
+}
